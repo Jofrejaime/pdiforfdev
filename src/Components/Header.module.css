@@ -1,3 +1,51 @@
-.header{
+.header {
+ height: 4rem;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background: white;
+  top: 0;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
 
+.one {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+a{
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  color: #333333;
+  font-weight: 500;
+  padding: 0.5rem ;
+ 
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search_bar{
+  font-weight: bold;
+}
+.profile{
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  display: inline-block;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.three{
+  display: flex;
+  align-items: center;
+   gap: 1rem;
+  justify-content: space-around;
 }

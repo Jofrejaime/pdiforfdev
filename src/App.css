@@ -1,33 +1,46 @@
 * {
   box-sizing: border-box;
 }
-body{
+
+body {
+  padding-top: 4rem ;
   margin: 0;
   color: #333;
-  --type-code1: Cascadia-Code, Fira-code, Helvetica, Arial;
-  --type-code2: Fira-code, Cascadia-code, Arial, Helvetica, Sans-serif;
+  --type-code1: Cascadia-Code, 'Fira Code', Helvetica, Arial;
+  --type-code2: 'Fira Code', Cascadia-code, Arial, Helvetica, Sans-serif;
 }
-h1, h2, h3, h4, p{
+
+h1,
+h2,
+h3,
+h4,
+p {
   margin: 0;
 }
 
-ul,li{
+ul,
+li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-img{
+a{
+  text-decoration: none;
+}
+img {
   display: block;
   max-width: 100%;
 }
-button, input{
+
+button,
+input {
   display: block;
   font-size: 1rem;
   font-family: var(--type-code2);
   color: #333;
 }
 
-.container{
+.container {
   margin: 0 auto;
   max-width: calc(100% - 3rem);
   padding: 0 1rem;

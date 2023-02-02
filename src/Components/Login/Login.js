@@ -1,9 +1,22 @@
-import React from 'react'
-import styles from './Login.module.css'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import styles from "./Login.module.css";
+import LoginCreate from "./LoginCreate";
+import LoginPassLost from "./LoginPassLost";
+import LoginPassReset from "./LoginPassReset";
+import LoginForm from "./LoginForm";
+
 function Login() {
   return (
-    <div>Login</div>
-  )
+    <div>
+      <Routes>
+        <Route path="/" element={<LoginForm />} />
+        <Route path="createAccount" element={<LoginCreate />} />
+        <Route path="lostPass" element={<LoginPassLost />} />
+        <Route path="reset" element={<LoginPassReset />} />
+      </Routes>
+    </div>
+  );
 }
 
-export default Login
+export default Login;

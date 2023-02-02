@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/pdiforfdev/static/css/main.b0ae0eb8.css",
-    "main.js": "/pdiforfdev/static/js/main.33c1a2b9.js",
+    "main.css": "/pdiforfdev/static/css/main.be6b4cd8.css",
+    "main.js": "/pdiforfdev/static/js/main.41e2754e.js",
     "static/js/787.49fc5e08.chunk.js": "/pdiforfdev/static/js/787.49fc5e08.chunk.js",
+    "static/media/logo.svg": "/pdiforfdev/static/media/logo.44e9d372a61071a3182a404947e01696.svg",
     "index.html": "/pdiforfdev/index.html",
-    "main.b0ae0eb8.css.map": "/pdiforfdev/static/css/main.b0ae0eb8.css.map",
-    "main.33c1a2b9.js.map": "/pdiforfdev/static/js/main.33c1a2b9.js.map",
+    "main.be6b4cd8.css.map": "/pdiforfdev/static/css/main.be6b4cd8.css.map",
+    "main.41e2754e.js.map": "/pdiforfdev/static/js/main.41e2754e.js.map",
     "787.49fc5e08.chunk.js.map": "/pdiforfdev/static/js/787.49fc5e08.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0ae0eb8.css",
-    "static/js/main.33c1a2b9.js"
+    "static/css/main.be6b4cd8.css",
+    "static/js/main.41e2754e.js"
   ]
 }

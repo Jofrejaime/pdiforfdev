@@ -6,8 +6,8 @@ body {
   padding-top: 4rem ;
   margin: 0;
   color: #333;
-  --type-code1: Cascadia-Code, 'Fira Code', Helvetica, Arial;
-  --type-code2: 'Fira Code', Cascadia-code, Arial, Helvetica, Sans-serif;
+  --type-code1: 'Cascadia-Code', 'Fira Code', Helvetica, Arial;
+  --type-code2: 'Fira Code', 'Cascadia Code', Arial, Helvetica, Sans-serif;
 }
 
 h1,

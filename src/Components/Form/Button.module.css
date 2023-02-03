@@ -1,0 +1,22 @@
+.button{
+  font-size: 1rem;
+  font-family: var(--type-code2);
+  cursor: pointer;
+  border: none;
+  border-radius: .4rem;
+  background: #0046CC;
+  color: #ffffff;
+  padding: .8rem 1.2rem;
+  box-sizing: border-box;
+  font-weight: bold; 
+transform: .1s;
+}
+.button:hover,
+.button:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px #99afdd;
+}
+.button:disabled{
+  opacity: .5;
+  cursor: wait;
+}

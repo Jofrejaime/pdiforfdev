@@ -1,9 +1,10 @@
 .header {
+  font-family: var(--type-code1);
  height: 4rem;
   position: fixed;
   width: 100%;
   z-index: 100;
-  background: white;
+  background: transparent;
   top: 0;
   display: inline-block;
   align-items: center;
@@ -13,6 +14,7 @@
 .one {
   display: flex;
   align-items: center;
+  padding-left: 0;
   gap: 1rem;
 }
 

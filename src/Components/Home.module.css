@@ -1,0 +1,14 @@
+.today {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--type-code2);
+  font-weight: 500;
+
+}
+
+.texto {
+  font-size: 1.5rem;
+  align-items: center;
+}

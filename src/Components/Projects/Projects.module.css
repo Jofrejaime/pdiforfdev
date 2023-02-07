@@ -1,0 +1,13 @@
+.projects{
+  margin-top: 50px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .project{
+    min-width: calc(1300px/7);
+    min-height: 175px;
+   flex-grow: 1;
+    background-color: #f2f2f2;
+    border-radius: 15px;
+  }

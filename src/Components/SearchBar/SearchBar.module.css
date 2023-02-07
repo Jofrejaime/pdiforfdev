@@ -1,0 +1,19 @@
+.input {
+  border: 1px solid #333;
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: var(--type-code2);
+  padding: 0.2rem 1.5rem;
+  border-radius: 1rem;
+ background-color: transparent;
+}
+
+.input:focus,
+.input:hover {
+  outline: none;
+  border-color: #0046CC;
+  box-shadow: 0 0 0 3px #99afdd;
+  background: white;
+}

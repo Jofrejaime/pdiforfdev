@@ -1,0 +1,17 @@
+.profile_info{
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+font-family: var(--type-code1);
+font-weight: 300;
+}
+.profile_name{
+  font-family: var(--type-code2);
+  font-weight: bold;
+padding-bottom: 10px;
+}
+.profile_area{
+  padding-bottom: 10px;
+}
+

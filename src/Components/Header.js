@@ -25,11 +25,11 @@ function Header() {
             <FontAwesomeIcon icon={faBell} />
             <p>notification</p>
           </Link>
-          <Link to={"/"}>
+          <Link to={"message"}>
             <FontAwesomeIcon icon={faEnvelope} />
-            <p> message</p>
+            <p>message</p>
           </Link>
-          <Link to={"login"} className={styles.profile}>
+          <Link to={"profile"} className={styles.profile}>
             P
           </Link>
         </div>

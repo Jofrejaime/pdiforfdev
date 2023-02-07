@@ -1,0 +1,31 @@
+.dest_fav {
+  margin-top: 50px;
+  border-radius: 12.5px;
+  background-color: #F8FAFE;
+  font-family: var(--type-code1);
+  padding: .75rem;
+
+}
+
+.head {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.h::after {
+  content: '';
+  background-color: #9B1476;
+  display: block;
+  width: 2rem;
+  margin-top: .65rem;
+  height: 4px;
+}
+
+.active {
+  content: '';
+  width: 100%;
+  background-color: #0046CC;
+  height: 2px;
+  margin-top: .65rem;
+}

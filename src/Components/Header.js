@@ -15,13 +15,13 @@ function Header() {
             <Logo />
           </Link>
           <Link to="/">home</Link>
-          <Link to="/">descover</Link>
+          <Link to="descover">descover</Link>
         </div>
         <div className={styles.search_bar}>
           <SearchBar />
         </div>
         <div className={styles.three}>
-          <Link to={"/"}>
+          <Link to={"notification"}>
             <FontAwesomeIcon icon={faBell} />
             <p>notification</p>
           </Link>

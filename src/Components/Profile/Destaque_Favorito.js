@@ -5,6 +5,7 @@ function Destaque_Favorito() {
   return (
     <div className={styles.dest_fav}>
       <div className={styles.head}>
+      
         <a className={styles.dest}>Em Destaque</a>
         <a className={styles.fav}>Favoritos</a>
       </div>

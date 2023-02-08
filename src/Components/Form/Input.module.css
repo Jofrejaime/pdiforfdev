@@ -10,6 +10,7 @@
   padding: .8rem;
   border-radius: .4rem;
   background:#eee ;
+  transition: all .6s;
 }
 .input:focus,
 .input:hover{

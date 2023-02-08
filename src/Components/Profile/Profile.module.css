@@ -1,6 +1,6 @@
 .profile{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   gap: 20px;
 }
 .profile_links{
@@ -14,6 +14,7 @@
   background-color: #F8FAFE;
   border-radius: 12.5px;
 }
+
 .button{
   width: 48px;
   height: 48px;

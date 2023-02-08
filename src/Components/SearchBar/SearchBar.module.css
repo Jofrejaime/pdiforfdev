@@ -1,13 +1,14 @@
 .input {
-  border: 1px solid #333;
+  border: .125rem solid #333;
   display: block;
   width: 100%;
-  font-size: 1rem;
+  font-size: .625rem;
   font-weight: 400;
   font-family: var(--type-code2);
   padding: 0.2rem 1.5rem;
   border-radius: 1rem;
  background-color: transparent;
+ transition: .6s;
 }
 
 .input:focus,

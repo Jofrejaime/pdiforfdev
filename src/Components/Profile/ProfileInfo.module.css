@@ -6,6 +6,9 @@
 font-family: var(--type-code1);
 font-weight: 300;
 }
+.profile_photo{
+  width: 100%;
+}
 .profile_name{
   font-family: var(--type-code2);
   font-weight: bold;

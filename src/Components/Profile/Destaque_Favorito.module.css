@@ -10,16 +10,24 @@
 .head {
   display: flex;
   justify-content: space-around;
-
+position: relative;
+cursor: pointer;
 }
 
-.h::after {
+.head::after {
   content: '';
   background-color: #9B1476;
   display: block;
-  width: 2rem;
-  margin-top: .65rem;
-  height: 4px;
+  width: 100%;
+ top: calc(100%);
+  height: .25rem;
+  position: absolute;
+}
+.dest:hover{
+  color: #0046CC;
+}
+.fav:hover{
+color: #0046CC;
 }
 
 .active {

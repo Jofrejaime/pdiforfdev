@@ -8,6 +8,9 @@ function Projects() {
       <div className={styles.project}></div>
       <div className={styles.project}></div>
       <div className={styles.project}></div>
+      <div className={styles.project}></div>
+      <div className={styles.project}></div>
+      <div className={styles.project}></div>
     </div>
 
   )

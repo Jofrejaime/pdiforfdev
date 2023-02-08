@@ -3,11 +3,11 @@ import styles from "./Profile.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faDiagramProject,
   faSignOutAlt,
   faStarHalfStroke,
   faTools,
 } from "@fortawesome/free-solid-svg-icons";
+import Feed from '../../assets/svg/feed.svg'
 import Add from "../Add/AddButton";
 import Destaque_Favorito from "./Destaque_Favorito";
 import Trabalhos from "./Trabalhos";
@@ -21,8 +21,8 @@ function Profile() {
       <section>
         <ul className={styles.profile_links}>
           <li>
-            <Link to={""} className={styles.button}>
-              <FontAwesomeIcon icon={faDiagramProject} />
+            <Link to={""} className={styles.button + ' '+ styles.feed}>
+             <img src={Feed} />
             </Link>
           </li>
           <li>

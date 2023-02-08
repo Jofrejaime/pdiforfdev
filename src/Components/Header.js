@@ -14,21 +14,32 @@ function Header() {
           <Link to={"/"} className={styles.logo}>
             <Logo />
           </Link>
-          <Link to="/">home</Link>
-          <Link to="descover">descover</Link>
+          <div className={styles.link}>
+            <Link to="/" className={styles.link_a} >home
+            </Link>
+          </div>
+          <div className={styles.link}>
+            <Link to="descover" className={styles.link_a} >descover
+            </Link>
+          </div>
         </div>
         <div className={styles.search_bar}>
           <SearchBar />
         </div>
         <div className={styles.three}>
-          <Link to={"notification"}>
-            <FontAwesomeIcon icon={faBell} />
-            <p>notification</p>
-          </Link>
-          <Link to={"message"}>
-            <FontAwesomeIcon icon={faEnvelope} />
-            <p>message</p>
-          </Link>
+          <div className={styles.link}>
+            <Link to={"notification"} className={styles.link_a} >
+              <FontAwesomeIcon icon={faBell} />
+              <p>notification</p>
+            </Link>
+          </div>
+          <div className={styles.link}>
+            <Link to={"message"} className={styles.link_a}>
+              <FontAwesomeIcon icon={faEnvelope} />
+              <p>message</p>
+            </Link>
+          </div>
+
           <Link to={"profile"} className={styles.profile}>
             P
           </Link>

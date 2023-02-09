@@ -11,4 +11,5 @@
 .texto {
   font-size: 1.5rem;
   align-items: center;
+  transition: all .6s;
 }

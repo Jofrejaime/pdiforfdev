@@ -6,6 +6,7 @@ import Project from "./Projects/Projects";
 import { BrowserRouter } from "react-router-dom";
 import Projects from "./Projects/Projects";
 function Home() {
+
   return (
     <div>
     

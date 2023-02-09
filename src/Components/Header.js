@@ -5,7 +5,7 @@ import { faBell, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/svg/logo.svg";
 import SearchBar from "./SearchBar/SearchBar";
-
+// Jofre
 function Header() {
   return (
     <header className={styles.header}>
@@ -17,6 +17,7 @@ function Header() {
           <div className={styles.link}>
             <Link to="/" className={styles.link_a} >home
             </Link>
+          
           </div>
           <div className={styles.link}>
             <Link to="descover" className={styles.link_a} >descover

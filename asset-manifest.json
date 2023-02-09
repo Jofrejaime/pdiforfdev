@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/pdiforfdev/static/css/main.1cc0d69a.css",
-    "main.js": "/pdiforfdev/static/js/main.c5f9a9b6.js",
+    "main.css": "/pdiforfdev/static/css/main.4aa16334.css",
+    "main.js": "/pdiforfdev/static/js/main.2784566b.js",
     "static/js/787.49fc5e08.chunk.js": "/pdiforfdev/static/js/787.49fc5e08.chunk.js",
-    "static/media/logo.svg": "/pdiforfdev/static/media/logo.21afa24e553acc8e8b930e04c1017be3.svg",
+    "static/media/profile.svg": "/pdiforfdev/static/media/profile.92f93495119057333e331961739f5261.svg",
+    "static/media/logo.svg": "/pdiforfdev/static/media/logo.021e0947ae0247c2d2edd3d1a6424441.svg",
     "index.html": "/pdiforfdev/index.html",
-    "main.1cc0d69a.css.map": "/pdiforfdev/static/css/main.1cc0d69a.css.map",
-    "main.c5f9a9b6.js.map": "/pdiforfdev/static/js/main.c5f9a9b6.js.map",
+    "static/media/feed.svg": "/pdiforfdev/static/media/feed.28417836fd23579d0b00098bf752a597.svg",
+    "main.4aa16334.css.map": "/pdiforfdev/static/css/main.4aa16334.css.map",
+    "main.2784566b.js.map": "/pdiforfdev/static/js/main.2784566b.js.map",
     "787.49fc5e08.chunk.js.map": "/pdiforfdev/static/js/787.49fc5e08.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1cc0d69a.css",
-    "static/js/main.c5f9a9b6.js"
+    "static/css/main.4aa16334.css",
+    "static/js/main.2784566b.js"
   ]
 }

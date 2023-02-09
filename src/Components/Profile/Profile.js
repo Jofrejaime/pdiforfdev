@@ -1,13 +1,15 @@
 import React from "react";
+import Login from "../Login/Login";
 import styles from "./Profile.module.css";
-import { Link } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSignOutAlt,
   faStarHalfStroke,
   faTools,
+  faUsersRectangle,
 } from "@fortawesome/free-solid-svg-icons";
-import Feed from '../../assets/svg/feed.svg'
+import Feed from "../../assets/svg/feed.svg";
 import Add from "../Add/AddButton";
 import Destaque_Favorito from "./Destaque_Favorito";
 import Trabalhos from "./Trabalhos";
@@ -18,11 +20,14 @@ function Profile() {
       <aside className={styles.profile_info}>
         <ProfileInfo />
       </aside>
+      
+
       <section>
+    
         <ul className={styles.profile_links}>
           <li>
-            <Link to={""} className={styles.button + ' '+ styles.feed}>
-             <img src={Feed} />
+            <Link to={""} className={styles.button + " " + styles.feed}>
+              <FontAwesomeIcon icon={faUsersRectangle} />
             </Link>
           </li>
           <li>
@@ -38,8 +43,9 @@ function Profile() {
               <FontAwesomeIcon icon={faTools} />
             </Link>
           </li>
+
           <li>
-            <Link to={""} className={styles.button}>
+            <Link to={"login"} className={styles.button}>
               <FontAwesomeIcon icon={faSignOutAlt} />
             </Link>
           </li>

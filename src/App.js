@@ -18,7 +18,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path={"pdifordev"} element={<Home />} />
+            <Route path={"pdiforfdev"} element={<Home />} />
             <Route path="login/*" element={<Login />} />
             <Route path="profile/*" element={<Profile />} />
             <Route path="message/*" element={<Message />} />

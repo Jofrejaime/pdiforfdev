@@ -4,33 +4,26 @@ import styles from "./LoginForm.module.css";
 import Button from "../Form/Button";
 import Input from "../Form/Input";
 import useForm from "../../useForm";
+import { UserContext } from "../../UserContext";
+import Error from "../Helper/Error";
+import stylesBtn from '../../Components/Form/Button.module.css'
 function LoginForm() {
   const username = useForm("email");
   const password = useForm();
 
-  function handleSubmit(event) {event.preventDefault();
-    if (username.validate() || password.validate()) {
-      
-      fetch("http://logando no pdiApi", {
-        method: "POST",
-        headers: {
-          "content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      })
-        .then((response) => {
-          console.log(response);
-          return response.json();
-        })
-        .then((json) => {
-          console.log(json);
-        });
+  const { userLogin, error, loading } = React.useContext(UserContext);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (username.validate() && password.validate()) {
+      userLogin(username.value, password.value);
     }
   }
+
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+    <section className="animeLeft">
+      <h1 className="title">Login</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <Input label={"User"} type={"text"} name="username" {...username} />
         <Input
           label={"Password"}
@@ -38,10 +31,22 @@ function LoginForm() {
           name="password"
           {...password}
         />
-        <Button>Enter</Button>
+        {loading ? (
+          <Button disabled>Carregando...</Button>
+        ) : (
+          <Button>Enter</Button>
+        )}
+        <Error error={error} />
       </form>
-      <Link to={"/login/createAccount"}>Cadastro</Link>
-    </div>
+      <Link className={styles.perdeu} to="/login/lostPass">Perdeu a senha?</Link>
+      <div className={styles.cadastro}>
+        <h2 className={styles.subtitle}>Cadastre-se</h2>
+        <p>Ainda não possui conta? cadastra-se na plataforma</p>{" "}
+        <Link className={stylesBtn.button} to={"/login/createAccount"}>
+          Cadastro
+        </Link>
+      </div>
+    </section>
   );
 }
 

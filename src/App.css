@@ -43,3 +43,36 @@ input {
   margin: 0 auto;
   max-width: calc(100% - 3rem);
 }
+.animeLeft{
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: animeLeft .3s forwards; 
+}
+.title{
+  font-family:var(--type-code1) ;
+  position: relative;
+  line-height: 1;
+  font-size: 3rem;
+  margin: 1rem 0;
+  width: max-content;
+}
+.title::after{
+  content: '';
+  display: block;
+ background: #0046CC;
+  width: 50%;
+  height: .250rem;
+  position: absolute;
+  margin-top: .625rem;
+  left: -5px;
+  z-index: -1;
+}
+.error{
+  
+}
+@keyframes animeLeft{
+  to{
+    opacity: 1;
+    transform: initial;
+  }
+}

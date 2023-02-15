@@ -2,13 +2,20 @@ import React from "react";
 import styles from "./Header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/svg/logo.svg";
 import SearchBar from "./SearchBar/SearchBar";
 // Jofre
 function Header() {
+  const [display, setDisplay] = React.useState('');
+ 
+   const params = useLocation();
+  React.useEffect(() => { 
+    if (params.pathname === "/login" || params.pathname === '/login/createAccount') setDisplay('none')
+    else setDisplay(' ')
+  }, [params]);
   return (
-    <header className={styles.header}>
+    <header className={styles.header} style={{display: display}}>
       <nav className={`${styles.nav} container`}>
         <div className={styles.one}>
           <Link to={"/"} className={styles.logo}>

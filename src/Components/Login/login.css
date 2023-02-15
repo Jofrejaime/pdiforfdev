@@ -1,7 +1,7 @@
 .login {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-width: 100vh;
+  min-width: 40rem;
   gap: 2rem;
 }
 
@@ -10,13 +10,15 @@
   content: '';
   background: url('../../assets/img/login.jpg') no-repeat center center;
   background-size: cover;
+  border-bottom-right-radius:50%;
+  border-top-right-radius: 10px;
   order: -1;
 }
 
 .cadastro {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-width: 100vh;
+  min-width: 40rem;
   gap: 2rem;
 
 }
@@ -29,7 +31,8 @@
     monospace;
   padding: 2rem;
   font-size: 2rem;
-
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 50%;
   color: #0046CC;
   background: url('../../assets/img/criar.jpg') no-repeat center center;
   background-size: cover;
@@ -49,6 +52,7 @@
   .login::before,
   .cadastro::after {
     display: none;
+    background-image: url('../../assets/img/pdilogoCinza.png');
   }
 
   .forms {

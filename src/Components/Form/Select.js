@@ -1,21 +1,24 @@
 import React from 'react';
-
-const Select = ({ options, value, setValue, ...props }) => {
+import styles from './Select.module.css'
+const Select = ({ label, options, value, setValue, ...props }) => {
   return (
-    <select
+  <div className={styles.wrapper}>
+  <label>{label}</label>
+    <select className={styles.select}
       value={value}
       onChange={({ target }) => setValue(target.value)}
       {...props}
     >
       <option value="" disabled>
-        Selecione
+        Selecione o seu {label}
       </option>
       {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
+        <option key={option.ordem} value={option.nome}>
+          {option.nome}
         </option>
       ))}
-    </select>
+    </select> 
+    </div>
   );
 };
 

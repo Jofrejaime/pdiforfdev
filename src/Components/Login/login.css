@@ -1,0 +1,57 @@
+.login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-width: 100vh;
+  gap: 2rem;
+}
+
+.login::before {
+  display: block;
+  content: '';
+  background: url('../../assets/img/login.jpg') no-repeat center center;
+  background-size: cover;
+  order: -1;
+}
+
+.cadastro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-width: 100vh;
+  gap: 2rem;
+
+}
+
+.cadastro::after {
+  display: block;
+  content: 'PDI - novo na comunidade';
+  font-weight: bold;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  padding: 2rem;
+  font-size: 2rem;
+
+  color: #0046CC;
+  background: url('../../assets/img/criar.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.cadastro .Login_forms__5MXFL {
+  max-width: 100%;
+}
+
+@media (max-width: 40rem) {
+
+  .login,
+  .cadastro {
+    grid-template-columns: 1fr;
+  }
+
+  .login::before,
+  .cadastro::after {
+    display: none;
+  }
+
+  .forms {
+    max-width: 100%;
+  }
+}

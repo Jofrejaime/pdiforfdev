@@ -6,6 +6,7 @@ export const UserStorage = ({ children }) => {
   const [login, setLogin] = React.useState(null);
   const [loading, setLoading] = React.useState(null);
   const [error, setError] = React.useState(null);
+  const [loginType, setLogintype] = React.useState('login');
   const navigate = useNavigate();
 
   const userLogout = React.useCallback(
@@ -68,7 +69,7 @@ export const UserStorage = ({ children }) => {
     //jofre
   return (
     <UserContext.Provider
-      value={{ userLogin, data, error, loading, login, userLogout }}
+      value={{ userLogin, data, error, loading, login, userLogout, loginType, setLogintype }}
     >
       {children}
     </UserContext.Provider>

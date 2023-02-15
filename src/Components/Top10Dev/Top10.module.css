@@ -46,3 +46,8 @@ position: absolute;
   background-color: #333333;
   border-radius: .78125rem;
 }
+@media (max-width: 43.625rem){
+  .title{
+    margin-bottom: 2rem;
+  }
+}

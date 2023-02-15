@@ -32,13 +32,15 @@ img {
 }
 
 button,
-input {
+input, select {
   display: block;
   font-size: 1rem;
   font-family: var(--type-code2);
   color: #333;
 }
-
+label{
+  font-family: var(--type-code1);
+}
 .container {
   margin: 0 auto;
   max-width: calc(100% - 3rem);
@@ -53,7 +55,7 @@ input {
   position: relative;
   line-height: 1;
   font-size: 3rem;
-  margin: 1rem 0;
+  margin: 2rem 0;
   width: max-content;
 }
 .title::after{
@@ -68,7 +70,7 @@ input {
   z-index: -1;
 }
 .error{
-  
+
 }
 @keyframes animeLeft{
   to{

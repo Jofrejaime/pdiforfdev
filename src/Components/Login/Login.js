@@ -1,17 +1,31 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useParams,
+  useLocation,
+} from "react-router-dom";
 import LoginCreate from "./LoginCreate";
 import LoginPassLost from "./LoginPassLost";
 import LoginPassReset from "./LoginPassReset";
 import LoginForm from "./LoginForm";
 import { UserContext } from "../../UserContext";
 import styles from "./Login.module.css";
+import "./login.css";
 function Login() {
   const { login } = React.useContext(UserContext);
+  const [loginType, setLogintype] = React.useState("login");
+  const params = useLocation();
+  React.useEffect(() => { 
+    if (params.pathname === "/login/createAccount") setLogintype('cadastro')
+    else setLogintype('login')
+  }, [params]);
+
 
   if (login === true) return <Navigate to="/pdiforfdev" />;
   return (
-    <section className={styles.login}>
+    <section className={loginType}>
       <div className={styles.forms}>
         <Routes>
           <Route path="/" element={<LoginForm />} />

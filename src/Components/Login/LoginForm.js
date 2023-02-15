@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 import Button from "../Form/Button";
 import Input from "../Form/Input";
-import useForm from "../../useForm";
+import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
 import Error from "../Helper/Error";
-import stylesBtn from '../../Components/Form/Button.module.css'
+import stylesBtn from "../../Components/Form/Button.module.css";
 function LoginForm() {
   const username = useForm("email");
   const password = useForm();
@@ -38,7 +38,9 @@ function LoginForm() {
         )}
         <Error error={error} />
       </form>
-      <Link className={styles.perdeu} to="/login/lostPass">Perdeu a senha?</Link>
+      <Link className={styles.perdeu} to="/login/lostPass">
+        Perdeu a senha?
+      </Link>
       <div className={styles.cadastro}>
         <h2 className={styles.subtitle}>Cadastre-se</h2>
         <p>Ainda não possui conta? cadastra-se na plataforma</p>{" "}

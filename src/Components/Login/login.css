@@ -12,7 +12,8 @@
   background-size: cover;
   border-bottom-right-radius:50%;
   border-top-right-radius: 10px;
-  order: -1;
+  outline: none;
+  box-shadow: 0 0 10px .25rem #0046CC;
 }
 
 .cadastro {
@@ -36,10 +37,13 @@
   color: #0046CC;
   background: url('../../assets/img/criar.jpg') no-repeat center center;
   background-size: cover;
+  outline: none;
+  box-shadow: 0 0 10px .25rem #9B1476;
 }
 
+
 .cadastro .Login_forms__5MXFL {
-  max-width: 100%;
+
 }
 
 @media (max-width: 40rem) {
@@ -47,14 +51,25 @@
   .login,
   .cadastro {
     grid-template-columns: 1fr;
+    min-width: 10rem;
   }
 
-  .login::before,
+ 
   .cadastro::after {
-    display: none;
-    background-image: url('../../assets/img/pdilogoCinza.png');
+   display: none;
   }
-
+  .cadastro::before, .login::before{
+    display: block;
+  content: '';
+  max-width: 100vw;
+  height: 10rem;
+    background: url('../../assets/img/pdilogoCinza.png') no-repeat center center;
+    background-size:cover;
+    outline: none;
+    box-shadow: 0 0 0 0;
+    border: none;
+    border-radius: 0;
+  }
   .forms {
     max-width: 100%;
   }

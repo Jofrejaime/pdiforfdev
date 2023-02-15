@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 function Add() {
   return (
-    <Link to={"createAProject"} className={styles.button}>
-      <FontAwesomeIcon icon={faAdd} />
+    <Link to={""} className={styles.button}>
+    
     </Link>
   );
 }

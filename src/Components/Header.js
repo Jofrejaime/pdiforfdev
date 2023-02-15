@@ -48,7 +48,7 @@ function Header() {
             </Link>
           </div>
 
-          <Link to={"profile"} className={styles.profile}>
+          <Link to={"user"} className={styles.profile}>
             P
           </Link>
         </div>

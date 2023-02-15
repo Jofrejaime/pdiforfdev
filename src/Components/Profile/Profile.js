@@ -26,9 +26,7 @@ function Profile() {
     
         <ul className={styles.profile_links}>
           <li>
-            <Link to={""} className={styles.button + " " + styles.feed}>
-              <FontAwesomeIcon icon={faUsersRectangle} />
-            </Link>
+            
           </li>
           <li>
             <Link to={""} className={styles.button}>

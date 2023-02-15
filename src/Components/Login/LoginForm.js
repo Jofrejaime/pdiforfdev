@@ -34,7 +34,7 @@ function LoginForm() {
         {loading ? (
           <Button disabled>Carregando...</Button>
         ) : (
-          <Button>Enter</Button>
+          <Button>Entrar</Button>
         )}
         <Error error={error} />
       </form>

@@ -11,6 +11,7 @@ import Notifications from "./Components/Notifications/Notifications";
 import Descover from "./Components/Descover/Descover";
 import { UserStorage } from "./UserContext";
 import React from "react";
+import User from "./Components/User/User";
 function App() {
  
  
@@ -23,7 +24,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path={"pdiforfdev"} element={<Home />} />
             <Route path="login/*" element={<Login />} />
-            <Route path="profile/*" element={<Profile />} />
+            <Route path="user/*" element={<User />} />
             <Route path="message/*" element={<Message />} />
             <Route path="notification/*" element={<Notifications />} />
             <Route path="descover" element={<Descover />} />

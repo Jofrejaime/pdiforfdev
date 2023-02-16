@@ -8,15 +8,22 @@ import {
   faTools,
   faUsersRectangle,
 } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Add from "../Add/AddButton";
 import { UserContext } from "../../UserContext";
+import useMedia from "../../Hooks/useMedia";
 
 function UserHeaderNav() {
-  const [mobile, setMobile] = React.useState(null);
-  const { userLogout } = React.useContext(UserContext);
-  return (
-    <nav className={styles.nav}>
+  const { userLogout } = React.useContext(UserContext); 
+  const [mobileMenu, setMobilemenu] = React.useState(false);
+  const mobile = useMedia('(max-width: 40rem)');
+  const {pathname} = useLocation();
+  React.useEffect(()=>{
+    setMobilemenu(false);
+  },[pathname])
+  return (<>
+   {mobile && <button aria-label='menu' className={`${styles.mobileButton} ${mobileMenu && styles.mobileButtonActive}`} onClick={()=>setMobilemenu(!mobileMenu)}></button>} 
+    <nav className={`${mobile ? styles.navMobile : styles.nav} ${mobileMenu && styles.navMobileActive}`}>
       <NavLink
         to={"/user"}
         className={styles.button}
@@ -56,6 +63,7 @@ function UserHeaderNav() {
         {mobile && "Sair"}
       </button>
     </nav>
+    </>
   );
 }
 

@@ -18,22 +18,20 @@ function Header() {
   const [mobileMenu, setMobilemenu] = React.useState(false);
   const mobile = useMedia("(max-width: 40rem)");
   const { pathname } = useLocation();
+ 
   React.useEffect(() => {
     if (
-      pathname.pathname === "/login" ||
-      pathname.pathname === "/login/createAccount"
+      pathname === "/login" ||
+     pathname === "/login/createAccount"
     )
       setDisplay("none");
     else setDisplay(" ");
-  }, [pathname]);
-
-  React.useEffect(() => {
     setMobilemenu(false);
   }, [pathname]);
   return (
     <>
       {mobile && (
-        <header className={styles.header}>
+        <header className={styles.header} style={{ display: display }}>
           {" "}
           <button
             aria-label="menu"
@@ -47,11 +45,13 @@ function Header() {
           </NavLink>{" "}
         </header>
       )}
-      <header className={styles.header} style={{ display: display }}>
+
+      <header className={`${ mobile ? '':styles.header}`} >
         <nav
           className={`${
             mobile ? styles.navMobile : `${styles.nav} container`
           } ${mobileMenu && styles.navMobileActive}`}
+          style={{ display: display }}
         >
           {!mobile && (
             <NavLink to={"/"} className={styles.logo}>

@@ -1,46 +1,52 @@
-*{margin: 0;
-padding: 0;
-box-sizing: border-box;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .header {
   font-family: var(--type-code1);
- height: 4rem;
-  position: fixed;
+  height: 4rem;
   width: 100%;
+  position: relative;
+  top: 10px;
   z-index: 100;
-  background: transparent;
-  top: 0;
   display: inline-block;
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 40rem){
-  .header{
-    height: 1rem;
+
+@media (max-width: 40rem) {
+  .header {
+    top: 0;
     display: flex;
     align-items: center;
+    background: #fff;
     justify-content: space-between;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-padding-top: 2rem;
-  margin: 0 auto;
-  
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+ ;
   }
-  .logo{
+
+  .logo {
     order: -1;
   }
-  .logo svg > image{
+
+  .logo svg>image {
     display: flex;
     align-items: center;
     padding: 0;
     margin: 0;
-    width: calc(794px*2) ; height:calc(394px*1.8) ;
+    width: calc(794px*2);
+    height: calc(394px*1.8);
   }
-  .logo svg{
+
+  .logo svg {
     height: calc(45px);
   }
 }
 
-.link:after{
+.link:after {
   content: '';
   display: block;
   height: .225rem;
@@ -49,33 +55,38 @@ padding-top: 2rem;
   margin-top: .250rem;
   transition: all .6s;
 }
-.link:hover::after{
+
+.link:hover::after {
   width: 100%;
 }
 
 
 
-.link_a{
- display: flex;
- align-items: center;
- gap: .125rem;
+.link_a {
+  display: flex;
+  align-items: center;
+  gap: .125rem;
   color: #333333;
   font-weight: 500;
-  padding: 0.5rem ;
+  padding: 0.5rem;
   transition: .6s;
 }
-.link_a:hover{
+
+.link_a:hover {
   color: #0046CC;
 }
+
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.search_bar{
+
+.search_bar {
   font-weight: bold;
 }
-.profile{
+
+.profile {
   min-width: 28px;
   height: 28px;
   background-color: #333;
@@ -86,7 +97,8 @@ padding-top: 2rem;
   align-items: center;
   transition: all .6s;
 }
-.profile:hover{
+
+.profile:hover {
   outline: none;
   box-shadow: 0 0 0 3px #99afdd;
 }
@@ -127,14 +139,14 @@ padding-top: 2rem;
   border-color: #333;
 }
 
-.mobileButtonActive::after{
-  transform: rotate(90deg );
+.mobileButtonActive::after {
+  transform: rotate(-90deg);
   width: 4px;
   height: 4px;
   box-shadow: 0 8px currentColor, 0 -8px currentColor;
 }
 
-.navMobile{
+.navMobile {
   display: block;
   align-items: center;
   position: absolute;
@@ -148,32 +160,38 @@ padding-top: 2rem;
   pointer-events: none;
   margin-right: 1rem;
 }
-.navMobileActive{
+
+.navMobileActive {
   transition: .3s;
   transform: initial;
   opacity: 1;
   z-index: 100;
   pointer-events: initial;
 }
-.navMobile a, .navMobile button{
+
+.navMobile a,
+.navMobile button {
   border-radius: 0;
   display: block;
   align-items: center;
   background: none;
   border: none;
   width: 100%;
-  border-bottom: 1px solid  #99afdd;
-padding: .5rem 0;
+  border-bottom: 1px solid #99afdd;
+  padding: .5rem 0;
 }
-.navMobile a:hover svg > *, .navMobile button:hover svg > *{
-fill: #0046CC;
+
+.navMobile a:hover svg>*,
+.navMobile button:hover svg>* {
+  fill: #0046CC;
 }
-.navMobile svg{
-  margin-right: .5rem; 
+
+.navMobile svg {
+  margin-right: .5rem;
 }
-.navMobile .profile, .navMobile button:focus, .navMobile button:hover{
+
+.navMobile .profile,
+.navMobile button:focus,
+.navMobile button:hover {
   border-bottom: none;
 }
-
-
-

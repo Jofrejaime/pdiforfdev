@@ -14,55 +14,79 @@ import { UserContext } from "../../UserContext";
 import useMedia from "../../Hooks/useMedia";
 
 function UserHeaderNav() {
-  const { userLogout } = React.useContext(UserContext); 
+  const { userLogout } = React.useContext(UserContext);
   const [mobileMenu, setMobilemenu] = React.useState(false);
-  const mobile = useMedia('(max-width: 40rem)');
-  const {pathname} = useLocation();
-  React.useEffect(()=>{
+  const mobile = useMedia("(max-width: 40rem)");
+  const { pathname } = useLocation();
+  React.useEffect(() => {
     setMobilemenu(false);
-  },[pathname])
-  return (<>
-   {mobile && <button aria-label='menu' className={`${styles.mobileButton} ${mobileMenu && styles.mobileButtonActive}`} onClick={()=>setMobilemenu(!mobileMenu)}></button>} 
-    <nav className={`${mobile ? styles.navMobile : styles.nav} ${mobileMenu && styles.navMobileActive}`}>
-      <NavLink
-        to={"/user"}
-        className={styles.button}
-        end
-        activeClassName={styles.active}
+  }, [pathname]);
+  return (
+    <>
+      {mobile && (
+        <button
+          aria-label="menu"
+          className={`${styles.mobileButton} ${
+            mobileMenu && styles.mobileButtonActive
+          }`}
+          onClick={() => setMobilemenu(!mobileMenu)}
+        ></button>
+      )}
+      <nav
+        className={`${mobile ? styles.navMobile : styles.nav} ${
+          mobileMenu && styles.navMobileActive
+        }`}
       >
-        <FontAwesomeIcon icon={faUsersRectangle} />
-        {mobile && "Meus Projetos"}
-      </NavLink>
-      <NavLink
-        to={"stats"}
-        className={styles.button}
-        activeClassName={styles.active}
-      >
-        <FontAwesomeIcon icon={faStarHalfStroke} />
-        {mobile && "Estátisticas"}
-      </NavLink>
-      <NavLink
-        to={"createaproject"}
-        className={styles.button}
-        activeClassName={styles.active}
-      >
-        <FontAwesomeIcon icon={faAdd} />
-        {mobile && "Criar Novo Projecto"}
-      </NavLink>
-      <NavLink
-        to={"definition"}
-        className={styles.button}
-        activeClassName={styles.active}
-      >
-        <FontAwesomeIcon icon={faTools} />
-        {mobile && "Adicionar Foto"}
-      </NavLink>
-
-      <button onClick={userLogout} className={styles.button}>
-        <FontAwesomeIcon icon={faSignOutAlt} />
-        {mobile && "Sair"}
-      </button>
-    </nav>
+        <div className={styles.link}>
+          {" "}
+          <NavLink
+            to={"/user"}
+            className={styles.button}
+            end
+            activeClassName={styles.active}
+          >
+            <FontAwesomeIcon icon={faUsersRectangle} />
+            {mobile && "Meus Projetos"}
+          </NavLink>
+        </div>
+        <div className={styles.link}>
+          {" "}
+          <NavLink
+            to={"stats"}
+            className={styles.button}
+            activeClassName={styles.active}
+          >
+            <FontAwesomeIcon icon={faStarHalfStroke} />
+            {mobile && "Estátisticas"}
+          </NavLink>
+        </div>
+        <div className={styles.link}>
+          <NavLink
+            to={"createaproject"}
+            className={styles.button}
+            activeClassName={styles.active}
+          >
+            <FontAwesomeIcon icon={faAdd} />
+            {mobile && "Novo Projecto"}
+          </NavLink>
+        </div>
+        <div className={styles.link}>
+          <NavLink
+            to={"definition"}
+            className={styles.button}
+            activeClassName={styles.active}
+          >
+            <FontAwesomeIcon icon={faTools} />
+            {mobile && "Adicionar Foto"}
+          </NavLink>
+        </div>
+        <div className={styles.link}>
+          <button onClick={userLogout} className={styles.button}>
+            <FontAwesomeIcon icon={faSignOutAlt} />
+            {mobile && "Sair"}
+          </button>
+        </div>
+      </nav>
     </>
   );
 }

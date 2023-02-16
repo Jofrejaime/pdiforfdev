@@ -28,6 +28,8 @@
   display: block;
   content: 'PDI - novo na comunidade';
   font-weight: bold;
+  height: 100%;
+  width: 100%;
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   padding: 2rem;

@@ -1,24 +1,23 @@
-import React from "react";
-import styles from "./Input.module.css";
-function Input({ label, type, name, value, onChange, error, onBlur, ...props }) {
+import React from 'react'
+import styles from './Input.module.css'
+function TextArea({label, name, value, onChange, error, onBlur}) {
   return (
     <div className={styles.wrapper}>
      {label!=='' && <label htmlFor={name} className={styles.label}>
         {label}
       </label> } 
-      <input
+    <textarea 
         className={styles.input}
         id={name}
         name={name}
-        type={type}
         onChange={onChange}
         value={value}
         onBlur={onBlur}
-        {...props}
-      />
-      {error && <p className={styles.error}>{error}</p>}
+        rows='5'
+    />  
+     {error && <p className={styles.error}>{error}</p>}
     </div>
-  );
+  )
 }
 
-export default Input;
+export default TextArea

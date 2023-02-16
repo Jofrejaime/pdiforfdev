@@ -10,7 +10,7 @@ const Select = ({ label, options, value, setValue, ...props }) => {
       {...props}
     >
       <option value="" disabled>
-        Selecione o seu {label}
+        Selecione o/a {label}
       </option>
       {options.map((option) => (
         <option key={option.ordem} value={option.nome}>

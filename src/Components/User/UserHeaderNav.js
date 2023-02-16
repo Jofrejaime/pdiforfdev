@@ -37,7 +37,7 @@ function UserHeaderNav() {
           mobileMenu && styles.navMobileActive
         }`}
       >
-        <div className={styles.link}>
+        <div className={`${mobile ? styles.link : ''}`}>
           {" "}
           <NavLink
             to={"/user"}
@@ -49,7 +49,7 @@ function UserHeaderNav() {
             {mobile && "Meus Projetos"}
           </NavLink>
         </div>
-        <div className={styles.link}>
+        <div className={`${mobile ? styles.link : ''}`}>
           {" "}
           <NavLink
             to={"stats"}
@@ -60,7 +60,7 @@ function UserHeaderNav() {
             {mobile && "Estátisticas"}
           </NavLink>
         </div>
-        <div className={styles.link}>
+        <div className={`${mobile ? styles.link : ''}`}>
           <NavLink
             to={"createaproject"}
             className={styles.button}
@@ -70,7 +70,7 @@ function UserHeaderNav() {
             {mobile && "Novo Projecto"}
           </NavLink>
         </div>
-        <div className={styles.link}>
+        <div className={`${mobile ? styles.link : ''}`}>
           <NavLink
             to={"definition"}
             className={styles.button}
@@ -80,7 +80,7 @@ function UserHeaderNav() {
             {mobile && "Adicionar Foto"}
           </NavLink>
         </div>
-        <div className={styles.link}>
+        <div className={`${mobile ? styles.link : ''}`}>
           <button onClick={userLogout} className={styles.button}>
             <FontAwesomeIcon icon={faSignOutAlt} />
             {mobile && "Sair"}

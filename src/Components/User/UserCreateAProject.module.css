@@ -4,6 +4,12 @@
   gap: 2rem;
   margin-bottom: 2rem;
 }
+.createMobile{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
 .create #img{
 
 }
@@ -16,5 +22,49 @@
   content: '';
   display: block;
   height: 0px;
-  padding-bottom: 100%;
+}
+.createHeader{
+  display: flex;
+  align-items:  center;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+.createHeader button{
+  padding: .5rem 1rem;
+  background-color: transparent;
+  border: none;
+  font-size: clamp(.75rem, 1rem, 1.5rem);
+  font-family: var(--type-code2);
+  font-weight: bold;
+  border-bottom: 3px solid transparent;
+  width: 100%;
+  text-align: center;
+  transition: all .6s;
+}
+.createHeader > button {
+ border-right: 3px solid #0046CC;
+}
+.createHeader  button + button{
+  border-right: 0;
+  border-left: 3px solid #0046CC;
+}
+.createHeader button:focus, .createHeader button:hover{
+border-bottom: 3px solid #0046CC;
+color: #0046CC;
+}
+
+.create:has(.previewMobile) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.create:has(.previewMobile) .preview, .previewMobile{
+display: none;
+}
+.create:has(.prev) .preview{
+  display: block;
+}
+.create:has(.prev) form{
+  display: none;
 }

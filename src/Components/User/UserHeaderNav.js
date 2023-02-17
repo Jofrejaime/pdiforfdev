@@ -9,7 +9,6 @@ import {
   faUsersRectangle,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, useLocation } from "react-router-dom";
-import Add from "../Add/AddButton";
 import { UserContext } from "../../UserContext";
 import useMedia from "../../Hooks/useMedia";
 
@@ -43,7 +42,6 @@ function UserHeaderNav() {
             to={"/user"}
             className={styles.button}
             end
-            activeClassName={styles.active}
           >
             <FontAwesomeIcon icon={faUsersRectangle} />
             {mobile && "Meus Projetos"}
@@ -54,7 +52,6 @@ function UserHeaderNav() {
           <NavLink
             to={"stats"}
             className={styles.button}
-            activeClassName={styles.active}
           >
             <FontAwesomeIcon icon={faStarHalfStroke} />
             {mobile && "Estátisticas"}
@@ -64,7 +61,6 @@ function UserHeaderNav() {
           <NavLink
             to={"createaproject"}
             className={styles.button}
-            activeClassName={styles.active}
           >
             <FontAwesomeIcon icon={faAdd} />
             {mobile && "Novo Projecto"}
@@ -74,10 +70,9 @@ function UserHeaderNav() {
           <NavLink
             to={"definition"}
             className={styles.button}
-            activeClassName={styles.active}
           >
             <FontAwesomeIcon icon={faTools} />
-            {mobile && "Adicionar Foto"}
+            {mobile && "Difinições"}
           </NavLink>
         </div>
         <div className={`${mobile ? styles.link : ''}`}>

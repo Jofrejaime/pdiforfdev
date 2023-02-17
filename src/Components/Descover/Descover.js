@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Descover() {
   return (
-    <div>Descover</div>
-  )
+    <section className="container">
+      <h1 className="title">Descover</h1>
+    </section>
+  );
 }
 
-export default Descover
+export default Descover;

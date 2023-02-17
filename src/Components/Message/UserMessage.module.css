@@ -1,0 +1,124 @@
+.headerMessageUser {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: .5rem;
+  background-color: #F8FAFE;
+
+}
+
+.messageBox {
+  display: block;
+  background-color: #f2f2f2;
+  padding: 1rem;
+  font-size: clamp(.5rem, .625rem + 1vw, .7rem);
+  font-family: var(--type-code2);
+  font-weight: 400;
+}
+
+.userName {
+  font-size: clamp(.5rem, .75rem + 1vw, .75rem);
+  font-family: var(--type-code1);
+  font-weight: bold;
+  display: inline-block;
+  color: #0046CC;
+}
+
+.avatar {
+  width: clamp(24px, 24px + 1vw, 28px);
+  height: clamp(24px, 24px + 1vw, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  justify-self: start;
+  border-radius: 50%;
+  margin-right: .5rem;
+  box-shadow: 0 0 1px .05rem #9B1476;
+}
+
+.sender .p{
+  background-color: #9B1476;
+  text-align: left;
+  padding: clamp(.2rem, .3rem + 1vw, .5rem);
+  border-radius: .5rem;
+}
+.sender,
+.send  {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  color: #fff;
+  margin-bottom: 1rem;
+ 
+}
+
+.send > p + p{
+
+  text-align: right;
+  padding: clamp(.2rem, .3rem + 1vw, .5rem);
+  border-radius: .5rem;
+  background-color: #0046CC;
+}
+
+form{
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.button {
+  font-family: var(--type-code1);
+  font-weight: 500;
+  background: #0046CC;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  color: currentColor;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: .5rem;
+  border: 3px solid transparent;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  transition: all .6s;
+}
+.button svg >*{ fill: #fff;}
+.button:hover,
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #99afdd;
+}
+
+.button:disabled {
+  opacity: .5;
+  cursor: wait;
+}
+
+.input {
+  border: .125rem solid #333;
+  display: block;
+  width: 100%;
+  font-size: .625rem;
+  font-weight: 400;
+  font-family: var(--type-code2);
+  padding: 0.2rem 1.5rem;
+  border-radius: .5rem;
+ background-color: #ffffff;
+ transition: .6s;
+}
+
+.input:focus,
+.input:hover {
+  outline: none;
+  border-color: #0046CC;
+  box-shadow: 0 0 0 3px #99afdd;
+  background: white;
+}
+@media (max-width: 40rem){
+  .button{
+    width: 20px;
+    height: 20px;
+  }
+
+}

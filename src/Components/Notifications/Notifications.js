@@ -2,7 +2,11 @@ import React from 'react'
 
 function Notifications() {
   return (
-    <div>Notifications</div>
+    <section className='container'>
+      <h1 className='title'>
+        Notificações
+      </h1>
+    </section>
   )
 }
 

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./UserCreateAProject.module.css";
 import Input from "../Form/Input";
 import TextArea from "../Form/TextArea";
 import Select from "../Form/Select";
+import useMedia from "../../Hooks/useMedia";
 
 const areas = [
   {
@@ -26,31 +27,44 @@ function UserCreateAProject() {
   const [img, setImg] = React.useState({});
   const [vd, setVid] = React.useState({});
   const [aud, setAud] = React.useState({});
+  const mobile =  useMedia("(max-width: 670px)");
+  const [prev, setPrev] = useState(false);
+
   function handleImg({ target }) {
     setImg({
       preview: URL.createObjectURL(target.files[0]),
       raw: target.files[0],
     });
   }
+  
   function handleAud({ target }) {
     setAud({
       preview: URL.createObjectURL(target.files[0]),
       raw: target.files[0],
     });
   }
+  
   function handleVid({ target }) {
     setVid({
       preview: URL.createObjectURL(target.files[0]),
       raw: target.files[0],
     });
   }
+  
   function handleSubmit(event) {
     event.preventDefault();
   }
-  return (
-    <section className={`${styles.create} animeLeft`}>
+  
+    
+  return (<>
+      {mobile ? <div className={styles.createHeader}> 
+      <button className={styles.btnHeader} onClick={()=>setPrev(false)}>Form</button> <button onClick={()=>setPrev(true)} className={styles.btnHeader}>preview</button></div> : '' }
+      
+    <section className={`${ mobile? styles.createMobile:''} ${styles.create} animeLeft`}>
+      
       <form onSubmit={handleSubmit}>
-        <Input label={"Titulo do projeto"} type="text" name={"titulo"} />
+        <Input label={"Titulo do projeto"} type="text" name={"titulo"}  />
+       
         <TextArea label={"Descrição do projecto"} name={"desc"} />
         <Input
           label={"Adicionar Imagem [recomendado]"}
@@ -80,29 +94,28 @@ function UserCreateAProject() {
         <Select
           label={"Area de desenvolvimento"}
           options={areas}
-          value={area}
           setValue={setArea}
         />
         <Select
-          label={"Selecione as linguagens usadas"}
+          label={"Linguagens usadas"}
           options={techs}
-          value={tech}
           setValue={setTechs}
         />
         <Select
           label={"Ferramenta usadas [opcional]"}
           options={ferramentas}
-          value={ferramenta}
           setValue={setFerramenta}
         />
-        {img.preview && (
+     
+      </form>   
+      {(img.preview || prev) && (
           <div
-            className={styles.preview}
-            style={{ borderImage: `url('${img.preview}')` }}
-          ></div>
+            className={`${styles.preview} ${mobile ? styles.previewMobile:''} ${prev ? styles.prev : '' }`}
+            style={{ borderImage: `url('${img.preview}')`}}
+          > </div>
         )}
-      </form>
     </section>
+    </>
   );
 }
 

@@ -7,10 +7,7 @@ import {
   faSignOutAlt,
   faStarHalfStroke,
   faTools,
-  faUsersRectangle,
 } from "@fortawesome/free-solid-svg-icons";
-import Feed from "../../assets/svg/feed.svg";
-import Add from "../Add/AddButton";
 import Destaque_Favorito from "./Destaque_Favorito";
 import Trabalhos from "./Trabalhos";
 import ProfileInfo from "./ProfileInfo";
@@ -33,9 +30,7 @@ function Profile() {
               <FontAwesomeIcon icon={faStarHalfStroke} />
             </Link>
           </li>
-          <li>
-            <Add />
-          </li>
+        
           <li>
             <Link to={""} className={styles.button}>
               <FontAwesomeIcon icon={faTools} />

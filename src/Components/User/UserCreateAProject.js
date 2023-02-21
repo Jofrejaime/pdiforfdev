@@ -120,6 +120,7 @@ function UserCreateAProject() {
             setValue={setFerramenta}
           />
         </form>
+        
         {(img.preview || prev) && (
           <div
             className={`${styles.preview} ${
@@ -130,6 +131,7 @@ function UserCreateAProject() {
             {" "}
           </div>
         )}
+
       </section>
     </>
   );

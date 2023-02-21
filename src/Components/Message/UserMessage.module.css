@@ -60,7 +60,7 @@
   background-color: #0046CC;
 }
 
-form{
+.messageBox form{
   display: grid;
   grid-template-columns: 1fr auto;
 }

@@ -1,0 +1,26 @@
+.button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background: #0046CC;
+  color: #ffffff;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  transition: all .6s;
+}
+
+.button:hover,
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #99afdd;
+}
+
+.button:disabled {
+  opacity: .5;
+  cursor: wait;
+}

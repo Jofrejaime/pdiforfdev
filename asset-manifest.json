@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/pdiforfdev/static/css/main.e502892d.css",
-    "main.js": "/pdiforfdev/static/js/main.52ac40c7.js",
+    "main.css": "/pdiforfdev/static/css/main.677e483a.css",
+    "main.js": "/pdiforfdev/static/js/main.1fd598ca.js",
     "static/js/787.49fc5e08.chunk.js": "/pdiforfdev/static/js/787.49fc5e08.chunk.js",
     "static/media/criar.jpg": "/pdiforfdev/static/media/criar.aca5b353670d7fa4b950.jpg",
     "static/media/login.jpg": "/pdiforfdev/static/media/login.8fef0f2dec3ad6f15931.jpg",
     "static/media/profile.svg": "/pdiforfdev/static/media/profile.92f93495119057333e331961739f5261.svg",
+    "static/media/avatar.jpg": "/pdiforfdev/static/media/avatar.d812a47e9546465fa83c.jpg",
     "static/media/logo.svg": "/pdiforfdev/static/media/logo.021e0947ae0247c2d2edd3d1a6424441.svg",
     "static/media/pdilogoCinza.png": "/pdiforfdev/static/media/pdilogoCinza.812720a98799f6723696.png",
     "index.html": "/pdiforfdev/index.html",
-    "static/media/feed.svg": "/pdiforfdev/static/media/feed.28417836fd23579d0b00098bf752a597.svg",
-    "main.e502892d.css.map": "/pdiforfdev/static/css/main.e502892d.css.map",
-    "main.52ac40c7.js.map": "/pdiforfdev/static/js/main.52ac40c7.js.map",
+    "main.677e483a.css.map": "/pdiforfdev/static/css/main.677e483a.css.map",
+    "main.1fd598ca.js.map": "/pdiforfdev/static/js/main.1fd598ca.js.map",
     "787.49fc5e08.chunk.js.map": "/pdiforfdev/static/js/787.49fc5e08.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e502892d.css",
-    "static/js/main.52ac40c7.js"
+    "static/css/main.677e483a.css",
+    "static/js/main.1fd598ca.js"
   ]
 }

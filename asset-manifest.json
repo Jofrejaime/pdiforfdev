@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/pdiforfdev/static/css/main.677e483a.css",
+    "main.css": "/pdiforfdev/static/css/main.54ab19e2.css",
     "main.js": "/pdiforfdev/static/js/main.1fd598ca.js",
     "static/js/787.49fc5e08.chunk.js": "/pdiforfdev/static/js/787.49fc5e08.chunk.js",
     "static/media/criar.jpg": "/pdiforfdev/static/media/criar.aca5b353670d7fa4b950.jpg",
@@ -10,12 +10,12 @@
     "static/media/logo.svg": "/pdiforfdev/static/media/logo.021e0947ae0247c2d2edd3d1a6424441.svg",
     "static/media/pdilogoCinza.png": "/pdiforfdev/static/media/pdilogoCinza.812720a98799f6723696.png",
     "index.html": "/pdiforfdev/index.html",
-    "main.677e483a.css.map": "/pdiforfdev/static/css/main.677e483a.css.map",
+    "main.54ab19e2.css.map": "/pdiforfdev/static/css/main.54ab19e2.css.map",
     "main.1fd598ca.js.map": "/pdiforfdev/static/js/main.1fd598ca.js.map",
     "787.49fc5e08.chunk.js.map": "/pdiforfdev/static/js/787.49fc5e08.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.677e483a.css",
+    "static/css/main.54ab19e2.css",
     "static/js/main.1fd598ca.js"
   ]
 }

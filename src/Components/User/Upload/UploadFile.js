@@ -1,39 +1,53 @@
 import React, {Component} from 'react';
 import Dropzone, {useDropzone} from 'react-dropzone';
 import {DropContainer, UploadMessage} from './UploadFilesStyle';
+import Upload from './Upload';
 
-function UploadFile() {
-  const {
+export default class UploadFile extends Component {
+  
+
+/*
+{
     getRootProps,
     getInputProps,
     isDragActive,
     isDragAccept,
-    isDragReject
+    isDragReject,
   } = useDropzone({
+    onDropAccepted: onUpload,
     accept: {
       'image/*': []
     }
-  });
+  });*/
 
-   function renderDragMessage(isDragActive, isDragReject){
+   renderDragMessage(isDragActive, isDragReject){
     if(!isDragActive)
     return <UploadMessage>Arraste aquivos aqui...</UploadMessage>
     if(isDragReject) return <UploadMessage type='error'>Aquivo não suportado</UploadMessage>
     return<UploadMessage type='sucess'>Solte os arquivos aqui</UploadMessage>
-   }
-  return (
+   } ;
 
-        <DropContainer 
+   {onUpload} = this.props;
+    
+  render () {
+    return (
+
+    <Dropzone accept={'image/*'}  onDropAccepted={()=>{''}}>
+      {({getRootProps, isDragActive, isDragAccept, isDragReject, getInputProps})=>    <DropContainer     
         {...getRootProps()}
         isDragActive={isDragActive}
         isDragAccept={isDragAccept}
         isDragReject={isDragReject}
         >
           <input {...getInputProps()} />
-        {renderDragMessage(isDragActive, isDragReject)}
-        </DropContainer>
-  
+        {this.renderDragMessage(isDragActive, isDragReject)}
+        </DropContainer>  }
+      
+        </Dropzone>
   )
+
 }
 
-export default UploadFile
+}
+ 
+

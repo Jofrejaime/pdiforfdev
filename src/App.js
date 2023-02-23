@@ -5,7 +5,7 @@ import Header from "./Components/Header";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/Login/Login";
-import Profile from "./Components/Profile/Profile";
+
 import Message from "./Components/Message/Message";
 import Notifications from "./Components/Notifications/Notifications";
 import Descover from "./Components/Descover/Descover";

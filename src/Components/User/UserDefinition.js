@@ -1,8 +1,9 @@
 import React from 'react'
+import Upload from './Upload/Upload'
 
 function UserDefinition() {
   return (
-    <div>UserDefinition</div>
+<Upload/>
   )
 }
 

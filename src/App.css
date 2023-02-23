@@ -1,4 +1,7 @@
 * {
+  margin: 0;
+  padding: 0;
+  outline: 0;
   box-sizing: border-box;
 }
 body {
@@ -8,8 +11,12 @@ body {
   monospace;
   --type-code2: 'Fira Code', 'Cascadia Code',  Consolas, source-code-pro, Menlo, Monaco,  'Courier New',
   monospace;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
-
+html, body, #root{
+  height: 100%;
+}
 h1,
 h2,
 h3,

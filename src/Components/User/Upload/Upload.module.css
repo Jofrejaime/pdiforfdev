@@ -1,0 +1,8 @@
+.inputFile{
+  width: 100%;
+  max-width: 40rem;
+  margin: 20px;
+  background: #f2f2f2;
+  padding: 20px;
+  border-radius: 4px;
+}

@@ -1,5 +1,5 @@
-import React from "react";
 import styles from "./UserHeaderNav.module.css";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAdd,

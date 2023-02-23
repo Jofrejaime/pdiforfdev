@@ -1,35 +1,40 @@
-.create{
+.create {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
 }
-.createMobile{
+
+.createMobile {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
 }
-.create #img{
 
-}
-.preview{
+.create #img {}
+
+.preview {
   border-radius: 1rem;
   background-size: cover;
   background-position: center center;
+  padding: 1rem;
 }
-.preview::after{
+
+.preview::after {
   content: '';
   display: block;
   height: 0px;
 }
-.createHeader{
+
+.createHeader {
   display: flex;
-  align-items:  center;
+  align-items: center;
   justify-content: space-around;
   margin-bottom: 2rem;
 }
-.createHeader button{
+
+.createHeader button {
   padding: .5rem 1rem;
   background-color: transparent;
   border: none;
@@ -41,16 +46,20 @@
   text-align: center;
   transition: all .6s;
 }
-.createHeader > button {
- border-right: 3px solid #0046CC;
+
+.createHeader>button {
+  border-right: 3px solid #0046CC;
 }
-.createHeader  button + button{
+
+.createHeader button+button {
   border-right: 0;
   border-left: 3px solid #0046CC;
 }
-.createHeader button:focus, .createHeader button:hover{
-border-bottom: 3px solid #0046CC;
-color: #0046CC;
+
+.createHeader button:focus,
+.createHeader button:hover {
+  border-bottom: 3px solid #0046CC;
+  color: #0046CC;
 }
 
 .create:has(.previewMobile) {
@@ -59,12 +68,17 @@ color: #0046CC;
   gap: 2rem;
   margin-bottom: 2rem;
 }
-.create:has(.previewMobile) .preview, .previewMobile{
-display: none;
+
+.create:has(.previewMobile) .preview,
+.previewMobile {
+  display: none;
 }
-.create:has(.prev) .preview{
+
+.create:has(.prev) .preview {
   display: block;
+  height: 100vh;
 }
-.create:has(.prev) form{
+
+.create:has(.prev) form {
   display: none;
 }

@@ -4,7 +4,7 @@ import Input from "../Form/Input";
 import TextArea from "../Form/TextArea";
 import Select from "../Form/Select";
 import useMedia from "../../Hooks/useMedia";
-
+import useForm from "../../Hooks/useForm";
 const areas = [
   {
     ordem: 1,
@@ -29,12 +29,15 @@ function UserCreateAProject() {
   const [aud, setAud] = React.useState({});
   const mobile = useMedia("(max-width: 670px)");
   const [prev, setPrev] = useState(false);
-
+  const titulo = useForm();
+  const desc = useForm();
   function handleImg({ target }) {
     setImg({
       preview: URL.createObjectURL(target.files[0]),
       raw: target.files[0],
     });
+
+    console.log("previw " + URL.createObjectURL(target.files[0]));
   }
 
   function handleAud({ target }) {
@@ -76,9 +79,19 @@ function UserCreateAProject() {
         } animeLeft`}
       >
         <form onSubmit={handleSubmit}>
-          <Input label={"Titulo do projeto"} type="text" name={"titulo"} />
+          <Input
+            label={"Titulo do projeto"}
+            type="text"
+            name={"titulo"}
+            {...titulo}
+          />
 
-          <TextArea label={"Descrição do projecto"} name={"desc"} />
+          <TextArea
+            label={"Descrição do projecto"}
+            name={"desc"}
+            placeholder="Descreva o teu projeto"
+            {...desc}
+          />
           <Input
             label={"Adicionar Imagem [recomendado]"}
             type={"file"}
@@ -108,30 +121,34 @@ function UserCreateAProject() {
             label={"Area de desenvolvimento"}
             options={areas}
             setValue={setArea}
+            name={"area"}
           />
           <Select
             label={"Linguagens usadas"}
             options={techs}
             setValue={setTechs}
+            name={"linguagens"}
           />
           <Select
             label={"Ferramenta usadas [opcional]"}
             options={ferramentas}
             setValue={setFerramenta}
+            name={"ferramenta"}
           />
         </form>
-        
+
         {(img.preview || prev) && (
           <div
             className={`${styles.preview} ${
               mobile ? styles.previewMobile : ""
             } ${prev ? styles.prev : ""}`}
-            style={{ borderImage: `url('${img.preview}')` }}
+            style={{ backgroundImage: `url('${img.preview}')` }}
           >
-            {" "}
+            <p className={"title"}>{titulo.value}</p>
+            <p>{desc.value}</p>
+            <div className={styles.img}> </div>
           </div>
         )}
-
       </section>
     </>
   );

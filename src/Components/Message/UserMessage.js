@@ -1,12 +1,8 @@
 import React from "react";
 import styles from "./UserMessage.module.css";
 import avatar from "../../assets/img/avatar.jpg";
-import Input from "../Form/Input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTentArrowLeftRight,
-  faUpLong,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUpLong } from "@fortawesome/free-solid-svg-icons";
 function UserMessage() {
   return (
     <>
@@ -27,7 +23,6 @@ function UserMessage() {
         </div>
 
         <div className={styles.content}>
-
           <form>
             <input
               className={styles.input}

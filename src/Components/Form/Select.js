@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Select.module.css'
-const Select = ({ label, options, value, setValue, ...props }) => {
+const Select = ({ label, options, value, setValue, placeholder, ...props }) => {
   return (
   <div className={styles.wrapper}>
   <label>{label}</label>
@@ -10,7 +10,7 @@ const Select = ({ label, options, value, setValue, ...props }) => {
       {...props}
     >
       <option value="" disabled>
-        Selecione o/a {label}
+        {placeholder } {label}
       </option>
       {options.map((option) => (
         <option key={option.ordem} value={option.nome}>

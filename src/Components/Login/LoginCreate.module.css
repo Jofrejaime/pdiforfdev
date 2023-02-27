@@ -1,0 +1,8 @@
+.paisesSelecionado{
+  display: flex;
+  flex-direction: column;
+  font-family: var(--type-code2);
+}
+.paisesSelecionado li +li{
+  margin-top: 5px;
+}

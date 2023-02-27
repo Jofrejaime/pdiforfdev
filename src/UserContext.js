@@ -6,6 +6,7 @@ export const UserStorage = ({ children }) => {
   const [login, setLogin] = React.useState(null);
   const [loading, setLoading] = React.useState(null);
   const [error, setError] = React.useState(null);
+  const {file, setFile} = React.useState([])
   const [loginType, setLogintype] = React.useState('login');
   const navigate = useNavigate();
 
@@ -67,9 +68,10 @@ export const UserStorage = ({ children }) => {
     }
   }, [userLogout]);
     //jofre
+function setFiles( files){setFile(files)}
   return (
     <UserContext.Provider
-      value={{ userLogin, data, error, loading, login, userLogout, loginType, setLogintype }}
+      value={{ userLogin, data, error, loading, login, userLogout, loginType, setLogintype, file, setFiles, setFile }}
     >
       {children}
     </UserContext.Provider>

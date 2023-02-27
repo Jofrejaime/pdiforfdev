@@ -5,6 +5,10 @@ import TextArea from "../Form/TextArea";
 import Select from "../Form/Select";
 import useMedia from "../../Hooks/useMedia";
 import useForm from "../../Hooks/useForm";
+import Upload from "./Upload/Upload";
+import { Image } from "./UserCreateStyle";
+import FileList from "./FileList/FileList";
+
 const areas = [
   {
     ordem: 1,
@@ -25,39 +29,19 @@ function UserCreateAProject() {
   const [tech, setTechs] = React.useState([]);
   const [ferramenta, setFerramenta] = React.useState([]);
   const [img, setImg] = React.useState({});
-  const [vd, setVid] = React.useState({});
-  const [aud, setAud] = React.useState({});
   const mobile = useMedia("(max-width: 670px)");
   const [prev, setPrev] = useState(false);
   const titulo = useForm();
   const desc = useForm();
-  function handleImg({ target }) {
-    setImg({
-      preview: URL.createObjectURL(target.files[0]),
-      raw: target.files[0],
-    });
+  const [file, setFiles] = useState(null);
 
-    console.log("previw " + URL.createObjectURL(target.files[0]));
-  }
+  const callFiles = (files) => {
+    setFiles(files);
+  };
 
-  function handleAud({ target }) {
-    setAud({
-      preview: URL.createObjectURL(target.files[0]),
-      raw: target.files[0],
-    });
-  }
-
-  function handleVid({ target }) {
-    setVid({
-      preview: URL.createObjectURL(target.files[0]),
-      raw: target.files[0],
-    });
-  }
-
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-  }
-
+  };
   return (
     <>
       {mobile ? (
@@ -92,26 +76,10 @@ function UserCreateAProject() {
             placeholder="Descreva o teu projeto"
             {...desc}
           />
-          <Input
-            label={"Adicionar Imagem [recomendado]"}
-            type={"file"}
-            id="img"
-            name={"imgage"}
-            onChange={handleImg}
-          />
-          <Input
-            label={"Adicionar Video"}
-            type="file"
-            id="video"
-            name="video"
-            onChange={handleVid}
-          />
-          <Input
-            label={"Adicionar Audio"}
-            type="file"
-            id="audio"
-            name="audio"
-            onChange={handleAud}
+
+          <Upload
+            label={"Adiciona Aquivos [imagem obrigatorio]"}
+            callFiles={callFiles}
           />
           <Input
             label={"GitHub [opcional]"}
@@ -137,16 +105,15 @@ function UserCreateAProject() {
           />
         </form>
 
-        {(img.preview || prev) && (
+        {(prev || !mobile) && (
           <div
             className={`${styles.preview} ${
               mobile ? styles.previewMobile : ""
             } ${prev ? styles.prev : ""}`}
-            style={{ backgroundImage: `url('${img.preview}')` }}
           >
-            <p className={"title"}>{titulo.value}</p>
-            <p>{desc.value}</p>
-            <div className={styles.img}> </div>
+            <h2 className={"title"}>{titulo.value}</h2>
+            <h3 className={""}>{desc.value}</h3>
+            {file && <FileList files={file} page={"create"} />}
           </div>
         )}
       </section>

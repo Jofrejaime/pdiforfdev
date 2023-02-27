@@ -8,7 +8,7 @@ import Login from "./Components/Login/Login";
 
 import Message from "./Components/Message/Message";
 import Notifications from "./Components/Notifications/Notifications";
-import Descover from "./Components/Descover/Descover";
+import Discover from "./Components/Discover/Discover";
 import { UserStorage } from "./UserContext";
 import React from "react";
 import User from "./Components/User/User";
@@ -28,7 +28,7 @@ function App() {
             <Route path="user/*" element={<User />} />
             <Route path="message/*" element={<MessageIndex />} />
             <Route path="notification/*" element={<Notifications />} />
-            <Route path="descover" element={<Descover />} />
+            <Route path="discover" element={<Discover />} />
           </Routes>
           <Footer />
         </UserStorage>

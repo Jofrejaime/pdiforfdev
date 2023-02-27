@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 body {
+  background-color: #F8FAFE;
   margin: 0;
   color: #333;
   --type-code1: 'Cascadia Code', 'Fira Code', Menlo, Monaco,  'Courier New',
@@ -62,11 +63,19 @@ label{
   font-family:var(--type-code1) ;
   position: relative;
   line-height: 1;
-  font-size: clamp(1.5rem, 1rem + 3vw, 3rem ) ;
+  font-size: clamp(1rem, 1.5rem + 2vw, 2.4rem ) ;
   margin: 2rem 0;
   width: max-content;
 }
-.title::after{
+.titleProject{
+  font-family:var(--type-code1) ;
+  position: relative;
+  line-height: 1;
+  font-size: clamp(1rem, 1rem + 1vw, 1.5rem ) ;
+  margin: 2rem 0;
+  width: max-content;
+}
+.title::after, .titleProject::after{
   content: '';
   display: block;
  background: #0046CC;

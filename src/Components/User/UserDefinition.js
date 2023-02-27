@@ -1,10 +1,15 @@
-import React from 'react'
-import Upload from './Upload/Upload'
+import React from "react";
+import FileListGlobal from "./FileList/FileListGlobal";
+import Upload from "./Upload/Upload";
 
 function UserDefinition() {
+
+
+
   return (
-<Upload/>
-  )
+    <>
+    </>
+  );
 }
 
-export default UserDefinition
+export default UserDefinition;

@@ -7,7 +7,7 @@ function UserHeader() {
   const [title, setTitle] = React.useState("");
   const location = useLocation();
   React.useEffect(() => {
-    if (location.pathname === "/user") setTitle("Usário");
+    if (location.pathname === "/user") setTitle("Usuário");
     else if (location.pathname === "/user/stats") setTitle("Estatísticas");
     else if (location.pathname === "/user/definition") setTitle("Difinições");
     else if (location.pathname === "/user/createaproject")

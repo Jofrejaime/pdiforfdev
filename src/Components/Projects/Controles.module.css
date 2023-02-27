@@ -1,0 +1,10 @@
+.controls{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.controls svg{
+  cursor: pointer;
+  color: #9B1476;
+  width: 1.5rem;
+}

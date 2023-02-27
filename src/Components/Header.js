@@ -10,15 +10,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/svg/logo.svg";
+import useForm from '../Hooks/useForm'
 import SearchBar from "./SearchBar/SearchBar";
 import useMedia from "../Hooks/useMedia";
 // Jofre
 function Header() {
   const [display, setDisplay] = React.useState("");
   const [mobileMenu, setMobilemenu] = React.useState(false);
-  const mobile = useMedia("(max-width: 40rem)");
+  const mobile = useMedia("(max-width: 45rem)");
   const { pathname } = useLocation();
- 
+  const search = useForm('');
   React.useEffect(() => {
     if (
       pathname === "/login" ||
@@ -65,16 +66,16 @@ function Header() {
             </NavLink>
           </div>
           <div className={styles.link}>
-            <NavLink to="descover" className={styles.link_a}>
+            <NavLink to="discover" className={styles.link_a}>
               <FontAwesomeIcon icon={faBoxOpen} />
-              <p>descover</p>
+              <p>discover</p>
             </NavLink>
           </div>
           {mobile ? (
             ""
           ) : (
             <div className={styles.search_bar}>
-              <SearchBar />
+              <SearchBar id={'search'} name={'searchBar'} {...search}  />
             </div>
           )}
 

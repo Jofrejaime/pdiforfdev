@@ -1,20 +1,26 @@
-.profile_info{
+.profile_info {
   display: block;
   justify-content: center;
   align-items: center;
   text-align: center;
-font-family: var(--type-code1);
-font-weight: 300;
+  font-family: var(--type-code1);
+  font-weight: 300;
+  background-color: #fff;
+  box-shadow: 0 0 12px 5px #ccc;
+  border-radius: 1rem;
+  padding: 1.5rem;
 }
-.profile_photo{
+
+.profile_photo {
   width: 100%;
 }
-.profile_name{
+
+.profile_name {
   font-family: var(--type-code2);
   font-weight: bold;
-padding-bottom: 10px;
-}
-.profile_area{
   padding-bottom: 10px;
 }
 
+.profile_area {
+  padding-bottom: 10px;
+}

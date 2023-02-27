@@ -5,18 +5,18 @@
 }
 
 .header {
+  background-color: #fff;
   font-family: var(--type-code1);
-  height: 4rem;
+
   width: 100%;
   position: relative;
-  top: 10px;
   z-index: 100;
   display: inline-block;
   align-items: center;
   justify-content: center;
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 45rem) {
   .header {
     top: 0;
     display: flex;

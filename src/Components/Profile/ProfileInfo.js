@@ -8,7 +8,7 @@ function ProfileInfo() {
   return (
     <div className={styles.profile_info}>
       <img src={foto} alt="Jofre Jaime Profile"  className={styles.profile_photo}/>
-      <p className={styles.profile_name}>Jofre Jaime</p>
+      <p className={styles.profile_name}> O Jofre Jaime</p>
       <div className={styles.profile_area}>
         {" "}
         <p>Full Stack Developer</p>

@@ -7,9 +7,19 @@ li{
   justify-content: space-between;
   align-items: center;
   color: #444;
-
 & + li{
 margin-top: 15px;
+}
+video{
+  border-radius:5px ;
+  width: 100%;
+ max-height: 500px;
+ justify-self: center;
+}
+audio{
+  justify-self: center;
+  width: 100%;
+  border-radius: 5px;
 }
 }
 `;
@@ -54,4 +64,19 @@ background-repeat: no-repeat;
 background-size: cover;
 background-position: 50% 50%;
 margin-right: 10px;
+`;
+export const Image= styled.div`
+width: 100%;
+height: 500px;
+border-radius: 5px;
+background-image: url(${props => props.src});
+background-repeat: no-repeat;
+background-size: cover;
+background-position: 50% 50%;
+`;
+export const Video = styled.video`
+width: 100%;
+height: 500px;
+border-radius: 5px;
+
 `;

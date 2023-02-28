@@ -1,19 +1,20 @@
-import React from 'react'
-import styles from './Projects.module.css'
+import React from "react";
+import Project from "./Project";
+import styles from "./Projects.module.css";
+
 function Projects() {
   return (
-    
     <div className={styles.projects}>
-      <div className={styles.project}></div>
-      <div className={styles.project}></div>
-      <div className={styles.project}></div>
-      <div className={styles.project}></div>
-      <div className={styles.project}></div>
-      <div className={styles.project}></div>
-      <div className={styles.project}></div>
+      <div className={styles.projectsContent}>
+        <Project />
+        <Project /> <Project /> <Project />
+        <Project />
+        <Project />
+        <Project />
+        <Project />
+      </div>
     </div>
-
-  )
+  );
 }
 
-export default Projects
+export default Projects;

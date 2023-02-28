@@ -1,16 +1,243 @@
-.projects{
-  margin-top: 50px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    
+.projects {
+  background-color: #fff;
+  margin-top: 11px;
+  padding: 12px;
+  width: 100%;
+  max-width: 2968px;
+  font-family: var(--type-code1);
+}
+
+.projectsContent {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  --initialWidth: 700px;
+}
+
+.coverContent picture img {
+  object-fit: cover;
+  transition: opacity .15s linear;
+  width: 100%;
+  will-change: transform;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  border-radius: 4px;
+  display: block;
+  overflow: hidden;
+}
+
+.coverContent {
+  border-radius: 4px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.projectContainer {
+  flex-grow: 42;
+  width: calc(var(700px) * 42 / 100);
+padding:10px ;
+}
+
+.project {
+  z-index: 21;
+  position: relative;
+  max-width: 404px;
+  min-width: 145px;
+}
+
+.projectCover {
+  position: relative;
+}
+
+.coverWrapper {
+  height: 0;
+  background-color: #f2f2f2;
+  position: relative;
+  border-radius: 4px;
+  display: block;
+  padding-top: 78.22%;
+  width: 100%;
+}
+
+
+@media (hover: none) {
+  .coverOverlay {
+    opacity: 1;
   }
-  .project{
-   border: .16rem solid #ccc;
-    min-width: calc(1300px/7);
-    min-height: 175px;
-   flex-grow: 1;
-    background-color: #f2f2f2;
-    border-radius: 15px;
-   
-  }
+}
+
+.coverOverlay {
+  opacity: 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.coverOverlay a {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.coverOverlay a::before {
+  border: 2px solid transparent;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  transform: scale(0.85);
+  transition: border-color .15s linear, transform .15s ease;
+}
+
+.projectDetails {
+  padding-bottom: 10px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 81%);
+  margin-top: auto;
+  padding: 30px 15px 18px;
+  border-radius: 0 0 4px 4px;
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  pointer-events: none;
+  position: relative;
+  width: 100%;
+}
+
+.projectInfoName {
+  min-width: 0;
+  padding-right: 15px;
+  text-align: left;
+}
+
+.projectInfoName a {
+  position: relative;
+  /*Titulo do Projecto*/
+  color: inherit;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: -2px;
+  max-height: 43px;
+  max-width: 100%;
+  overflow: hidden;
+  padding-bottom: 2px;
+  pointer-events: all;
+  text-overflow: ellipsis;
+}
+
+.projectInfoName a::before {
+  border: 2px solid transparent;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  transform: scale(0.85);
+  transition: border-color .15s linear, transform .15s ease;
+}
+
+.colorDomain {
+  background-color: rgb(20, 20, 20);
+  border-radius: inherit;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.coverStates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 45px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.usersProject {
+  flex: 1;
+  max-width: calc(404px - 130px);
+  min-width: 0;
+}
+
+.coverStatsOwner {
+  font-size: 13px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: all;
+}
+
+.coverStat {
+  width: inherit;
+  box-sizing: border-box;
+}
+
+.profileUser {
+  max-width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+a {
+  color: #333333;
+}
+
+.Avatar {
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  margin-right: 5px;
+  transition: filter .1s linear;
+  vertical-align: top;
+  width: 20px;
+}
+
+.Avatar img {
+  border-radius: 50%;
+  width: 100%;
+  cursor: inherit;
+}
+
+.statsOfProject {
+  color: #333333dd;
+  margin-left: 10px;
+  margin-top: 2px;
+  max-width: 130px;
+  display: flex;
+  align-items: center;
+}
+
+.stats {
+  align-items: center;
+  align-self: flex-end;
+  display: flex;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: -5px;
+  white-space: nowrap;
+}
+.stats svg{
+  fill: dimgray;
+  margin-right: 5px;
+}
+.stats span + svg{
+  margin-left: 10px;
+}

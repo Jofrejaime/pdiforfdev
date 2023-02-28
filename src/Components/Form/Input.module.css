@@ -2,6 +2,11 @@
   margin-bottom: 1rem;
 
 }
+@media (max-width: 1080px){
+  .wrapper textarea {
+    height: 80px;
+  }
+}
 .input{
   border: 1px solid #eee;
   display: block;

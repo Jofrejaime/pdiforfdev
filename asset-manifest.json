@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/pdiforfdev/static/css/main.6fc342f1.css",
-    "main.js": "/pdiforfdev/static/js/main.77f48b79.js",
+    "main.css": "/pdiforfdev/static/css/main.443e4111.css",
+    "main.js": "/pdiforfdev/static/js/main.80e5ce2e.js",
     "static/js/787.49fc5e08.chunk.js": "/pdiforfdev/static/js/787.49fc5e08.chunk.js",
     "static/media/criar.jpg": "/pdiforfdev/static/media/criar.aca5b353670d7fa4b950.jpg",
     "static/media/login.jpg": "/pdiforfdev/static/media/login.8fef0f2dec3ad6f15931.jpg",
@@ -12,12 +12,12 @@
     "static/media/logo.svg": "/pdiforfdev/static/media/logo.021e0947ae0247c2d2edd3d1a6424441.svg",
     "static/media/pdilogoCinza.png": "/pdiforfdev/static/media/pdilogoCinza.812720a98799f6723696.png",
     "index.html": "/pdiforfdev/index.html",
-    "main.6fc342f1.css.map": "/pdiforfdev/static/css/main.6fc342f1.css.map",
-    "main.77f48b79.js.map": "/pdiforfdev/static/js/main.77f48b79.js.map",
+    "main.443e4111.css.map": "/pdiforfdev/static/css/main.443e4111.css.map",
+    "main.80e5ce2e.js.map": "/pdiforfdev/static/js/main.80e5ce2e.js.map",
     "787.49fc5e08.chunk.js.map": "/pdiforfdev/static/js/787.49fc5e08.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6fc342f1.css",
-    "static/js/main.77f48b79.js"
+    "static/css/main.443e4111.css",
+    "static/js/main.80e5ce2e.js"
   ]
 }

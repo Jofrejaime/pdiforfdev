@@ -1,7 +1,6 @@
 .projects {
   background-color: #fff;
   margin-top: 11px;
-  padding: 12px;
   width: 100%;
   max-width: 2968px;
   font-family: var(--type-code1);
@@ -41,8 +40,14 @@
 
 .projectContainer {
   flex-grow: 42;
-  width: calc(var(700px) * 42 / 100);
-padding:10px ;
+  width: calc(var(--initialWidth) * 42 / 100);
+  padding: 10px;
+}
+
+@media (min-width: 1750px) {
+  .projectContainer{
+    --initialWidth: 800px;
+  }
 }
 
 .project {
@@ -234,10 +239,12 @@ a {
   margin-left: -5px;
   white-space: nowrap;
 }
-.stats svg{
+
+.stats svg {
   fill: dimgray;
   margin-right: 5px;
 }
-.stats span + svg{
+
+.stats span+svg {
   margin-left: 10px;
 }

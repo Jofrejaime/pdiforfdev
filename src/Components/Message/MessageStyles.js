@@ -295,13 +295,17 @@ export const TextAreaSection = styled.div`
     width: 60%;
   }
   display: flex;
+  justify-content: space-between;
   max-width: 490px;
   height: 100%;
 
   textarea {
-    width: calc(100vw - 690px);
+    max-width: calc(100vw - 690px);
+    width: 100%;
     min-width: calc(100vw - 800px);
     margin-right: 20px;
+    resize: none;
+    overflow: auto;
   }
   label {
     padding: 0;

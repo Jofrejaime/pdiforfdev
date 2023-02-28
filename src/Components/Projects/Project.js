@@ -4,14 +4,7 @@ import Avatar from "../../assets/img/image.jpg";
 import Pdi from "../../assets/img/pdi.jpg";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleDot,
-  faComment,
-  faDotCircle,
-  faHandDots,
-  faListDots,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faComment, faStar } from "@fortawesome/free-solid-svg-icons";
 function Project() {
   return (
     <div className={styles.projectContainer}>

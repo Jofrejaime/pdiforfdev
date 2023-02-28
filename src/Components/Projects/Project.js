@@ -4,7 +4,14 @@ import Avatar from "../../assets/img/image.jpg";
 import Pdi from "../../assets/img/pdi.jpg";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComment, faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleDot,
+  faComment,
+  faDotCircle,
+  faHandDots,
+  faListDots,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 function Project() {
   return (
     <div className={styles.projectContainer}>
@@ -19,6 +26,15 @@ function Project() {
               <div className={styles.coverOverlay}>
                 <div className={styles.projectCoverNeue}></div>
                 <NavLink to={"#"}></NavLink>
+                <div className={styles.projectOptions}>
+                  <span className={styles.moreOptions}>
+                    <div className={styles.circles}>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </span>
+                </div>
                 <div className={styles.projectDetails}>
                   <div className={styles.projectInfoName}>
                     <NavLink to={"#"} style={{}}>

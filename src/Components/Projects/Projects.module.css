@@ -1,5 +1,4 @@
 .projects {
-  background-color: #fff;
   margin-top: 11px;
   width: 100%;
   max-width: 2968px;
@@ -44,14 +43,17 @@
   padding: 10px;
 }
 
+.projectContainer:hover .coverOverlay {
+  opacity: 1;
+}
+
 @media (min-width: 1750px) {
-  .projectContainer{
+  .projectContainer {
     --initialWidth: 800px;
   }
 }
 
 .project {
-  z-index: 21;
   position: relative;
   max-width: 404px;
   min-width: 145px;
@@ -62,7 +64,6 @@
 }
 
 .coverWrapper {
-  height: 0;
   background-color: #f2f2f2;
   position: relative;
   border-radius: 4px;
@@ -72,11 +73,6 @@
 }
 
 
-@media (hover: none) {
-  .coverOverlay {
-    opacity: 1;
-  }
-}
 
 .coverOverlay {
   opacity: 0;
@@ -105,6 +101,61 @@
   position: absolute;
   transform: scale(0.85);
   transition: border-color .15s linear, transform .15s ease;
+}
+
+.projectOptions {
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, .5);
+  margin: 10px 10px 0 5px;
+  border-radius: 50px;
+  height: 21px;
+  text-align: center;
+  width: 30px;
+  align-self: flex-start;
+  display: inline-flex;
+  justify-content: center;
+  margin-bottom: -6px;
+  padding-bottom: 6px;
+  position: relative;
+}
+
+.toolTip {
+  position: relative;
+  z-index: 2;
+}
+
+.moreOptions {
+  position: relative;
+  align-items: center;
+  display: flex;
+  height: 23px;
+  justify-content: center;
+}
+
+.moreOptions::before {
+  border-radius: 3px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.moreOptions .circles {
+  margin-bottom: 2px;
+  width: 14px;
+  display: flex;
+
+}
+
+.moreOptions .circles div {
+  width: 4px;
+  height: 4px;
+  flex-grow: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-right: 1px;
 }
 
 .projectDetails {
@@ -166,6 +217,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   min-height: 45px;
   padding-bottom: 10px;
   padding-top: 10px;
@@ -175,6 +227,7 @@
   flex: 1;
   max-width: calc(404px - 130px);
   min-width: 0;
+
 }
 
 .coverStatsOwner {
@@ -199,6 +252,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.profileUser span {
+  display: flex;
+  align-items: center;
 }
 
 a {

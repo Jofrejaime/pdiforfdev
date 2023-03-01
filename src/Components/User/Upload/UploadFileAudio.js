@@ -1,3 +1,5 @@
+import { faFileAudio } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useDropzone } from "react-dropzone";
 import { DropContainer, UploadMessage } from "./UploadFilesStyle";
@@ -35,7 +37,7 @@ const UploadFileAudio = (props) => {
       onChange={onDropAccepted}
     >
       <input {...getInputProps()} />
-      {renderDragMessage(isDragActive, isDragReject)}
+     <FontAwesomeIcon icon={faFileAudio}/>
     </DropContainer>
   );
 };

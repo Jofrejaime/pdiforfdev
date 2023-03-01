@@ -4,20 +4,25 @@
   outline: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: #F8FAFE;
   margin: 0;
   color: #333;
-  --type-code1: 'Cascadia Code', 'Fira Code', Menlo, Monaco,  'Courier New',
-  monospace;
-  --type-code2: 'Fira Code', 'Cascadia Code',  Consolas, source-code-pro, Menlo, Monaco,  'Courier New',
-  monospace;
+  --type-code1: 'Cascadia Code', 'Fira Code', Menlo, Monaco, 'Courier New',
+    monospace;
+  --type-code2: 'Fira Code', 'Cascadia Code', Consolas, source-code-pro, Menlo, Monaco, 'Courier New',
+    monospace;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
-html, body, #root{
+
+html,
+body,
+#root {
   height: 100%;
 }
+
 h1,
 h2,
 h3,
@@ -32,53 +37,63 @@ li {
   padding: 0;
   margin: 0;
 }
-a{
+
+a {
   text-decoration: none;
 }
+
 img {
   display: block;
   max-width: 100%;
 }
 
 button,
-input, select {
+input,
+select {
   display: block;
   font-size: 1rem;
   font-family: var(--type-code2);
   color: #333;
 }
-label{
+
+label {
   font-family: var(--type-code1);
 }
+
 .container {
   margin: 0 auto;
   max-width: calc(100% - 3rem);
 }
-.animeLeft{
+
+.animeLeft {
   opacity: 0;
   transform: translateX(-20px);
-  animation: animeLeft .3s forwards; 
+  animation: animeLeft .3s forwards;
 }
-.title{
-  font-family:var(--type-code1) ;
+
+.title {
+  font-family: var(--type-code1);
   position: relative;
   line-height: 1;
-  font-size: clamp(1rem, 1.5rem + 2vw, 2.4rem ) ;
+  font-size: clamp(1rem, 1.5rem + 2vw, 2.4rem);
   margin: 2rem 0;
   width: max-content;
 }
-.titleProject{
-  font-family:var(--type-code1) ;
+
+.titleProject {
+  font-family: var(--type-code1);
   position: relative;
   line-height: 1;
-  font-size: clamp(1rem, 1rem + 1vw, 1.5rem ) ;
+  font-size: clamp(1rem, 1rem + 1vw, 1.5rem);
   margin: 2rem 0;
   width: max-content;
 }
-.title::after, .titleProject::after{
+
+.title::after,
+.titleProject::after {
   content: '';
   display: block;
- background: #0046CC;
+  background: #0046CC;
   width: 50%;
   height: .250rem;
   position: absolute;
@@ -86,11 +101,37 @@ label{
   left: -5px;
   z-index: -1;
 }
-.error{
+
+.titleProject::after {
+  background: #999;
+}
+
+.areas {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
 }
-@keyframes animeLeft{
-  to{
+.areas p{
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+.areas p span {
+  display: flex;
+
+  font-weight: bold;
+  padding: 0 3px ;
+background-color: #ccc;
+cursor: pointer;
+}
+
+.error {}
+
+@keyframes animeLeft {
+  to {
     opacity: 1;
     transform: initial;
   }

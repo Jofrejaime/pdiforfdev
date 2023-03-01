@@ -24,10 +24,11 @@ export default class Upload extends Component {
       Uploaded: false,
       error: false,
     }));
-
+    
     this.setState({
       uploadedFileList: this.state.uploadedFileList.concat(uploadedFiles),
     });
+    
   };
 
   render() {
@@ -45,9 +46,12 @@ export default class Upload extends Component {
               : () => {}
           }
         >
-          <UploadFile>{this.handleUpload}</UploadFile>
-          <UploadFileAudio>{this.handleUpload}</UploadFileAudio>
-          <UploadFileVideo>{this.handleUpload}</UploadFileVideo>
+          <section>
+            <UploadFile>{this.handleUpload}</UploadFile>
+            <UploadFileAudio>{this.handleUpload}</UploadFileAudio>
+            <UploadFileVideo>{this.handleUpload}</UploadFileVideo>
+          </section>
+
           {!!uploadedFileList.length && <FileList files={uploadedFileList} />}
         </div>
       </>

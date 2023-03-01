@@ -1,12 +1,16 @@
 .inputFile {
   width: 100%;
-  max-width: 40rem;
   background: #f2f2f2;
   padding: 10px;
   border-radius: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .inputFile div+div {
-  margin-top: 10px;
+
+}
+.inputFile section{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
 }

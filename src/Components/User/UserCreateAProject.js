@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import styles from "./UserCreateAProject.module.css";
+import reactStringReplace from "react-string-replace";
 import Input from "../Form/Input";
 import TextArea from "../Form/TextArea";
 import Select from "../Form/Select";
 import useMedia from "../../Hooks/useMedia";
 import useForm from "../../Hooks/useForm";
 import Upload from "./Upload/Upload";
-import { Image } from "./UserCreateStyle";
+import Button from "../Form/Button";
 import FileList from "./FileList/FileList";
-
+import { uniqueId } from "lodash";
 const areas = [
   {
     ordem: 1,
     nome: "Mobile",
   },
   { ordem: 2, nome: "Web" },
+  { ordem: 3, nome: "Cloud Computing" },
 ];
 const techs = [
   { ordem: 1, nome: "Java" },
@@ -33,8 +35,23 @@ function UserCreateAProject() {
   const [prev, setPrev] = useState(false);
   const titulo = useForm();
   const desc = useForm();
+  const github = useForm();
+  const selectArea = useForm();
   const [file, setFiles] = useState(null);
 
+  React.useEffect(() => {
+    let id = uniqueId();
+    setArea([
+      ...area,
+      <p id={id}>
+        {selectArea.value} <span onDoubleClick={removeItemArea}>x</span>
+      </p>,
+    ]);
+  }, [selectArea.value]);
+  function removeItemArea({ target }) {
+  let id = target.parentNode.id
+   setArea([...area, area.splice(id - 2, 1)]);
+  }
   const callFiles = (files) => {
     setFiles(files);
   };
@@ -42,6 +59,7 @@ function UserCreateAProject() {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
+
   return (
     <>
       {mobile ? (
@@ -84,12 +102,14 @@ function UserCreateAProject() {
           <Input
             label={"GitHub [opcional]"}
             placeholder="ex: htttps://www.github.com/username/repository"
+            name={"gitHub"}
+            {...github}
           />
           <Select
             label={"Area de desenvolvimento"}
             options={areas}
-            setValue={setArea}
             name={"area"}
+            {...selectArea}
           />
           <Select
             label={"Linguagens usadas"}
@@ -103,6 +123,7 @@ function UserCreateAProject() {
             setValue={setFerramenta}
             name={"ferramenta"}
           />
+          <Button>Criar</Button>
         </form>
 
         {(prev || !mobile) && (
@@ -111,9 +132,16 @@ function UserCreateAProject() {
               mobile ? styles.previewMobile : ""
             } ${prev ? styles.prev : ""}`}
           >
-            <h2 className={"title"}>{titulo.value}</h2>
-            <h3 className={""}>{desc.value}</h3>
+            <h2 className={"titleProject"}>{titulo.value}</h2>
+            <p className={"description"}>{desc.value}</p>
             {file && <FileList files={file} page={"create"} />}
+
+            <p className={"gitHubLink"}>{github.value}</p>
+            <p className={'areas'}>
+              {area}
+            </p>
+            <p>{tech}</p>
+            <p>{ferramenta}</p>
           </div>
         )}
       </section>

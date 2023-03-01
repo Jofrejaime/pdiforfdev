@@ -3,6 +3,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
+  font-family:var(--type-code2);
+  color: #333;
 }
 
 .createMobile {
@@ -13,7 +15,10 @@
   margin-bottom: 2rem;
 }
 
-.create #img {}
+.create from{
+  color: #0046CC;
+  max-width: 4rem;
+}
 
 .preview {
   border-radius: 1rem;

@@ -41,16 +41,23 @@ function UserCreateAProject() {
 
   React.useEffect(() => {
     let id = uniqueId();
+
     setArea([
       ...area,
-      <p id={id}>
-        {selectArea.value} <span onDoubleClick={removeItemArea}>x</span>
+      <p id={id - 2}>
+        {selectArea.value}{" "}
+        <span onClick={show} onDoubleClick={removeItemArea}>
+          x
+        </span>
       </p>,
     ]);
   }, [selectArea.value]);
+  function show({ target }) {
+    console.log(area.includes(target.parentNode.id));
+  }
   function removeItemArea({ target }) {
-  let id = target.parentNode.id
-   setArea([...area, area.splice(id - 2, 1)]);
+    let id = target.parentNode.id;
+    setArea([...area, area.splice(id, 1)]);
   }
   const callFiles = (files) => {
     setFiles(files);
@@ -137,11 +144,9 @@ function UserCreateAProject() {
             {file && <FileList files={file} page={"create"} />}
 
             <p className={"gitHubLink"}>{github.value}</p>
-            <p className={'areas'}>
-              {area}
-            </p>
-            <p>{tech}</p>
-            <p>{ferramenta}</p>
+            <p className={"areas"}>{area}</p>
+            <p className={"areas"}><p>{tech}</p></p>
+            <p className={"areas"}><p>{ferramenta}</p></p>
           </div>
         )}
       </section>

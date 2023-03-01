@@ -110,7 +110,6 @@ label {
   display: flex;
   align-items: center;
   gap: 10px;
-
 }
 .areas p{
   display: flex;
@@ -118,6 +117,7 @@ label {
   background-color: #fff;
   border-radius: 4px;
   padding: 0 4px;
+  gap: 5px;
 }
 .areas p span {
   display: flex;

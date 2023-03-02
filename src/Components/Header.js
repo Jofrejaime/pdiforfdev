@@ -12,6 +12,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/svg/logo.svg";
 import useMedia from "../Hooks/useMedia";
 import Notification from '../Components/Notifications/Notifications'
+import Avatar from '../assets/img/image.jpg'
 // Jofre
 function Header() {
   const [display, setDisplay] = React.useState("");
@@ -75,7 +76,7 @@ function Header() {
               <FontAwesomeIcon icon={faBell} />
               <p>notification</p>
             </NavLink>
-            <div className={styles.notification_show}>
+            <div className={ mobile? '':styles.notification_show} style={{ display: `${mobile? 'none':'flex'}`}}>
               <Notification />
             </div>
             
@@ -95,7 +96,9 @@ function Header() {
             </div>
           ) : (
             <NavLink to={"user"} className={styles.profile}>
-              P
+             <picture>
+            <img src={Avatar} alt='Foto de perfil'/>
+             </picture>
             </NavLink>
           )}
         </nav>

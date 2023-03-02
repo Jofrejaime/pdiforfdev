@@ -83,8 +83,6 @@
 
 
 .profile {
-  min-width: 28px;
-  height: 28px;
   background-color: #333;
   display: inline-block;
   border-radius: 50%;
@@ -93,7 +91,13 @@
   align-items: center;
   transition: all .6s;
 }
-
+.profile picture{
+  min-width: 28px;
+  height: 28px;
+}
+.profile picture img{
+  border-radius: 50%;
+}
 .profile:hover {
   outline: none;
   box-shadow: 0 0 0 3px #99afdd;
@@ -198,8 +202,7 @@
 }
 
 .notification_show {
-  width:max-content;
-  padding: .625rem;
+  width: max-content;
   position: absolute;
   left: 50%;
   opacity: .25;
@@ -208,6 +211,7 @@
   transform-origin: top center;
   transition: all .6s 225ms ease-in;
   background-color: #fff;
+  border-radius: 8px;
 }
 
 .notification_show::after {

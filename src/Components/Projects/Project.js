@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Projects.module.css";
 import Avatar from "../../assets/img/image.jpg";
 import Pdi from "../../assets/img/pdi.jpg";
@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faStar } from "@fortawesome/free-solid-svg-icons";
 function Project() {
+  const [option, setOption] = useState(false);
   return (
     <div className={styles.projectContainer}>
       <div className={styles.project}>
@@ -20,13 +21,17 @@ function Project() {
                 <div className={styles.projectCoverNeue}></div>
                 <NavLink to={"#"}></NavLink>
                 <div className={styles.projectOptions}>
-                  <span className={styles.moreOptions}>
+                  <span className={styles.moreOptions} onClick={()=>setOption(!option)}>
                     <div className={styles.circles}>
                       <div></div>
                       <div></div>
                       <div></div>
                     </div>
+                    <div className={styles.option} >
+                    <div className={styles.optionList}>Denunciar</div>
+                  </div>
                   </span>
+                  
                 </div>
                 <div className={styles.projectDetails}>
                   <div className={styles.projectInfoName}>

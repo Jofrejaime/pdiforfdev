@@ -14,12 +14,16 @@ body {
   --type-code1: 'JetBrains Mono', 'Cascadia Code', 'Anonymous Pro', Menlo, Monaco, 'Courier New', monospace;
   --type-code2: 'Fira Sans', 'Fira Code', 'Source Code Pro', Consolas, source-code-pro, Menlo, Monaco, 'Courier New',
     monospace;
-  --type-code3: 'Anonymous Pro', 'Source Code Pro', monospace;
+  --type-code3: 'Source Code Pro','Anonymous Pro', monospace;
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
-
+img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
 html,
 body,
 #root {

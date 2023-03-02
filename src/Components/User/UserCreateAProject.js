@@ -10,6 +10,7 @@ import Upload from "./Upload/Upload";
 import Button from "../Form/Button";
 import FileList from "./FileList/FileList";
 import { uniqueId } from "lodash";
+
 const areas = [
   {
     ordem: 1,
@@ -19,9 +20,10 @@ const areas = [
   { ordem: 3, nome: "Cloud Computing" },
 ];
 const techs = [
-  { ordem: 1, nome: "Java" },
-  { ordem: 2, nome: "Javascript" },
+  { ordem: 1, nome: "Java", url: "./react.png" },
+  { ordem: 2, nome: "Javascript", url: "./react.png" },
 ];
+
 const ferramentas = [
   { ordem: 1, nome: "codePan" },
   { ordem: 2, nome: "VSCODE" },
@@ -52,8 +54,8 @@ function UserCreateAProject() {
       </p>,
     ]);
   }, [selectArea.value]);
-  function show({ target }) {
-    console.log(area.includes(target.parentNode.id));
+  function show() {
+    console.log(area); //includes(target.parentNode.id);
   }
   function removeItemArea({ target }) {
     let id = target.parentNode.id;
@@ -145,8 +147,12 @@ function UserCreateAProject() {
 
             <p className={"gitHubLink"}>{github.value}</p>
             <p className={"areas"}>{area}</p>
-            <p className={"areas"}><p>{tech}</p></p>
-            <p className={"areas"}><p>{ferramenta}</p></p>
+            <p className={"areas"}>
+              <p>{area}</p>
+            </p>
+            <p className={"areas"}>
+              <p>{ferramenta}</p>
+            </p>
           </div>
         )}
       </section>

@@ -1,0 +1,81 @@
+.preChose {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+  overflow: auto;
+}
+
+.preChose div {
+  background-color: #fff;
+  padding: .50rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.discoverSubtittle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  width: 100%;
+  font-size: clamp(1rem, 1rem + 1vw, 1.5rem);
+  color: #999;
+  font-family: var(--type-code2);
+}
+.discoverForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.discoverForm div{
+  display: flex;
+  align-items: center;
+}
+
+.discoverForm div button{
+ margin-bottom: 1rem;
+ color: #333;
+ background-color: #fff;
+ border-radius: 3rem;
+}
+.discoverForm_Input {
+  margin-right: .5rem;
+  border: 2px solid #0046cc;
+  border-radius: 3rem;
+  padding: .50rem 1rem;
+  width: calc(100% + 40vw);
+  font-family: var(--type-code1);
+}
+.discoverForm_Input::placeholder{
+  font-size: 14px;
+  color: #333;
+  font-weight: 300;
+  font-family: default;
+}
+.discoverForm_Input:focus, .selectLanguages:focus{
+  outline: 2px solid #44cc; 
+}
+.discoverForm_Button{
+  color: #333;
+  border-radius: 1rem;
+}
+.filters{
+  display: flex;
+   align-items: end;
+   justify-content: end;
+padding: 0 2rem;
+}
+.selectLanguages{
+  width: max-content;
+  border: 1px solid #0046cc;
+  border-radius: .4rem;
+  padding: .2rem .4rem;
+  font-size: clamp(14px, 14px + 1vw, 1rem);
+}
+
+
+.filtersSection{
+  margin-top: 2rem;
+
+}

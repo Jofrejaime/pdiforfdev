@@ -27,7 +27,7 @@ import {
 function Message() {
   return (
     <section>
-      <h1 className="title">Mensagens</h1>
+      <h1 className="title"></h1>
       <Container>
         <InboxList>
           <AsideheaderInbox>

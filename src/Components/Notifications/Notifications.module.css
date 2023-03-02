@@ -1,0 +1,6 @@
+.tittleNotification{
+  width: 100%;
+  border-bottom: 1px solid #999;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

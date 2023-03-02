@@ -198,6 +198,8 @@
 }
 
 .notification_show {
+  width:max-content;
+  padding: .625rem;
   position: absolute;
   left: 50%;
   opacity: .25;

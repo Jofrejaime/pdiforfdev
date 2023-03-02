@@ -67,6 +67,7 @@
 padding: 0 2rem;
 }
 .selectLanguages{
+  font-family: var(--type-code3);
   width: max-content;
   border: 1px solid #0046cc;
   border-radius: .4rem;

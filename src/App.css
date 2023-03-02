@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,700;1,800&family=Source+Code+Pro:ital,wght@0,400;0,500;0,600;0,800;0,900;1,400;1,500;1,700;1,800;1,900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -9,10 +11,11 @@ body {
   background-color: #F8FAFE;
   margin: 0;
   color: #333;
-  --type-code1: 'Cascadia Code', 'Fira Code', Menlo, Monaco, 'Courier New',
+  --type-code1: 'JetBrains Mono', 'Cascadia Code', 'Anonymous Pro', Menlo, Monaco, 'Courier New', monospace;
+  --type-code2: 'Fira Sans', 'Fira Code', 'Source Code Pro', Consolas, source-code-pro, Menlo, Monaco, 'Courier New',
     monospace;
-  --type-code2: 'Fira Code', 'Cascadia Code', Consolas, source-code-pro, Menlo, Monaco, 'Courier New',
-    monospace;
+  --type-code3: 'Anonymous Pro', 'Source Code Pro', monospace;
+
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -111,7 +114,8 @@ label {
   align-items: center;
   gap: 10px;
 }
-.areas p{
+
+.areas p {
   display: flex;
   align-items: center;
   background-color: #fff;
@@ -119,13 +123,14 @@ label {
   padding: 0 4px;
   gap: 5px;
 }
+
 .areas p span {
   display: flex;
 
   font-weight: bold;
-  padding: 0 3px ;
-background-color: #ccc;
-cursor: pointer;
+  padding: 0 3px;
+  background-color: #ccc;
+  cursor: pointer;
 }
 
 .error {}

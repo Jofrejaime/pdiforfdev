@@ -43,6 +43,7 @@ function Descover() {
           <div className={styles.area}>Jogos</div>
         </SomeArea>
       </div>
+      {/*<img src={process.env.PUBLIC_URL + '/pdilogo.jpg'}/>*/}
       <div className={styles.discoverSubtittle}>
         <h3>Pesquise por:</h3>
       </div>

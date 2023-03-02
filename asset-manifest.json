@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/pdiforfdev/static/css/main.aa65a0fe.css",
-    "main.js": "/pdiforfdev/static/js/main.63c5ef56.js",
+    "main.js": "/pdiforfdev/static/js/main.c5f94d2b.js",
     "static/js/787.49fc5e08.chunk.js": "/pdiforfdev/static/js/787.49fc5e08.chunk.js",
     "static/media/criar.jpg": "/pdiforfdev/static/media/criar.aca5b353670d7fa4b950.jpg",
     "static/media/login.jpg": "/pdiforfdev/static/media/login.8fef0f2dec3ad6f15931.jpg",
@@ -19,11 +19,11 @@
     "static/media/pdilogoCinza.png": "/pdiforfdev/static/media/pdilogoCinza.812720a98799f6723696.png",
     "index.html": "/pdiforfdev/index.html",
     "main.aa65a0fe.css.map": "/pdiforfdev/static/css/main.aa65a0fe.css.map",
-    "main.63c5ef56.js.map": "/pdiforfdev/static/js/main.63c5ef56.js.map",
+    "main.c5f94d2b.js.map": "/pdiforfdev/static/js/main.c5f94d2b.js.map",
     "787.49fc5e08.chunk.js.map": "/pdiforfdev/static/js/787.49fc5e08.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aa65a0fe.css",
-    "static/js/main.63c5ef56.js"
+    "static/js/main.c5f94d2b.js"
   ]
 }

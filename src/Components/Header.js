@@ -11,6 +11,7 @@ import {
 import { NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/svg/logo.svg";
 import useMedia from "../Hooks/useMedia";
+import Notification from '../Components/Notifications/Notifications'
 // Jofre
 function Header() {
   const [display, setDisplay] = React.useState("");
@@ -69,11 +70,15 @@ function Header() {
             </NavLink>
           </div>
 
-          <div className={styles.link}>
-            <NavLink to={"notification"} className={styles.link_a}>
+          <div className={styles.link +' '+ styles.notification}>
+            <NavLink to={mobile? 'notification':'#'} className={styles.link_a}>
               <FontAwesomeIcon icon={faBell} />
               <p>notification</p>
             </NavLink>
+            <div className={styles.notification_show}>
+              <Notification />
+            </div>
+            
           </div>
           <div className={styles.link}>
             <NavLink to={"message"} className={styles.link_a}>

@@ -13,6 +13,7 @@
 
 .profile_photo {
   width: 100%;
+  height: max-content;
 }
 
 .profile_name {

@@ -36,6 +36,7 @@ h3,
 h4,
 p {
   margin: 0;
+  
 }
 
 ul,
@@ -94,6 +95,8 @@ label {
   font-size: clamp(1rem, 1rem + 1vw, 1.5rem);
   margin: 2rem 0;
   width: max-content;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .title::after,
@@ -136,7 +139,15 @@ label {
   background-color: #ccc;
   cursor: pointer;
 }
-
+.gitHubLink {
+  text-align: center;
+  font-size: clamp(.875rem, 1rem + 2vw, 1rem);
+  font-family: var(--type-code3);
+}
+.gitHubLink a{
+  color: #fff;
+  font-weight: 500;
+}
 .error {}
 
 @keyframes animeLeft {

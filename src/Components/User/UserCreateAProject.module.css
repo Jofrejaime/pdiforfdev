@@ -26,6 +26,8 @@
   background-position: center center;
   padding: 1rem;
   height: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 
@@ -84,4 +86,12 @@
 
 .create:has(.prev) form {
   display: none;
+}
+.fileList{
+  margin-bottom: 2rem;
+}
+.git{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

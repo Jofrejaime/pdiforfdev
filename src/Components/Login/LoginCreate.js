@@ -1759,9 +1759,22 @@ function LoginCreate() {
     <section className="animeLeft">
       <h1 className="title">Cadastre-se</h1>
       <form onSubmit={handleSubmit}>
-        <Input label={"User"} type="text" name="username" {...username} />
-        <Input label={"Email"} type="email" name={"email"} {...email} />
         <Input
+          placeholder="Nome de usuário"
+          label={"User"}
+          type="text"
+          name="username"
+          {...username}
+        />
+        <Input
+          placeholder="Adicione o seu email"
+          label={"Email"}
+          type="email"
+          name={"email"}
+          {...email}
+        />
+        <Input
+          placeholder="Palavra Passe"
           label={"Password"}
           type="password"
           name="password"

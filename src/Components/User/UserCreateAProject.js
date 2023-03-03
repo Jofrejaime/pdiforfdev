@@ -9,24 +9,27 @@ import useForm from "../../Hooks/useForm";
 import Upload from "./Upload/Upload";
 import Button from "../Form/Button";
 import FileList from "./FileList/FileList";
-import { uniqueId } from "lodash";
-
+import { set, uniqueId } from "lodash";
+import Multiselect from "../Form/Multiselect";
+import { SomeArea } from "../Discover/DiscoverStyles";
+import GIT from "../../assets/img/areasImages/github.webp";
+import MultiselectLinguagens from "../Form/MultiSelectLinguagens";
 const areas = [
   {
-    ordem: 1,
-    nome: "Mobile",
+    value: 1,
+    label: "Mobile",
   },
-  { ordem: 2, nome: "Web" },
-  { ordem: 3, nome: "Cloud Computing" },
+  { value: 2, label: "Web" },
+  { value: 3, label: "Cloud Computing" },
 ];
 const techs = [
-  { ordem: 1, nome: "Java", url: "./react.png" },
-  { ordem: 2, nome: "Javascript", url: "./react.png" },
+  { value: 1, label: "Java", url: "./react.png" },
+  { value: 2, label: "Javascript", url: "./react.png" },
 ];
 
 const ferramentas = [
-  { ordem: 1, nome: "codePan" },
-  { ordem: 2, nome: "VSCODE" },
+  { ordem: 1, nome: "notebook" },
+  { ordem: 2, nome: "vscode" },
 ];
 function UserCreateAProject() {
   const [area, setArea] = React.useState([]);
@@ -38,22 +41,8 @@ function UserCreateAProject() {
   const titulo = useForm();
   const desc = useForm();
   const github = useForm();
-  const selectArea = useForm();
   const [file, setFiles] = useState(null);
 
-  React.useEffect(() => {
-    let id = uniqueId();
-
-    setArea([
-      ...area,
-      <p id={id - 2}>
-        {selectArea.value}{" "}
-        <span onClick={show} onDoubleClick={removeItemArea}>
-          x
-        </span>
-      </p>,
-    ]);
-  }, [selectArea.value]);
   function show() {
     console.log(area); //includes(target.parentNode.id);
   }
@@ -68,7 +57,16 @@ function UserCreateAProject() {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
+  const buscarAreas = (areas) => {
+    let areasBuscadas = areas.map((area) => <p>{area.label}</p>);
+    setArea([areasBuscadas]);
+  };
+  const buscarLinguagens = (linguagens) => {
+    let linguagensBuscadas = linguagens.map((linguagem) => (
+      <p>{linguagem.label}</p>
+    ));
+    setTechs([linguagensBuscadas]);
+  };
   return (
     <>
       {mobile ? (
@@ -91,6 +89,7 @@ function UserCreateAProject() {
       >
         <form onSubmit={handleSubmit}>
           <Input
+            placeholder="Descreva o seu projeto"
             label={"Titulo do projeto"}
             type="text"
             name={"titulo"}
@@ -114,23 +113,24 @@ function UserCreateAProject() {
             name={"gitHub"}
             {...github}
           />
-          <Select
-            label={"Area de desenvolvimento"}
-            options={areas}
-            name={"area"}
-            {...selectArea}
-          />
-          <Select
+
+          <MultiselectLinguagens
+            buscarLinguagens={buscarLinguagens}
             label={"Linguagens usadas"}
             options={techs}
-            setValue={setTechs}
-            name={"linguagens"}
+            placeholder={"Linguagens"}
+          />
+          <Multiselect
+            buscarAreas={buscarAreas}
+            options={areas}
+            placeholder={"Áreas"}
+            label="Areas de desenvolvimento"
           />
           <Select
             label={"Ferramenta usadas [opcional]"}
             options={ferramentas}
             setValue={setFerramenta}
-            name={"ferramenta"}
+            name={"Ferramentas"}
           />
           <Button>Criar</Button>
         </form>
@@ -142,14 +142,27 @@ function UserCreateAProject() {
             } ${prev ? styles.prev : ""}`}
           >
             <h2 className={"titleProject"}>{titulo.value}</h2>
-            <p className={"description"}>{desc.value}</p>
-            {file && <FileList files={file} page={"create"} />}
-
-            <p className={"gitHubLink"}>{github.value}</p>
+            <h4 className={"description"}>{desc.value}</h4>
+            {file && (
+              <div className={styles.fileList}>
+                <FileList files={file} page={"create"} />
+              </div>
+            )}
+            <div className={styles.git}>
+              <SomeArea src={GIT}>
+                {github.value && (
+                  <a target={"_blank"} href={`http://www.${github.value}`}>
+                    <div>
+                      <p className={"gitHubLink"}>
+                        {github.value ? github.value : ""}
+                      </p>
+                    </div>{" "}
+                  </a>
+                )}
+              </SomeArea>
+            </div>
+            <p className="areas">{tech}</p>
             <p className={"areas"}>{area}</p>
-            <p className={"areas"}>
-              <p>{area}</p>
-            </p>
             <p className={"areas"}>
               <p>{ferramenta}</p>
             </p>

@@ -9,7 +9,6 @@ import useForm from "../../Hooks/useForm";
 import Upload from "./Upload/Upload";
 import Button from "../Form/Button";
 import FileList from "./FileList/FileList";
-import { set, uniqueId } from "lodash";
 import Multiselect from "../Form/Multiselect";
 import { SomeArea } from "../Discover/DiscoverStyles";
 import GIT from "../../assets/img/areasImages/github.webp";
@@ -35,7 +34,6 @@ function UserCreateAProject() {
   const [area, setArea] = React.useState([]);
   const [tech, setTechs] = React.useState([]);
   const [ferramenta, setFerramenta] = React.useState([]);
-  const [img, setImg] = React.useState({});
   const mobile = useMedia("(max-width: 670px)");
   const [prev, setPrev] = useState(false);
   const titulo = useForm();
@@ -43,19 +41,36 @@ function UserCreateAProject() {
   const github = useForm();
   const [file, setFiles] = useState(null);
 
-  function show() {
-    console.log(area); //includes(target.parentNode.id);
-  }
-  function removeItemArea({ target }) {
-    let id = target.parentNode.id;
-    setArea([...area, area.splice(id, 1)]);
-  }
+
   const callFiles = (files) => {
     setFiles(files);
+    console.log(files.File)
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
+  fetch('http://localhost:3001/user', 
+  {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }, 
+       body: JSON.stringify({
+        email: titulo.value,
+        userName: desc.value,
+        
+      })
+    })
+      .then((response) =>{
+        console.log(response)
+        return response.json()
+      })
+      .then((json)=>{
+        console.log(json)
+        return json
+      })
+   
   };
   const buscarAreas = (areas) => {
     let areasBuscadas = areas.map((area) => <p>{area.label}</p>);

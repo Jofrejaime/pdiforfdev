@@ -3,7 +3,6 @@ import {
   Routes,
   Route,
   Navigate,
-  useParams,
   useLocation,
 } from "react-router-dom";
 import LoginCreate from "./LoginCreate";

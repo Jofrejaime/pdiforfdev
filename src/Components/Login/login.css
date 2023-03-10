@@ -10,23 +10,19 @@
   content: '';
   background: url('../../assets/img/login.jpg') no-repeat center center;
   background-size: cover;
-  border-bottom-right-radius:50%;
-  border-top-right-radius: 10px;
   outline: none;
-  box-shadow: 0 0 10px .25rem #0046CC;
+  height: 100vh;
 }
 
 .cadastro {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-width: 40rem;
-  gap: 2rem;
 
 }
 
 .cadastro::after {
+  content: '';
   display: block;
-  content: 'PDI - novo na comunidade';
   font-weight: bold;
   height: 100%;
   width: 100%;
@@ -34,18 +30,16 @@
     monospace;
   padding: 2rem;
   font-size: 2rem;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 50%;
   color: #0046CC;
   background: url('../../assets/img/criar.jpg') no-repeat center center;
   background-size: cover;
   outline: none;
-  box-shadow: 0 0 10px .25rem #9B1476;
+
 }
 
 
 .cadastro .Login_forms__5MXFL {
-
+max-width: 40rem;
 }
 
 @media (max-width: 40rem) {
@@ -73,6 +67,6 @@
     border-radius: 0;
   }
   .forms {
-    max-width: 100%;
+    
   }
 }

@@ -65,10 +65,12 @@
 }
 .discoverForm_Input:focus, .selectLanguages:focus{
   outline: 2px solid #44cc; 
+  -moz-outline-radius: 3rem;
 }
 .discoverForm_Button{
   color: #333;
   border-radius: 1rem;
+  -moz-outline-radius: 1rem;
 }
 .filters{
   display: flex;

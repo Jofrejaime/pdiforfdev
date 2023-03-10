@@ -4,7 +4,7 @@ import UploadFile from "./UploadFileImage";
 import FileList from "../FileList/FileList";
 import { uniqueId } from "lodash";
 import { filesize } from "filesize";
-import FileListGlobal from "../FileList/FileListGlobal";
+import api from "../../services/api";
 import UploadFileAudio from "./UploadFileAudio";
 import UploadFileVideo from "./UploadFileVideo";
 
@@ -24,13 +24,40 @@ export default class Upload extends Component {
       Uploaded: false,
       error: false,
     }));
-    
+
     this.setState({
       uploadedFileList: this.state.uploadedFileList.concat(uploadedFiles),
     });
-    
+    uploadedFiles.forEach(this.processUpload);
   };
-
+  updateFile = (id, data) => {
+    this.setState({
+      uploadedFiles: this.state.uploadedFileList.map((uploadedFile) => {
+        return id === this.updateFile.id
+          ? { ...uploadedFile, ...data }
+          : this.updateFile;
+      }),
+    });
+  };
+  processUpload = (file) => {
+    const data = new FormData();
+    data.append("file", file.file);
+    data.append('userName', file.id);
+    data.append('email',file.id );
+    api.post("user", data, 
+    {
+      onUploadProgress: (e) => {
+        const progress = parseInt(Math.round((e.loaded * 10) / e.total));
+        this.updateFile(file.id, {
+          progress,
+        });
+      },
+    }).then(res =>{
+      this.updateFile(file.id, {
+        
+      })
+    });
+  };
   render() {
     const { uploadedFileList } = this.state;
     const { label } = this.props;

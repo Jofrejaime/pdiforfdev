@@ -14,8 +14,8 @@ const Select = ({ label, options, value, setValue, placeholder, ...props }) => {
           {placeholder} {label}
         </option>
         {options.map((option) => (
-          <option key={option.ordem} value={option.nome}>
-            {option.nome}
+          <option key={option.id} value={option.name}>
+            {option.name}
           </option>
         ))}
       </select>

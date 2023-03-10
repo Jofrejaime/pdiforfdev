@@ -1,6 +1,10 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import styles from "./Input.module.css";
-function Input({ label, type, name, value, onChange, error, onBlur, ...props }) {
+
+function Input({ label, type, reg, name, value, onChange, error, onBlur, ...props }) {
+
+      const {register} = useForm()
   return (
     <div className={styles.wrapper}>
      {label!=='' && <label htmlFor={name} className={styles.label}>
@@ -15,6 +19,7 @@ function Input({ label, type, name, value, onChange, error, onBlur, ...props }) 
         value={value}
         onBlur={onBlur}
         {...props}
+        {...register(`${reg}`)}
       />
       {error && <p className={styles.error}>{error}</p>}
     </div>

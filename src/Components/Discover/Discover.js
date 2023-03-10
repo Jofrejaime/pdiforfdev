@@ -51,7 +51,7 @@ function Descover() {
       <form className={styles.discoverForm} onSubmit={handleSubmit}>
         <div>
           <Input
-            placeholder={"Tecnologias, Ferramentas, Areas de desenvolvimento"}
+            placeholder={"Devs, Tecnologias, Areas de desenvolvimento"}
             className={styles.discoverForm_Input}
             name={"search"}
             {...search}

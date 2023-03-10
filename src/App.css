@@ -15,9 +15,9 @@ body {
   --type-code2: 'Fira Sans', 'Fira Code', 'Source Code Pro', Consolas, source-code-pro, Menlo, Monaco, 'Courier New',
     monospace;
   --type-code3: 'Source Code Pro','Anonymous Pro', monospace;
-
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  
 }
 img {
   object-fit: cover;

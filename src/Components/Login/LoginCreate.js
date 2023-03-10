@@ -8,6 +8,7 @@ import styles from "./LoginCreate.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import validator from "validator";
 
 function LoginCreate() {
   const { userLogin } = React.useContext(UserContext);
@@ -16,8 +17,9 @@ const [slide, setSlide] = useState(1);
     console.log(data);
   }
 
-  const { register, handleSubmit, formState: {errors} } = useForm();
-  console.log(errors)
+  const { register, handleSubmit, formState: {errors}, watch } = useForm();
+  console.log({...errors})
+  const watchPassword = watch('password');
   return (
     <section className={styles.criarConta + " animeLeft"} >
       <div className={styles.container}>
@@ -47,6 +49,7 @@ const [slide, setSlide] = useState(1);
                   placeholder="Digite o seu primeiro nome"
                   {...register("firstName", {required: true})}
                 />
+                 {errors?.firstName?.type === 'required' && <p className={styles.error}>Primeiro Nome é obrigatorio</p> }
               </div>
               <div className={styles.inputBox}>
                 <label>Último nome</label>
@@ -55,6 +58,7 @@ const [slide, setSlide] = useState(1);
                   placeholder="Digite o seu ultimo nome"
                   {...register("lastName", {required: true})}
                 />
+                {errors?.lastName?.type === 'required' && <p className={styles.error}>Segungo Nome é obrigatorio</p>}
               </div>
                 </div>
               <div className={styles.inputBox}>
@@ -62,30 +66,38 @@ const [slide, setSlide] = useState(1);
                 <input type={"text"} placeholder="</devName>" 
                   {...register("devName", {required: true})}
                 />
+              {errors?.devName?.type === 'required' && <p className={styles.error}>devName é obrigatorio, ele é um o teu identificador único </p>}
               </div>
               <div className={styles.inputBox}>
                 <label>Digite o seu email</label>
                 <input
                   type={"email"}
                   placeholder="Email"
-                  {...register("email", {required: true})}
+                  {...register("email", {required: true, validate: (value)=> validator.isEmail(value)})}
                 />
+                 {errors?.email?.type === 'required' && <p className={styles.error}>Email é obrigatorio</p>}
+                 {errors?.email?.type === 'validate' && <p className={styles.error}>Este não é um email valido</p>}
               </div>
               <div className={styles.inputBox}>
                 <label>Palavra passe</label>
                 <input
                   type="password"
                   placeholder="Digite a palavra passe"
-                  {...register("password", {required: true})}
+                  {...register("password", {required: true, minLength: 6, })}
                 />
+                 {errors?.password?.type === 'required' && <p className={styles.error}>Palavra passe em falta</p>}
+                 {errors?.password?.type === 'minLength' && <p className={styles.error}>Pelo menos 6 caracteres</p>}
               </div>
               <div className={styles.inputBox}>
                 <label>Confirmar Palavra passe</label>
                 <input
                   type="password"
                   placeholder="Confirme a palavra passe"
-                  {...register("passwordConfirm", {required: true})}
+                  {...register("passwordConfirm", {required: true, validate: (value)=>value === watchPassword
+                  })}
                 />
+                {errors?.passwordConfirm?.type === 'required' && <p className={styles.error}>Confirmação de passe em falta</p>}
+                {errors?.passwordConfirm?.type === 'validate' && <p className={styles.error}>Desigualdade na palavra passe</p>}
               </div>
 
               <div className={styles.inputBox}>

@@ -114,7 +114,18 @@ margin-bottom: 2rem;
   line-height: 1;
   font-size: 14px;
   padding-bottom: .5rem;
+  margin-left: 10px;
 }
+.error{
+  font-size: .75rem;
+  margin-top: .5rem;
+  margin-left: 10px;
+  color: rgb(255, 18, 18);
+}
+.inputGroup:has(.error) input{
+  border-color: rgb(255, 18, 18);
+}
+
 .genderInput{display: flex; gap: 10px}
 .inputGroup{
   display: flex;

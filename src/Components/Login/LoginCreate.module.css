@@ -125,7 +125,11 @@ margin-bottom: 2rem;
 .inputGroup:has(.error) input{
   border-color: rgb(255, 18, 18);
 }
-
+.selectProf{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .genderInput{display: flex; gap: 10px}
 .inputGroup{
   display: flex;

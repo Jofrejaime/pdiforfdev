@@ -9,27 +9,94 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import validator from "validator";
+import { set } from "lodash";
+import api from "../services/api";
 
 function LoginCreate() {
   const { userLogin } = React.useContext(UserContext);
-const [slide, setSlide] = useState(1);
+  const [slide, setSlide] = useState(1);
+  const [pais, setIPais] = useState("");
+  const [areas, setAreas] = useState();
+  const [languages, setLanguages] = useState();
+  const [tools, setTools]= useState();
+  console.log(pais)
+  // eslint-disable-next-line no-unused-expressions
+  useEffect(() => {
+    fetch("http://localhost:3001/area")
+      .then((res) => res.json())
+      .then((json) => setAreas(json));
+
+      fetch("http://localhost:3001/tool")
+      .then((res) => res.json())
+      .then((json) => setTools(json));
+
+    fetch("http://localhost:3001/language")
+      .then((res) => res.json())
+      .then((json) => setLanguages(json));
+  }, []);
+  
   function onSubmit(data) {
-    console.log(data);
+    console.log(data, ' ', data.gender)
+    fetch('http://localhost:3001/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }, 
+       body: JSON.stringify({
+        email: data.email,
+        userName: data.devName,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        photo_url: data.profile[0],
+        genderName: data.gender,
+        password: data.password,
+        paisLabel: 'Angola',
+        areas: ['Desktop', 'Web', 'Jogos']
+
+            })
+    }).then((response) =>{
+      console.log(response)
+      return response.json()
+    })
+    .then((json)=>{
+      console.log(json)
+      return json
+    })
+   
   }
 
-  const { register, handleSubmit, formState: {errors}, watch } = useForm();
-  console.log({...errors})
-  const watchPassword = watch('password');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm();
+  console.log({ ...errors });
+  const watchPassword = watch("password");
   return (
-    <section className={styles.criarConta + " animeLeft"} >
+    <section className={styles.criarConta + " animeLeft"}>
       <div className={styles.container}>
         <div className={styles.form}>
           <div className={styles.circleHeader}>
-            <span style={slide===1? {backgroundColor: '#0044cc', color: '#fff'}:{}}>1</span>
-            <span style={slide===2? {backgroundColor: '#0044cc', color: '#fff'}:{}}>2</span>
+            <span
+              style={
+                slide === 1 ? { backgroundColor: "#0044cc", color: "#fff" } : {}
+              }
+            >
+              1
+            </span>
+            <span
+              style={
+                slide === 2 ? { backgroundColor: "#0044cc", color: "#fff" } : {}
+              }
+            >
+              2
+            </span>
           </div>
-          <section className={styles.firstState} 
-          style={{display: `${slide === 1? 'block':''}`}}>
+          <section
+            className={styles.firstState}
+            style={{ display: `${slide === 1 ? "block" : ""}` }}
+          >
             <div className={styles.formheader}>
               <div className={styles.title}>
                 <div>
@@ -37,67 +104,97 @@ const [slide, setSlide] = useState(1);
                 </div>
               </div>
               <div className={styles.login}>
-               <Link to={'/'}><Button>Login</Button></Link> 
+                <Link to={"/"}>
+                  <Button>Login</Button>
+                </Link>
               </div>
             </div>
 
             <div className={styles.inputGroup}>
-              <div className={styles.names}><div className={styles.inputBox}>
-                <label>Primeiro nome</label>
-                <input
-                  type={"text"}
-                  placeholder="Digite o seu primeiro nome"
-                  {...register("firstName", {required: true})}
-                />
-                 {errors?.firstName?.type === 'required' && <p className={styles.error}>Primeiro Nome é obrigatorio</p> }
-              </div>
-              <div className={styles.inputBox}>
-                <label>Último nome</label>
-                <input
-                  type={"text"}
-                  placeholder="Digite o seu ultimo nome"
-                  {...register("lastName", {required: true})}
-                />
-                {errors?.lastName?.type === 'required' && <p className={styles.error}>Segungo Nome é obrigatorio</p>}
-              </div>
+              <div className={styles.names}>
+                <div className={styles.inputBox}>
+                  <label>Primeiro nome</label>
+                  <input
+                    type={"text"}
+                    placeholder="Digite o seu primeiro nome"
+                    {...register("firstName", { required: true })}
+                  />
+                  {errors?.firstName?.type === "required" && (
+                    <p className={styles.error}>Primeiro Nome é obrigatorio</p>
+                  )}
                 </div>
+                <div className={styles.inputBox}>
+                  <label>Último nome</label>
+                  <input
+                    type={"text"}
+                    placeholder="Digite o seu ultimo nome"
+                    {...register("lastName", { required: true })}
+                  />
+                  {errors?.lastName?.type === "required" && (
+                    <p className={styles.error}>Segungo Nome é obrigatorio</p>
+                  )}
+                </div>
+              </div>
               <div className={styles.inputBox}>
                 <label>Digite o seu devName</label>
-                <input type={"text"} placeholder="</devName>" 
-                  {...register("devName", {required: true})}
+                <input
+                  type={"text"}
+                  placeholder="</devName>"
+                  {...register("devName", { required: true })}
                 />
-              {errors?.devName?.type === 'required' && <p className={styles.error}>devName é obrigatorio, ele é um o teu identificador único </p>}
+                {errors?.devName?.type === "required" && (
+                  <p className={styles.error}>
+                    devName é obrigatorio, ele é um o teu identificador único{" "}
+                  </p>
+                )}
               </div>
               <div className={styles.inputBox}>
                 <label>Digite o seu email</label>
                 <input
                   type={"email"}
                   placeholder="Email"
-                  {...register("email", {required: true, validate: (value)=> validator.isEmail(value)})}
+                  {...register("email", {
+                    required: true,
+                    validate: (value) => validator.isEmail(value),
+                  })}
                 />
-                 {errors?.email?.type === 'required' && <p className={styles.error}>Email é obrigatorio</p>}
-                 {errors?.email?.type === 'validate' && <p className={styles.error}>Este não é um email valido</p>}
+                {errors?.email?.type === "required" && (
+                  <p className={styles.error}>Email é obrigatorio</p>
+                )}
+                {errors?.email?.type === "validate" && (
+                  <p className={styles.error}>Este não é um email valido</p>
+                )}
               </div>
               <div className={styles.inputBox}>
                 <label>Palavra passe</label>
                 <input
                   type="password"
                   placeholder="Digite a palavra passe"
-                  {...register("password", {required: true, minLength: 6, })}
+                  {...register("password", { required: true, minLength: 6 })}
                 />
-                 {errors?.password?.type === 'required' && <p className={styles.error}>Palavra passe em falta</p>}
-                 {errors?.password?.type === 'minLength' && <p className={styles.error}>Pelo menos 6 caracteres</p>}
+                {errors?.password?.type === "required" && (
+                  <p className={styles.error}>Palavra passe em falta</p>
+                )}
+                {errors?.password?.type === "minLength" && (
+                  <p className={styles.error}>Pelo menos 6 caracteres</p>
+                )}
               </div>
               <div className={styles.inputBox}>
                 <label>Confirmar Palavra passe</label>
                 <input
                   type="password"
                   placeholder="Confirme a palavra passe"
-                  {...register("passwordConfirm", {required: true, validate: (value)=>value === watchPassword
+                  {...register("passwordConfirm", {
+                    required: true,
+                    validate: (value) => value === watchPassword,
                   })}
                 />
-                {errors?.passwordConfirm?.type === 'required' && <p className={styles.error}>Confirmação de passe em falta</p>}
-                {errors?.passwordConfirm?.type === 'validate' && <p className={styles.error}>Desigualdade na palavra passe</p>}
+                {errors?.passwordConfirm?.type === "required" && (
+                  <p className={styles.error}>Confirmação de passe em falta</p>
+                )}
+                {errors?.passwordConfirm?.type === "validate" && (
+                  <p className={styles.error}>Desigualdade na palavra passe</p>
+                )}
               </div>
 
               <div className={styles.inputBox}>
@@ -114,35 +211,46 @@ const [slide, setSlide] = useState(1);
             </div>
             <div className={styles.genderGroup}>
               <label> Escola seu Genero</label>
-                <Radio  className={styles.genderInput} {...register("genre")} value={"Male"} checked>
-                  Masculino
-                </Radio>
-                <Radio className={styles.genderInput} {...register("genre")} value={"Famale"}>
-                  Femenino
-                </Radio>
-            
+              <Radio
+                className={styles.genderInput}
+                {...register("gender")}
+                value={"Masculino"}
+                checked
+              >
+                Masculino
+              </Radio>
+              <Radio
+                className={styles.genderInput}
+                {...register("gender")}
+                value={"Femenino"}
+              >
+                Femenino
+              </Radio>
             </div>
-         
+
             <div className={styles.next}>
-              <Button onClick={() => setSlide(2)} >
-              /avançar/profissão
-              <FontAwesomeIcon icon={faArrowRight} />
-            </Button>
+              <Button onClick={() => setSlide(2)}>
+                /avançar/profissão
+                <FontAwesomeIcon icon={faArrowRight} />
+              </Button>
             </div>
-            
           </section>
-          <section className={styles.secondState + " animeLeft"} style={{display: `${slide===2? 'block' :''}`}}>
+          <section
+            className={styles.secondState + " animeLeft"}
+            style={{ display: `${slide === 2 ? "block" : ""}` }}
+          >
             <div className={styles.selectProf}>
               <div className={styles.selectGroup}>
-                <div className={styles.back} >
-                  <Button onClick={()=>setSlide(1)}>voltar</Button>
+                <div className={styles.back}>
+                  <Button onClick={() => setSlide(1)}>voltar</Button>
                 </div>
-                <input type={'file'} placeholder='Foto de perfil' {...register('profile')}/>
+                <input type={"file"} placeholder="Foto de perfil" {...register("profile")}
+                />
                 <label>Selecione as áreas de actuação</label>
                 <Select
                   placeholder="Selecione as áreas"
                   isMulti
-                  {...register("areas")}
+                  options={areas}
                 />
               </div>
               <div className={styles.selectGroup}>
@@ -150,21 +258,28 @@ const [slide, setSlide] = useState(1);
                 <Select
                   placeholder="Selecione as linguagens"
                   isMulti
+                  options={languages}
                   {...register("languages")}
                 />
               </div>
-            </div>
+            
             <div className={styles.selectGroup}>
               <label>Selecione os Editores que usas</label>
               <Select
                 placeholder="Selecione os Editores"
                 {...register("editors")}
+                options={tools}
                 isMulti
               />
             </div>
-            <Button className={styles.criar} style={{width: '100%'}} onClick={() => handleSubmit(onSubmit)()}>
+            <Button
+              className={styles.criar}
+              style={{ width: "100%" }}
+              onClick={() => handleSubmit(onSubmit)()}
+            >
               Criar Conta
             </Button>
+            </div>
           </section>
         </div>
       </div>

@@ -25,7 +25,7 @@
 
 .profile_name {
   font-family: var(--type-code2);
-  font-weight:500;
+  font-weight: 500;
   font-size: clamp(1rem, 1.2rem + 1vw, 1.2rem);
   padding-bottom: 10px;
 }
@@ -50,15 +50,40 @@
 .status svg {
   color: #0044cc;
 }
-.description{
+
+.profile_photo {
+  max-width: calc(200px);
+  border-radius: 1rem;
+  max-height: 200px;
+  box-shadow: 0 0 9px 2px #9B1476;
+}
+
+.photo {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.username {
+  font-size: 1rem;
+  font-weight: 600;
+  
+}
+
+.description {
   margin: 1.5rem 0;
 }
-.seguir{
-display: flex;
-justify-content: center;
-align-items: center;
+
+.seguir {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.seguir button{
+
+.seguir button {
   width: 100%;
   border-radius: 3rem;
   padding: .5rem;
@@ -67,35 +92,41 @@ align-items: center;
   background-color: #9B1476;
 }
 
-.utilities{
+.utilities {
   margin: 1rem 0rem;
 }
-.utilitiesTitle{
+
+.utilitiesTitle {
   font-family: var(--type-code2);
   font-weight: 500;
   font-size: clamp(1rem, 1rem + 1vw, 1.1rem);
   margin-bottom: 10px;
 }
-.utilitiesList{
+
+.utilitiesList {
   display: flex;
   gap: 10px;
   align-items: center;
   justify-content: center;
 }
-.utilitiesList li{
+
+.utilitiesList li {
   padding: .4rem .5rem;
   background-color: #ccc;
   border-radius: 4px;
 }
-.links{
+
+.links {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
 }
-.links li a img{
+
+.links li a img {
   color: #333;
 }
-.footerProfile{
+
+.footerProfile {
   font-weight: 500;
 }

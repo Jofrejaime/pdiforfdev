@@ -13,12 +13,18 @@ import { ReactComponent as Logo } from "../assets/svg/logo.svg";
 import useMedia from "../Hooks/useMedia";
 import Notification from '../Components/Notifications/Notifications'
 import Avatar from '../assets/img/image.jpg'
+import { useContext } from "react";
+import { UserContext } from "../UserContext";
+import { filesUrl } from "./services/api";
 // Jofre
 function Header() {
+  const {data} = useContext(UserContext)
+ 
   const [display, setDisplay] = React.useState("");
   const [mobileMenu, setMobilemenu] = React.useState(false);
   const mobile = useMedia("(max-width: 45rem)");
   const { pathname } = useLocation();
+
   React.useEffect(() => {
     if (
       pathname === "/login" ||
@@ -55,7 +61,9 @@ function Header() {
         >
           {!mobile && (
             <NavLink to={"/"} className={styles.logo}>
+              
               <Logo />
+              
             </NavLink>
           )}
           <div className={styles.link}>
@@ -97,7 +105,8 @@ function Header() {
           ) : (
             <NavLink to={"user"} className={styles.profile}>
              <picture>
-            <img src={Avatar} alt='Foto de perfil'/>
+             {data &&  <img src={`${filesUrl}/users/${data.profile.photo_url}`} alt={data.userName}/>}
+           
              </picture>
             </NavLink>
           )}

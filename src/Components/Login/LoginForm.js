@@ -7,13 +7,14 @@ import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
 import Error from "../Helper/Error";
 import stylesBtn from "../../Components/Form/Button.module.css";
+import { TOKEN_POST, USER_GET } from "../services/api";
 function LoginForm() {
-  const username = useForm("email");
+  const username = useForm();
   const password = useForm();
 
   const { userLogin, error, loading } = React.useContext(UserContext);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     if (username.validate() && password.validate()) {
       userLogin(username.value, password.value);
@@ -21,7 +22,8 @@ function LoginForm() {
   }
 
   return (
-    <section className="animeLeft">
+     
+    <section className={styles.container + " animeLeft"}>
       <h1 className="title">Login</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <Input label={"User"} type={"text"} name="username" {...username} />
@@ -49,6 +51,7 @@ function LoginForm() {
         </Link>
       </div>
     </section>
+   
   );
 }
 

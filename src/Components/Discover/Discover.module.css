@@ -7,7 +7,7 @@
   margin-top: 2rem;
 }
 
-.area  {
+.area {
   background-color: rgba(3, 3, 3, .31);
   color: #fff;
   padding: 2rem 2rem;
@@ -22,7 +22,7 @@
   font-size: clamp(1.5rem, 1.5rem + 2vw, 1.5rem);
 }
 
-.discoverSubtittle{
+.discoverSubtittle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,23 +32,26 @@
   color: #999;
   font-family: var(--type-code2);
 }
+
 .discoverForm {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 1rem;
 }
-.discoverForm div{
+
+.discoverForm div {
   display: flex;
   align-items: center;
 }
 
-.discoverForm div button{
- margin-bottom: 1rem;
- color: #333;
- background-color: #fff;
- border-radius: 3rem;
+.discoverForm div button {
+  margin-bottom: 1rem;
+  color: #333;
+  background-color: #fff;
+  border-radius: 3rem;
 }
+
 .discoverForm_Input {
   margin-right: .5rem;
   border: 2px solid #0046cc;
@@ -57,28 +60,34 @@
   width: calc(100% + 40vw);
   font-family: var(--type-code1);
 }
-.discoverForm_Input::placeholder{
+
+.discoverForm_Input::placeholder {
   font-size: 14px;
   color: #999;
   font-weight: 400;
   font-family: default;
 }
-.discoverForm_Input:focus, .selectLanguages:focus{
-  outline: 2px solid #44cc; 
+
+.discoverForm_Input:focus,
+.selectLanguages:focus {
+  outline: 2px solid #44cc;
   -moz-outline-radius: 3rem;
 }
-.discoverForm_Button{
+
+.discoverForm_Button {
   color: #333;
   border-radius: 1rem;
   -moz-outline-radius: 1rem;
 }
-.filters{
+
+.filters {
   display: flex;
-   align-items: flex-end;
-   justify-content: flex-end;
-padding: 0 2rem;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 2rem;
 }
-.selectLanguages{
+
+.selectLanguages {
   font-family: var(--type-code3);
   width: max-content;
   border: 1px solid #0046cc;
@@ -88,7 +97,96 @@ padding: 0 2rem;
 }
 
 
-.filtersSection{
+.filtersSection {
   margin-top: 2rem;
 
+}
+.users{
+  margin-top: 11px;
+  width: 100%;
+  max-width: 2968px;
+}
+.userContainer {
+  --initialWidth: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 1750px) {
+  .projectContainer {
+    --initialWidth: 800px;
+  }
+}
+
+.user {
+  flex-grow: 42;
+  width: calc(var(--initialWidth) * 42 / 100);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.photo picture {
+  object-fit: cover;
+  width: 100%;
+  
+}
+
+.photo picture img {
+  width: 100%;
+  max-height: 200px;
+  max-width: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 1px #0046cc;
+}
+
+.photo {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.info {}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 0 5px;
+}
+
+.userInfo div+div {
+  font-size: 14px;
+  font-family: var(--type-code2);
+}
+
+.seguir {
+  width: 100%;
+  background-color: #0046cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.seguir span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  font-family: var(--type-code1);
+}
+
+.username {
+  font-weight: 500;
+  font-family: var(--type-code1);
+  font-size: clamp(1rem, 1rem +1vw, 1.1rem);
 }

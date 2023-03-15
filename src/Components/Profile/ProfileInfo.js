@@ -9,40 +9,47 @@ import React from "react";
 import styles from "./ProfileInfo.module.css";
 import foto from "../../assets/svg/profile.svg";
 import Button from "../Form/Button";
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
+import { filesUrl } from "../services/api";
 
 function ProfileInfo() {
+  const {data} = useContext(UserContext)
   return (
     <div className={styles.profile_info}>
       <div className={styles.info}>
         {" "}
+        <div className={styles.photo}>
         <img
-          src={foto}
-          alt="Jofre Jaime Jamuinda Muto"
+          src={`${filesUrl}/users/${ data && data.profile.photo_url}`}
+          alt={data && data.userName}
           className={styles.profile_photo}
         />
-        <p className={styles.profile_name}> Jofre Jaime Jamuinda Muto</p>
+        </div>
+        <p className={styles.profile_name}>{data && data.profile.firstName + ' '+ data.profile.lastName}</p>
+        <p className={styles.username}>{data && `</${data.userName}>`}</p>
         <div className={styles.profile_area}>
           {" "}
           <p>Full Stack Developer</p>
           <p>Mobile Dev</p>
         </div>
         <p className={styles.location}>
-          <FontAwesomeIcon icon={faLocationDot} /> Angola
+          <FontAwesomeIcon icon={faLocationDot} /> {data && data.profile.paisLabel}
         </p>
         <div className={styles.status}>
           <div>
             <span>
-              <FontAwesomeIcon icon={faUsers} /> {12} seguidores{" "}
+              <FontAwesomeIcon icon={faUsers} /> {0} seguidores{" "}
             </span>
             <span>
-              <FontAwesomeIcon icon={faUserMinus} /> {13} seguindo{" "}
+              <FontAwesomeIcon icon={faUserMinus} /> {0} seguindo{" "}
             </span>
             <span>
-              <FontAwesomeIcon icon={faFileCircleCheck} /> {4} projectos
+              <FontAwesomeIcon icon={faFileCircleCheck} /> {4} {data.projects}
             </span>
           </div>
         </div>
-        <div className={styles.description}>DEUS É AMOR ❤️</div>
+        <div className={styles.description}>{data && data.profile.bio}</div>
         <div className={styles.seguir}>
           <Button>Editar Perfil</Button>
         </div>

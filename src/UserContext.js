@@ -1,5 +1,8 @@
+import { set } from "lodash";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from "./Components/services/api";
+import useFetch from "./Hooks/useFetch";
 export const UserContext = React.createContext();
 export const UserStorage = ({ children }) => {
   const [data, setData] = React.useState(null);
@@ -9,7 +12,7 @@ export const UserStorage = ({ children }) => {
   const {file, setFile} = React.useState([])
   const [loginType, setLogintype] = React.useState('login');
   const navigate = useNavigate();
-
+const {request} = useFetch()
   const userLogout = React.useCallback(
     async function(){
       setData(null);
@@ -21,9 +24,9 @@ export const UserStorage = ({ children }) => {
     },[navigate]);
 
   async function getUser(token) {
-    const { url, options } = ""; // USER_POST(token);
-    const response = await fetch(url, options);
-    const json = await response.json();
+    const { url, options } = USER_GET(token);
+    const {response, json} = await request(url, options);
+    console.log(json)
     setData(json);
     setLogin(true);
   }
@@ -31,12 +34,11 @@ export const UserStorage = ({ children }) => {
     try {
       setError(null);
       setLoading(true);
-      const { url, options } = ""; //TOKEN_POST({username, password});
-      const tokenRes = await fetch(url, options);
-      if (!tokenRes.ok) throw new Error(`Error: ${tokenRes.statusText}`);
-      const { token } = await tokenRes.json();
-      window.localStorage.setItem("token", token);
-      await getUser(token);
+      const { url, options } = TOKEN_POST({userName: username, password: password});
+      const {response, json} = await request(url, options);
+      if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+      window.localStorage.setItem("token", json);
+      await getUser(json);
       navigate('/')
     } catch (err) {
       setError(err.message);
@@ -54,20 +56,22 @@ export const UserStorage = ({ children }) => {
         try {
           setError(null);
           setLoading(true);
-          const { url, options } = ""; //TOKEN_VALIDATE_POST(token);
-          const response = await fetch(url, options);
+          const { url, options } =  TOKEN_VALIDATE_POST(token);
+          const {response, json} = await request(url, options);
           if (!response.ok) throw new Error("Token Invalido");
-          else await getUser(token);
-          const json = await response.json();
+          else await getUser(json);
         } catch (err) {
           userLogout();
         } finally {
           setLoading(false);
         }
+      }else{
+        setLogin(false)
       }
     }
+    autoLogin()
   }, [userLogout]);
-    //jofre
+    
 function setFiles( files){setFile(files)}
   return (
     <UserContext.Provider

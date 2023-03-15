@@ -25,6 +25,7 @@ function Login() {
   if (login === true) return <Navigate to="/pdiforfdev" />;
   return (
     <section className={loginType}>
+    
       <div className={styles.forms}>
         <Routes>
           <Route path="/" element={<LoginForm />} />
@@ -32,7 +33,8 @@ function Login() {
           <Route path="lostPass" element={<LoginPassLost />} />
           <Route path="reset" element={<LoginPassReset />} />
         </Routes>
-      </div>
+       </div>
+      
     </section>
   );
 }

@@ -42,7 +42,7 @@ export default class Upload extends Component {
   processUpload = (file) => {
     const data = new FormData();
     data.append("file", file.file);
-    data.append('userName', file.id);
+    data.append('userId', file.id);
     data.append('email',file.id );
     api.post("user", data, 
     {
@@ -53,8 +53,7 @@ export default class Upload extends Component {
         });
       },
     }).then(res =>{
-      this.updateFile(file.id, {
-        
+      this.updateFile(file.id, { 
       })
     });
   };

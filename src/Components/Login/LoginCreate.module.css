@@ -130,6 +130,26 @@ margin-bottom: 2rem;
   flex-direction: column;
   gap: 20px;
 }
+.photo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.profilePhoto {
+display: block;
+height: 100px;
+width: 100px;
+background-color: #f2f2f2;
+border-radius: 50%;
+text-align: center;
+padding: 5rem;
+cursor: pointer;
+border: 2px solid #ccc;
+}
+.profilePhoto:hover{
+  background-color: #fefefe;
+}
 .genderInput{display: flex; gap: 10px}
 .inputGroup{
   display: flex;

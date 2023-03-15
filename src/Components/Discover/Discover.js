@@ -1,47 +1,62 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faFileCircleCheck, faSearch, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import useFetch from "../../Hooks/useFetch";
 import useForm from "../../Hooks/useForm";
 import Button from "../Form/Button";
 import Input from "../Form/Input";
 import Select from "../Form/Select";
 import Projects from "../Projects/Projects";
+import { filesUrl, GET_AREAS, GET_LANGUAGES, GET_USERS } from "../services/api";
 import styles from "./Discover.module.css";
 import { SomeArea } from "./DiscoverStyles";
-import Web from '../../assets/img/areasImages/web.jpg'
-import Cloud from '../../assets/img/areasImages/cloud.png'
-import Desktop from '../../assets/img/areasImages/desktop.jpg'
-import Mobile from '../../assets/img/areasImages/mobile.png'
-import Devops from '../../assets/img/areasImages/devops.jpg'
-import Jogos from '../../assets/img/areasImages/jogos.jpeg'
 function Descover() {
   const search = useForm("");
   const linguagens = useForm("");
-  function handleSubmit(event) {
+  const [areas, setAreas] = useState([]);
+  const [languages, setLanguages] = useState([]) 
+  const {error, loading, request} = useFetch()
+  const [getUsers, setUsers] = useState([])
+   useEffect(()=>{
+  async  function callAreas(){
+      const {url, options} = GET_AREAS();
+      const {response, json} = await request(url, options);
+      if(response.ok){
+      
+        setAreas(json)
+      }
+    }
+    async function callLanguages(){
+      const {url, options} = GET_LANGUAGES();
+      const {response, json} = await request(url, options);
+      if(response.ok){
+        setLanguages(json)
+      }
+    }
+    async function callUsers(){
+      const {url, options} = GET_USERS();
+      const {response, json} = await request(url, options);
+      if(response.ok){
+        setUsers(json)
+        console.log(json)
+      }
+    }
+    callUsers()
+    callLanguages()
+    callAreas()
+  },[]) 
+  
+    function handleSubmit(event) {
     event.preventDefault();
   }
   return (
     <section className="container">
       <div className={styles.preChose}>
-        <SomeArea src={Web} className={" titleProject"}>
-          <div className={styles.area}>Web</div>
-        </SomeArea>
-        <SomeArea src={Cloud} className={" titleProject"}>
-          <div className={styles.area }>Cloud Computing</div>
-        </SomeArea>
-        <SomeArea src={Mobile} className={" titleProject"}>
-          <div className={styles.area}>Mobile</div>
-        </SomeArea>
-        <SomeArea src={Desktop} className={" titleProject"}>
-          {" "}
-          <div className={styles.area }>Desktop</div>
-        </SomeArea>
-        <SomeArea src={Devops} className={" titleProject"}>
-          <div className={styles.area}>DevOps</div>
-        </SomeArea>
-        <SomeArea src={Jogos} className={" titleProject"}>
-          <div className={styles.area}>Jogos</div>
-        </SomeArea>
+        {
+        areas && areas.map(area => <  SomeArea src={`${filesUrl}/${area.image_url}`} className={" titleProject"}>
+        <div className={styles.area}>{area.label}</div>
+      </SomeArea>)
+        }
       </div>
       {/*<img src={process.env.PUBLIC_URL + '/pdilogo.jpg'}/>*/}
       <div className={styles.discoverSubtittle}>
@@ -68,19 +83,37 @@ function Descover() {
           <Select
             className={styles.selectLanguages}
             name="linguagens"
-            options={[
-              { nome: "Java", ordem: 1 },
-              { nome: "C#", ordem: 3 },
-              { nome: "C", ordem: 2 },
-              { nome: "C++", ordem: 5 },
-              { nome: ".NET", ordem: 4 },
-              { nome: "Object C", ordem: 6 },
-            ]}
+            options={languages}
             {...linguagens}
             placeholder="Linguagens"
           />
         </div>
       </div>
+    <div className={styles.users}>
+      <div className={styles.userContainer}>
+         {getUsers && getUsers.map((user) => 
+    <div className={styles.user}>
+      <div className={styles.userContent}>
+    <div className={styles.photo}>
+      <picture>
+        <img src={`${filesUrl}/users/${user.profile.photo_url}`} alt={user.userName}/>
+      </picture>
+    </div>
+    <div className={styles.info}><div className={styles.userInfo}>
+      <div className={styles.username}>{`</${user.userName}>`}</div>
+      <div className={styles.stars}><FontAwesomeIcon icon={faStar}/> {user.Star.length}</div>
+      <div className={styles.projects}>
+        <FontAwesomeIcon icon={faFileCircleCheck}/> {user.projects.length}</div>
+    </div></div>
+    
+    <div className={styles.seguir}>
+      <span>seguir</span>
+    </div>
+    </div>
+  </div>
+      )}
+      </div>
+      </div> 
       <div className={styles.projects}>
         <Projects />
       </div>

@@ -72,16 +72,6 @@ function UserCreateAProject() {
       })
    
   };
-  const buscarAreas = (areas) => {
-    let areasBuscadas = areas.map((area) => <p>{area.label}</p>);
-    setArea([areasBuscadas]);
-  };
-  const buscarLinguagens = (linguagens) => {
-    let linguagensBuscadas = linguagens.map((linguagem) => (
-      <p>{linguagem.label}</p>
-    ));
-    setTechs([linguagensBuscadas]);
-  };
   return (
     <>
       {mobile ? (
@@ -130,13 +120,13 @@ function UserCreateAProject() {
           />
 
           <MultiselectLinguagens
-            buscarLinguagens={buscarLinguagens}
+            buscarLinguagens={()=>{}}
             label={"Linguagens usadas"}
             options={techs}
             placeholder={"Linguagens"}
           />
           <Multiselect
-            buscarAreas={buscarAreas}
+            buscarAreas={()=>{}}
             options={areas}
             placeholder={"Áreas"}
             label="Areas de desenvolvimento"

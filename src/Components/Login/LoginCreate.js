@@ -6,63 +6,99 @@ import Select from "react-select";
 import { Checkbox, Radio } from "pretty-checkbox-react";
 import styles from "./LoginCreate.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { faArrowRight, faPerson } from "@fortawesome/free-solid-svg-icons";
+import { json, Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import { set } from "lodash";
-import api from "../services/api";
+import api, {
+  GET_AREAS,
+  GET_COUNTRIES,
+  GET_LANGUAGES,
+  GET_TOOLS,
+  USER_CREATE,
+} from "../services/api";
+import useFetch from "../../Hooks/useFetch";
+import Error from "../Helper/Error";
 
 function LoginCreate() {
   const { userLogin } = React.useContext(UserContext);
+  const [selectedAreas, setSelectedAreas] = useState([]);
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
+  const [selectedTools, setSelectedTools] = useState([]);
   const [slide, setSlide] = useState(1);
   const [pais, setIPais] = useState("");
   const [areas, setAreas] = useState();
   const [languages, setLanguages] = useState();
-  const [tools, setTools]= useState();
-  console.log(pais)
+  const [tools, setTools] = useState();
+  const navigate = useNavigate();
+  const { error, loading, request } = useFetch();
+  console.log(pais);
   // eslint-disable-next-line no-unused-expressions
   useEffect(() => {
-    fetch("http://localhost:3001/area")
-      .then((res) => res.json())
-      .then((json) => setAreas(json));
-
-      fetch("http://localhost:3001/tool")
-      .then((res) => res.json())
-      .then((json) => setTools(json));
-
-    fetch("http://localhost:3001/language")
-      .then((res) => res.json())
-      .then((json) => setLanguages(json));
+    async function callAreas() {
+      const { url, options } = GET_AREAS();
+      const { response, json } = await request(url, options);
+      if (response.ok) {
+               setAreas(json);
+      }
+    }
+    async function callLanguages() {
+      const { url, options } = GET_LANGUAGES();
+      const { response, json } = await request(url, options);
+      if (response.ok) {
+        setLanguages(json);
+      }
+    }
+    async function callTools() {
+      const { url, options } = GET_TOOLS();
+      const { response, json } = await request(url, options);
+      if (response.ok) {
+      
+        setTools(json);
+      }
+    }
+    async function callCountries() {
+      const { url, options } = GET_COUNTRIES();
+      const { response, json } = await request(url, options);
+      if (response.ok) {
+        setIPais(json);
+      } else console.log("error");
+    }
+    callCountries();
+    callLanguages();
+    callAreas();
+    callTools();
   }, []);
-  
-  function onSubmit(data) {
-    console.log(data, ' ', data.gender)
-    fetch('http://localhost:3001/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }, 
-       body: JSON.stringify({
-        email: data.email,
-        userName: data.devName,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        photo_url: data.profile[0],
-        genderName: data.gender,
-        password: data.password,
-        paisLabel: 'Angola',
-        areas: ['Desktop', 'Web', 'Jogos']
 
-            })
-    }).then((response) =>{
-      console.log(response)
-      return response.json()
-    })
-    .then((json)=>{
-      console.log(json)
-      return json
-    })
+  async function onSubmit(data) {
+    const areas = selectedAreas.map((area) => area.label);
+    const languages = selectedLanguages.map((language) => language.label);
+    const tools = selectedTools.map((tool) => tool.label);
+    console.log(data, areas, languages, tools);
+
+    const datas = new FormData();
+    datas.append("file", data.profile[0]);
+    datas.append("lastName", data.lastName);
+    datas.append("email", data.email);
+    datas.append("firstName", data.firstName);
+    datas.append("password", data.password);
+    datas.append( "areas", areas);
+    datas.append("userName", data.devName);
+    datas.append( "languages", languages);
+    datas.append("tools", tools);
+    datas.append(  "paisLabel", pais);
+    datas.append("genderName", data.gender);
+    datas.append("bio", data.bio)
+    api.post('user', datas).then((response)=>{
+      if (response.ok) {
+      console.log(response.json())  
+      userLogin(data.userName, data.password)
+    }
+    }).catch(err=>{
    
+      console.log(err)
+    })
+    
   }
 
   const {
@@ -95,7 +131,7 @@ function LoginCreate() {
           </div>
           <section
             className={styles.firstState}
-            style={{ display: `${slide === 1 ? "block" : ""}` }}
+            style={{ display: `${slide === 1 ? "block" : "none"}` }}
           >
             <div className={styles.formheader}>
               <div className={styles.title}>
@@ -104,9 +140,7 @@ function LoginCreate() {
                 </div>
               </div>
               <div className={styles.login}>
-                <Link to={"/"}>
-                  <Button>Login</Button>
-                </Link>
+                <Button onClick={() => navigate("/login")}>Login</Button>
               </div>
             </div>
 
@@ -138,7 +172,9 @@ function LoginCreate() {
               <div className={styles.inputBox}>
                 <label>Digite o seu devName</label>
                 <input
+                  ref={register}
                   type={"text"}
+                  name="devName"
                   placeholder="</devName>"
                   {...register("devName", { required: true })}
                 />
@@ -203,6 +239,8 @@ function LoginCreate() {
                   className={styles.select}
                   placeholder="Selecione seu pais"
                   {...register("country")}
+                  options={pais}
+                  onChange={(item) => setIPais(item.label)}
                 />
               </div>
               <div className={styles.inputBox}>
@@ -237,20 +275,32 @@ function LoginCreate() {
           </section>
           <section
             className={styles.secondState + " animeLeft"}
-            style={{ display: `${slide === 2 ? "block" : ""}` }}
+            style={{ display: `${slide === 2 ? "block" : "none"}` }}
           >
             <div className={styles.selectProf}>
               <div className={styles.selectGroup}>
                 <div className={styles.back}>
                   <Button onClick={() => setSlide(1)}>voltar</Button>
                 </div>
-                <input type={"file"} placeholder="Foto de perfil" {...register("profile")}
-                />
+                <div className={styles.photo}>
+                  <label className={styles.profilePhoto} htmlFor="file">
+                    <FontAwesomeIcon icon={faPerson} />
+                  </label>
+                  <input
+                    style={{ display: "none" }}
+                    type={"file"}
+                    id={"file"}
+                    placeholder="Foto de perfil"
+                    {...register("profile")}
+                  />
+                </div>
+
                 <label>Selecione as áreas de actuação</label>
                 <Select
                   placeholder="Selecione as áreas"
                   isMulti
                   options={areas}
+                  onChange={(item) => setSelectedAreas(item)}
                 />
               </div>
               <div className={styles.selectGroup}>
@@ -259,26 +309,37 @@ function LoginCreate() {
                   placeholder="Selecione as linguagens"
                   isMulti
                   options={languages}
-                  {...register("languages")}
+                  onChange={(item) => setSelectedLanguages(item)}
                 />
               </div>
-            
-            <div className={styles.selectGroup}>
-              <label>Selecione os Editores que usas</label>
-              <Select
-                placeholder="Selecione os Editores"
-                {...register("editors")}
-                options={tools}
-                isMulti
-              />
-            </div>
-            <Button
-              className={styles.criar}
-              style={{ width: "100%" }}
-              onClick={() => handleSubmit(onSubmit)()}
-            >
-              Criar Conta
-            </Button>
+
+              <div className={styles.selectGroup}>
+                <label>Selecione os Editores que usas</label>
+                <Select
+                  placeholder="Selecione os Editores"
+                  {...register("editors")}
+                  options={tools}
+                  isMulti
+                  onChange={(item) => setSelectedTools(item)}
+                />
+              </div>
+              
+              {
+                loading? <Button
+                className={styles.criar}
+                style={{ width: "100%" }}
+                onClick={() => handleSubmit(onSubmit)()}
+              >
+             Processando...
+              </Button>: <Button
+                className={styles.criar}
+                style={{ width: "100%" }}
+                onClick={() => handleSubmit(onSubmit)()}
+              >
+                Criar Conta
+              </Button>
+              }
+              <Error error={error}/>
             </div>
           </section>
         </div>

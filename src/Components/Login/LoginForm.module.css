@@ -1,6 +1,28 @@
+.smooth{
+  background-color: rgba(3, 3, 3, .5);
+}
+.container{
+  background: #fff;
+  height: 100%;
+  padding: 2rem;
+  background-color: #fefefe;
+  border-radius: 1rem;
+  margin: 2rem;
+}
+@media(max-width: 45rem){
+  .container{
+    margin: 0;
+    padding: 1;
+
+  }
+}
 .form{
   margin-bottom: 2rem;
   margin-top: 2rem;
+
+}
+.form > button{
+  width: 100%;
 }
 .perdeu{
   display: inline-block;

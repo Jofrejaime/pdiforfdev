@@ -7,7 +7,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styles from "./ProfileInfo.module.css";
-import foto from "../../assets/svg/profile.svg";
 import Button from "../Form/Button";
 import { useContext } from "react";
 import { UserContext } from "../../UserContext";
@@ -21,7 +20,7 @@ function ProfileInfo() {
         {" "}
         <div className={styles.photo}>
         <img
-          src={`${filesUrl}/users/${ data && data.profile.photo_url}`}
+          src={`${filesUrl}${ data && data.profile.photo_url}`}
           alt={data && data.userName}
           className={styles.profile_photo}
         />
@@ -29,9 +28,7 @@ function ProfileInfo() {
         <p className={styles.profile_name}>{data && data.profile.firstName + ' '+ data.profile.lastName}</p>
         <p className={styles.username}>{data && `</${data.userName}>`}</p>
         <div className={styles.profile_area}>
-          {" "}
-          <p>Full Stack Developer</p>
-          <p>Mobile Dev</p>
+          {data && data.profile.AreaofProfile.map((area)=><p>{area.areaLabel}</p>)}
         </div>
         <p className={styles.location}>
           <FontAwesomeIcon icon={faLocationDot} /> {data && data.profile.paisLabel}
@@ -45,7 +42,7 @@ function ProfileInfo() {
               <FontAwesomeIcon icon={faUserMinus} /> {0} seguindo{" "}
             </span>
             <span>
-              <FontAwesomeIcon icon={faFileCircleCheck} /> {4} {data.projects}
+              <FontAwesomeIcon icon={faFileCircleCheck} />  {data.projects.length}
             </span>
           </div>
         </div>
@@ -56,24 +53,21 @@ function ProfileInfo() {
         <div className={styles.utilities}>
           <p className={styles.utilitiesTitle}>Habilidades em</p>
           <ul className={styles.utilitiesList}>
-            {["Java", "C#", "JavasCript", "PHP"].map((languages) => (
-              <li>{languages}</li>
-            ))}
+            { data && data.profile.LanguageOfProfile.map((language) => <li><img src={`${filesUrl}/${language.Language.icon_url}`} alt={language.Language.label}/></li> )}
           </ul>
         </div>
         <div className={styles.utilities}>
           <p className={styles.utilitiesTitle}>Editors</p>
           <ul className={styles.utilitiesList}>
-            {["NoteBook", "vscode"].map((editors) => (
-              <li>{editors}</li>
+            {data && data.profile.ToolofProfile.map((editor) => (
+          <li><img src={`${filesUrl}/${editor.Tool.icon_url}`} alt={editor.Tool.label}/></li>
             ))}
           </ul>
         </div>
         <div className={styles.repository + " " + styles.utilities}>
           <p className={styles.utilitiesTitle}>Links e Perfis</p>
-
           <ul className={styles.links}>
-            {[{id: 1, src: '/img/facebook.svg', href: 'fb.me/jofredenovais', alt: 'facebook'}, {id: 2, src: '/img/instagram.svg', href: 'instagram.com/jofredenovais', alt: 'instagram'}, {id: 3, src: '/img/github.svg', alt: 'github', href: 'gitHub.com/jofrejaime'}].map((link) => (
+            {data && data.profile.LinksOfProfile.map((link) => (
               <li key={link.id}>
                 <a target={'_blank'} href={`http://${link.href}`}>
                   <img src={process.env.PUBLIC_URL + `${link.src}`} alt={link.alt}  style={{ width: "40px" }} />
@@ -82,7 +76,7 @@ function ProfileInfo() {
             ))}
           </ul>
         </div>
-        <footer className={styles.footerProfile}>Membro desde  03 03 2023</footer>
+        <footer className={styles.footerProfile}>{data && 'Membro Desde ' + data.profile.created_at}</footer>
       </div>
     </div>
   );

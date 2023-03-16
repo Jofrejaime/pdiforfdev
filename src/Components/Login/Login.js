@@ -21,11 +21,9 @@ function Login() {
     else setLogintype('login')
   }, [params]);
 
-
   if (login === true) return <Navigate to="/pdiforfdev" />;
   return (
     <section className={loginType}>
-    
       <div className={styles.forms}>
         <Routes>
           <Route path="/" element={<LoginForm />} />

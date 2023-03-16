@@ -111,11 +111,10 @@
 }
 
 .utilitiesList li {
-  padding: .4rem .5rem;
-  background-color: #ccc;
-  border-radius: 4px;
 }
-
+.utilitiesList li img{
+  width: 28px;
+}
 .links {
   display: flex;
   align-items: center;

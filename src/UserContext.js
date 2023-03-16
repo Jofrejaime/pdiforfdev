@@ -1,3 +1,4 @@
+
 import { set } from "lodash";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,32 +14,36 @@ export const UserStorage = ({ children }) => {
   const [loginType, setLogintype] = React.useState('login');
   const navigate = useNavigate();
 const {request} = useFetch()
-  const userLogout = React.useCallback(
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
+async function getUser(token) {
+  const { url, options } = USER_GET(token);
+  const response= await fetch(url, options);
+  const json = await response.json()
+  setData(json);
+  setLogin(true);
+}  
+const userLogout = React.useCallback(
     async function(){
       setData(null);
       setLoading(false);
-      setLogin(null);
+      setLogin(false);
       setError(null);
       window.localStorage.removeItem("token");
       navigate('/login')
     },[navigate]);
 
-  async function getUser(token) {
-    const { url, options } = USER_GET(token);
-    const {response, json} = await request(url, options);
-    console.log(json)
-    setData(json);
-    setLogin(true);
-  }
+  
   async function userLogin(username, password) {
     try {
       setError(null);
       setLoading(true);
       const { url, options } = TOKEN_POST({userName: username, password: password});
-      const {response, json} = await request(url, options);
+      const response = await fetch(url, options);
+      const json = await response.json()
       if (!response.ok) throw new Error(`Error: ${response.statusText}`);
-      window.localStorage.setItem("token", json);
-      await getUser(json);
+      window.localStorage.setItem("token", json.token);
+      await getUser(json.token);
       navigate('/')
     } catch (err) {
       setError(err.message);
@@ -57,9 +62,10 @@ const {request} = useFetch()
           setError(null);
           setLoading(true);
           const { url, options } =  TOKEN_VALIDATE_POST(token);
-          const {response, json} = await request(url, options);
+          const response = await fetch(url, options);
+          const json = await response.json()
           if (!response.ok) throw new Error("Token Invalido");
-          else await getUser(json);
+          else await getUser(token);
         } catch (err) {
           userLogout();
         } finally {
@@ -70,7 +76,7 @@ const {request} = useFetch()
       }
     }
     autoLogin()
-  }, [userLogout]);
+  }, [getUser, userLogout]);
     
 function setFiles( files){setFile(files)}
   return (

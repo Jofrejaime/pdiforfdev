@@ -7,7 +7,6 @@ function useFetch() {
   const request = useCallback(async(url, options)=>{
     let response;
     let json;
-    console.log(options, ' ', url)
     try{
         setError(null)
         setLoading(true)

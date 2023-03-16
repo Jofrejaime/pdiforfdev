@@ -32,7 +32,6 @@ function LoginCreate() {
   const [tools, setTools] = useState();
   const navigate = useNavigate();
   const { error, loading, request } = useFetch();
-  console.log(pais);
   // eslint-disable-next-line no-unused-expressions
   useEffect(() => {
     async function callAreas() {
@@ -91,8 +90,7 @@ function LoginCreate() {
     datas.append("bio", data.bio)
     api.post('user', datas).then((response)=>{
       if (response.ok) {
-      console.log(response.json())  
-      userLogin(data.userName, data.password)
+      userLogin(data.devName, data.password)
     }
     }).catch(err=>{
    

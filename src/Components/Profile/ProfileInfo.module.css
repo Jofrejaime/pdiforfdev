@@ -1,21 +1,20 @@
 .profile_info {
-  display: block;
-  justify-content: center;
-  align-items: center;
-
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: start;
 }
 
 .info {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 450px;
-  min-width: max-content;
+  min-width: 350px;
   text-align: center;
   font-family: var(--type-code1);
   background-color: #fff;
-  box-shadow: 0 0 8px .1px #ccc;
-  border-radius: 1rem;
+  box-shadow: 0 0 3px .1px #ccc;
+  border-radius: .4rem;
   padding: 1rem .5rem;
 }
 
@@ -53,9 +52,9 @@
 
 .profile_photo {
   max-width: calc(200px);
-  border-radius: 1rem;
+  border-radius: 50%;
   max-height: 200px;
-  box-shadow: 0 0 9px 2px #9B1476;
+  box-shadow: 0 0 5px .1px #333333bb;
 }
 
 .photo {
@@ -64,13 +63,12 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .username {
   font-size: 1rem;
   font-weight: 600;
-  
 }
 
 .description {
@@ -84,7 +82,7 @@
 }
 
 .seguir button {
-  width: 100%;
+width: 100%;
   border-radius: 3rem;
   padding: .5rem;
   font-family: var(--type-code3);
@@ -128,4 +126,25 @@
 
 .footerProfile {
   font-weight: 500;
+}
+@media (max-width: 850px){
+  .info{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+.status div{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  gap: 20px;
+}
+.status div span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+} 
 }

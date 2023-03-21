@@ -96,7 +96,7 @@ function Descover() {
       <div className={styles.userContent}>
     <div className={styles.photo}>
       <picture>
-        <img src={`${filesUrl}/users/${user.profile.photo_url}`} alt={user.userName}/>
+        <img src={`${filesUrl}${user.profile.photo_url}`} alt={user.userName}/>
       </picture>
     </div>
     <div className={styles.info}><div className={styles.userInfo}>

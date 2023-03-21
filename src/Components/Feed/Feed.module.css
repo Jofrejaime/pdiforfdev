@@ -1,0 +1,14 @@
+.containerFeed{
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 40px
+}
+@media (max-width: 850px){
+  .containerFeed{
+    display: block;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+}

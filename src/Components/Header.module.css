@@ -5,7 +5,6 @@
 }
 
 .header {
-  background-color: #fff;
   font-family: var(--type-code1);
   box-shadow: 0 1px 3px rgba(0 0 0 /15%);
   width: 100%;
@@ -15,7 +14,6 @@
   align-items: center;
   justify-content: center;
 }
-
 @media (max-width: 45rem) {
   .header {
     top: 0;
@@ -25,7 +23,7 @@
     justify-content: space-between;
     padding-right: 1.5rem;
     padding-left: 1.5rem;
-    ;
+ 
   }
 
   .logo {
@@ -79,9 +77,6 @@
   align-items: center;
   justify-content: space-between;
 }
-
-
-
 .profile {
   background-color: #333;
   display: inline-block;

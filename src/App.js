@@ -1,8 +1,7 @@
-import react from "react";
 import "./App.css";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/Login/Login";
 import Notifications from "./Components/Notifications/Notifications";
@@ -11,6 +10,7 @@ import { UserStorage } from "./UserContext";
 import React from "react";
 import User from "./Components/User/User";
 import MessageIndex from "./Components/Message/MessageIndex";
+import ProtectedRoute from "./Components/Helper/ProtectedRoute";
 function App() {
   return (
     <div>
@@ -19,11 +19,11 @@ function App() {
           <Header />
           <Routes>
             <Route path="login/*" element={<Login />} />
-            <Route path="/" element={<Home />} />
-            <Route path={"pdiforfdev"} element={<Home />} />
-            <Route path="user/*" element={<User />} />
-            <Route path="message/*" element={<MessageIndex />} />
-            <Route path="notification/*" element={<Notifications />} />
+            <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path={"pdiforfdev"} element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="user/*" element={<ProtectedRoute><User /> </ProtectedRoute>} />
+            <Route path="message/*" element={<ProtectedRoute><MessageIndex /></ProtectedRoute>} />
+            <Route path="notification/*" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
             <Route path="discover" element={<Discover />} />
           </Routes>
           <Footer />

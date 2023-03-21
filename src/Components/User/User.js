@@ -5,8 +5,7 @@ import UserHeader from "./UserHeader";
 import UserCreateAProject from "./UserCreateAProject";
 import UserDefinition from "./UserDefinition";
 import UserStats from "./UserStats";
-import ProfileInfo from "../Profile/ProfileInfo";
-import Trabalhos from "../Profile/Trabalhos";
+
 function User() {
   return (
     <section className={"container"}>

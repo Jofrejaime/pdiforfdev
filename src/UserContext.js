@@ -1,9 +1,6 @@
-
-import { set } from "lodash";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from "./Components/services/api";
-import useFetch from "./Hooks/useFetch";
 export const UserContext = React.createContext();
 export const UserStorage = ({ children }) => {
   const [data, setData] = React.useState(null);
@@ -13,7 +10,6 @@ export const UserStorage = ({ children }) => {
   const {file, setFile} = React.useState([])
   const [loginType, setLogintype] = React.useState('login');
   const navigate = useNavigate();
-const {request} = useFetch()
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
 async function getUser(token) {
@@ -56,14 +52,13 @@ const userLogout = React.useCallback(
   
   React.useEffect(() => {
     async function autoLogin() {
-      const token = window.localStorage.getItem("token");
+      const token = window.localStorage.getItem("token")
       if (token) {
         try {
           setError(null);
           setLoading(true);
           const { url, options } =  TOKEN_VALIDATE_POST(token);
           const response = await fetch(url, options);
-          const json = await response.json()
           if (!response.ok) throw new Error("Token Invalido");
           else await getUser(token);
         } catch (err) {
@@ -76,7 +71,7 @@ const userLogout = React.useCallback(
       }
     }
     autoLogin()
-  }, [getUser, userLogout]);
+  }, [userLogout]);
     
 function setFiles( files){setFile(files)}
   return (

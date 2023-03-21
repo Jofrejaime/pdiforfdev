@@ -5,12 +5,12 @@
   background-image: url(../../assets/img/login.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:cover;
   background-position: 50% 50%;
   min-width: 40rem;
   gap: 2rem;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 @media (max-width: 40rem){
   .login{
@@ -22,15 +22,6 @@
     width:unset;
     height: unset;
   }
-}
-
-login::before {
-  display: block;
-  content: '';
-  background: url('../../assets/img/login.jpg') no-repeat center center;
-  background-size: cover;
-  outline: none;
-  height: 100vh;
 }
 
 .cadastro {

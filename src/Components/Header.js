@@ -12,13 +12,12 @@ import { NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as Logo } from "../assets/svg/logo.svg";
 import useMedia from "../Hooks/useMedia";
 import Notification from '../Components/Notifications/Notifications'
-import Avatar from '../assets/img/image.jpg'
 import { useContext } from "react";
 import { UserContext } from "../UserContext";
 import { filesUrl } from "./services/api";
 // Jofre
 function Header() {
-  const {data} = useContext(UserContext)
+  const {data, login} = useContext(UserContext)
  
   const [display, setDisplay] = React.useState("");
   const [mobileMenu, setMobilemenu] = React.useState(false);
@@ -46,7 +45,7 @@ function Header() {
             }`}
             onClick={() => setMobilemenu(!mobileMenu)}
           ></button>{" "}
-          <NavLink to={"/"} className={styles.logo}>
+          <NavLink to={login? "/": '/login'} className={styles.logo}>
             <Logo />
           </NavLink>{" "}
         </header>
@@ -60,27 +59,27 @@ function Header() {
           style={{ display: display }}
         >
           {!mobile && (
-            <NavLink to={"/"} className={styles.logo}>
+            <NavLink to={ login? "/":'login'} className={styles.logo}>
               
               <Logo />
               
             </NavLink>
           )}
           <div className={styles.link}>
-            <NavLink to="/" className={styles.link_a}>
+            <NavLink to={login? "/": 'login'} className={styles.link_a}>
               <FontAwesomeIcon icon={faHome} />
               <p>home</p>
             </NavLink>
           </div>
           <div className={styles.link}>
-            <NavLink to="discover" className={styles.link_a}>
+            <NavLink to={"discover"} className={styles.link_a}>
               <FontAwesomeIcon icon={faBoxOpen} />
               <p>discover</p>
             </NavLink>
           </div>
 
           <div className={styles.link +' '+ styles.notification}>
-            <NavLink to={mobile? 'notification':'#'} className={styles.link_a}>
+            <NavLink to={mobile? (login? 'notification': 'login'):'#'} className={styles.link_a}>
               <FontAwesomeIcon icon={faBell} />
               <p>notification</p>
             </NavLink>
@@ -90,14 +89,14 @@ function Header() {
             
           </div>
           <div className={styles.link}>
-            <NavLink to={"message"} className={styles.link_a}>
+            <NavLink to={login? "message":'login'} className={styles.link_a}>
               <FontAwesomeIcon icon={faEnvelope} />
               <p>message</p>
             </NavLink>
           </div>
           {mobile ? (
             <div className={styles.link}>
-              <NavLink to={"user"} className={styles.link_a}>
+              <NavLink to={login? "user":'login'} className={styles.link_a}>
                 <FontAwesomeIcon icon={faPersonBooth} />
                 <p>profile</p>
               </NavLink>

@@ -50,7 +50,7 @@ function UserCreateAProject() {
   const handleSubmit = (event) => {
     event.preventDefault();
     
-  fetch('http://localhost:3001/user', 
+  fetch('http://localhost:3001', 
   {
       method: 'POST',
       headers: {

@@ -40,15 +40,15 @@ function ProfileInfo() {
         <div className={styles.status}>
           <div>
             <span>
-              <FontAwesomeIcon icon={faUsers} /> <p>{0} seguidores </p>
+            <p>Seguidores </p>{0} 
             </span>
             <span>
-              <FontAwesomeIcon icon={faUserMinus} />
-              <p>{0} seguindo </p>
+           
+              <p>Seguindo </p>{0}
             </span>
             <span>
-              <FontAwesomeIcon icon={faFileCircleCheck} />
-              <p>{data.projects.length} </p>
+
+              <p>Projectos</p>{data.projects.length}
             </span>
           </div>
         </div>

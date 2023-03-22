@@ -1,5 +1,4 @@
 import React from "react";
-import { useForm } from "react-hook-form";
 import styles from "./Input.module.css";
 
 function Input({ label, type, reg, name, value, onChange, error, onBlur, ...props }) {

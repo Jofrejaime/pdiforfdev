@@ -3,6 +3,7 @@ import styles from "./Home.module.css";
 import Top10 from "./Top10Dev/Top10";
 
 import Projects from "./Projects/Projects";
+import Feed from "./Feed/Feed";
 function Home() {
 
   return (
@@ -15,7 +16,7 @@ function Home() {
         </div>
       </section>
       <section className="container">
-          <Projects />
+      <Feed/>
       </section>
     
     </div>

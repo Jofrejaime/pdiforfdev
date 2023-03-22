@@ -1,8 +1,11 @@
 import { faFileCircleCheck, faSearch, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
+import { NavLink, Route, Routes } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import useForm from "../../Hooks/useForm";
+import { UserContext } from "../../UserContext";
 import Button from "../Form/Button";
 import Input from "../Form/Input";
 import Select from "../Form/Select";
@@ -17,6 +20,7 @@ function Descover() {
   const [languages, setLanguages] = useState([]) 
   const {error, loading, request} = useFetch()
   const [getUsers, setUsers] = useState([])
+  const {data} = useContext(UserContext)
    useEffect(()=>{
   async  function callAreas(){
       const {url, options} = GET_AREAS();
@@ -38,22 +42,21 @@ function Descover() {
       const {response, json} = await request(url, options);
       if(response.ok){
         setUsers(json)
-        console.log(json)
       }
     }
     callUsers()
     callLanguages()
     callAreas()
-  },[]) 
-  
+  },[request]) 
     function handleSubmit(event) {
     event.preventDefault();
   }
+
   return (
     <section className="container">
       <div className={styles.preChose}>
         {
-        areas && areas.map(area => <  SomeArea src={`${filesUrl}/${area.image_url}`} className={" titleProject"}>
+        areas && areas.map(area => <  SomeArea key={area.value} src={`${filesUrl}/${area.image_url}`} className={" titleProject"}>
         <div className={styles.area}>{area.label}</div>
       </SomeArea>)
         }
@@ -80,7 +83,7 @@ function Descover() {
 
       <div className={styles.filters}>
         <div className={styles.filtersSection}>
-          <Select
+          <Select 
             className={styles.selectLanguages}
             name="linguagens"
             options={languages}
@@ -92,12 +95,13 @@ function Descover() {
     <div className={styles.users}>
       <div className={styles.userContainer}>
          {getUsers && getUsers.map((user) => 
-    <div className={styles.user}>
+    <div style={data && data.id === user.id? {display: 'none'}: {display: 'flex'}} key={user.id} className={styles.user}>
       <div className={styles.userContent}>
     <div className={styles.photo}>
+     <NavLink to={`user/username=${user.userName7}`}>
       <picture>
         <img src={`${filesUrl}${user.profile.photo_url}`} alt={user.userName}/>
-      </picture>
+      </picture></NavLink>
     </div>
     <div className={styles.info}><div className={styles.userInfo}>
       <div className={styles.username}>{`</${user.userName}>`}</div>

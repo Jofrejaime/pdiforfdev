@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const types = {
   email: {
@@ -11,15 +11,15 @@ const types = {
     message:
       "A senha precisa ter 1 caracter maíusculo, 1 minúsculo e 1 digito. Com no mínimo 8 caracteres.",
   },
-  select:{
-    regex: '',
-    message: 'Seleciona uma opção',
-  }
+  select: {
+    regex: "",
+    message: "Seleciona uma opção",
+  },
 };
 
 const useForm = (type) => {
-  const [value, setValue] = React.useState("");
-  const [error, setError] = React.useState(null);
+  const [value, setValue] = React.useState('');
+  const [error, setError] = React.useState('');
 
   function validate(value) {
     if (type === false) return true;
@@ -38,12 +38,10 @@ const useForm = (type) => {
   function onChange({ target }) {
     if (error) validate(target.value);
     setValue(target.value);
-      
   }
 
   return {
     value,
-    setValue,
     onChange,
     validate: () => validate(value),
     onBlur: () => validate(value),

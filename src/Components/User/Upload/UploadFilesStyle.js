@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import Avatar from '../../../assets/img/avatar.jpg'
 const messageColor = {
   default: "#999",
   error: "#e57878",

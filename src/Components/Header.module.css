@@ -14,6 +14,9 @@
   align-items: center;
   justify-content: center;
 }
+.bg_w{
+  background-color: #fff;
+}
 @media (max-width: 45rem) {
   .header {
     top: 0;
@@ -21,9 +24,8 @@
     align-items: center;
     background: #fff;
     justify-content: space-between;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
  
+ padding: 1rem 1.5rem;
   }
 
   .logo {
@@ -68,7 +70,7 @@
   transition: .6s;
 }
 
-.link_a:hover {
+.link_a:hover, .link_a:focus {
   color: #0046CC;
 }
 
@@ -93,7 +95,7 @@
 .profile picture img{
   border-radius: 50%;
 }
-.profile:hover {
+.profile:hover, .profile:focus{
   outline: none;
   box-shadow: 0 0 0 3px #99afdd;
 }

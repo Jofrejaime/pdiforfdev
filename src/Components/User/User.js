@@ -11,7 +11,7 @@ function User() {
     <section className={"container"}>
       <UserHeader />
       <Routes>
-        <Route path="/" element={<Feed />} />
+        <Route path="/:username" element={<Feed />} />
         <Route path="createaproject" element={<UserCreateAProject />} />
         <Route path="definition" element={<UserDefinition />} />
         <Route path="createaproject" element={<UserCreateAProject />} />

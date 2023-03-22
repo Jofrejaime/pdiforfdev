@@ -1,7 +1,8 @@
-.smooth{
+.smooth {
   background-color: rgba(3, 3, 3, .5);
 }
-.container{
+
+.container {
   background: #fff;
   height: 100%;
   padding: 2rem;
@@ -9,47 +10,56 @@
   border-radius: 1rem;
   margin: 2rem;
 }
-@media(max-width: 45rem){
-  .container{
+
+@media(max-width: 45rem) {
+  .container {
     margin: 0;
     padding: 1;
-
+    border-radius: initial;
   }
 }
-.form{
+
+.form {
   margin-bottom: 2rem;
   margin-top: 2rem;
 
 }
-.form > button{
+
+.form>button {
   width: 100%;
 }
-.perdeu{
+
+.perdeu {
   display: inline-block;
   color: #666;
   padding: 0.5rem 0;
   line-height: 1;
 }
-.perdeu::after{
+
+.perdeu::after {
   content: '';
   height: 2px;
   width: 100%;
   background-color: currentColor;
   display: block;
 }
-.cadastro{
+
+.cadastro {
   margin-top: 4rem;
 }
-.cadastro p{
+
+.cadastro p {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-.subtitle{
+
+.subtitle {
   font-family: var(--type-code2);
   line-height: 1;
   font-size: 2rem;
 }
-.subtitle::after{
+
+.subtitle::after {
   content: '';
   display: block;
   background: #ddd;

@@ -14,16 +14,18 @@ body {
   --type-code1: 'JetBrains Mono', 'Cascadia Code', 'Anonymous Pro', Menlo, Monaco, 'Courier New', monospace;
   --type-code2: 'Fira Sans', 'Fira Code', 'Source Code Pro', Consolas, source-code-pro, Menlo, Monaco, 'Courier New',
     monospace;
-  --type-code3: 'Source Code Pro','Anonymous Pro', monospace;
+  --type-code3: 'Source Code Pro', 'Anonymous Pro', monospace;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  
+
 }
+
 img {
   object-fit: cover;
   height: 100%;
   width: 100%;
 }
+
 html,
 body,
 #root {
@@ -36,7 +38,7 @@ h3,
 h4,
 p {
   margin: 0;
-  
+
 }
 
 ul,
@@ -48,11 +50,6 @@ li {
 
 a {
   text-decoration: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
 }
 
 button,
@@ -139,15 +136,18 @@ label {
   background-color: #ccc;
   cursor: pointer;
 }
+
 .gitHubLink {
   text-align: center;
   font-size: clamp(.875rem, 1rem + 2vw, 1rem);
   font-family: var(--type-code3);
 }
-.gitHubLink a{
+
+.gitHubLink a {
   color: #fff;
   font-weight: 500;
 }
+
 .error {}
 
 @keyframes animeLeft {

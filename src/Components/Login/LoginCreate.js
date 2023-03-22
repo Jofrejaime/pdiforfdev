@@ -3,19 +3,17 @@ import Button from "../Form/Button";
 import { UserContext } from "../../UserContext";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
-import { Checkbox, Radio } from "pretty-checkbox-react";
+import { Radio } from "pretty-checkbox-react";
 import styles from "./LoginCreate.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faPerson } from "@fortawesome/free-solid-svg-icons";
-import { json, Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import validator from "validator";
-import { set } from "lodash";
 import api, {
   GET_AREAS,
   GET_COUNTRIES,
   GET_LANGUAGES,
   GET_TOOLS,
-  USER_CREATE,
 } from "../services/api";
 import useFetch from "../../Hooks/useFetch";
 import Error from "../Helper/Error";
@@ -59,21 +57,20 @@ function LoginCreate() {
     async function callCountries() {
       const { url, options } = GET_COUNTRIES();
       const { response, json } = await request(url, options);
-      if (response.ok) {
+      if (response.ok)
         setIPais(json);
-      } else console.log("error");
+      
     }
     callCountries();
     callLanguages();
     callAreas();
     callTools();
-  }, []);
+  }, [request]);
 
   async function onSubmit(data) {
     const areas = selectedAreas.map((area) => area.label);
     const languages = selectedLanguages.map((language) => language.label);
     const tools = selectedTools.map((tool) => tool.label);
-    console.log(data, areas, languages, tools);
 
     const datas = new FormData();
     datas.append("file", data.profile[0]);
@@ -89,12 +86,11 @@ function LoginCreate() {
     datas.append("genderName", data.gender);
     datas.append("bio", data.bio)
     api.post('user', datas).then((response)=>{
-      if (response.ok) {
+      if (response) {
       userLogin(data.devName, data.password)
     }
     }).catch(err=>{
-   
-      console.log(err)
+      console.Error(err, 'errr')
     })
     
   }
@@ -105,7 +101,7 @@ function LoginCreate() {
     formState: { errors },
     watch,
   } = useForm();
-  console.log({ ...errors });
+
   const watchPassword = watch("password");
   return (
     <section className={styles.criarConta + " animeLeft"}>
@@ -134,7 +130,7 @@ function LoginCreate() {
             <div className={styles.formheader}>
               <div className={styles.title}>
                 <div>
-                  <h1 className="title">/Cadastre-se</h1>
+                  <h1 className="title">Cadastre-se</h1>
                 </div>
               </div>
               <div className={styles.login}>
@@ -241,9 +237,6 @@ function LoginCreate() {
                   onChange={(item) => setIPais(item.label)}
                 />
               </div>
-              <div className={styles.inputBox}>
-                <label></label>
-              </div>
             </div>
             <div className={styles.genderGroup}>
               <label> Escola seu Genero</label>
@@ -266,8 +259,7 @@ function LoginCreate() {
 
             <div className={styles.next}>
               <Button onClick={() => setSlide(2)}>
-                /avançar/profissão
-                <FontAwesomeIcon icon={faArrowRight} />
+                avançar
               </Button>
             </div>
           </section>

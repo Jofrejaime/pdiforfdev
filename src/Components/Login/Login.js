@@ -32,7 +32,6 @@ function Login() {
           <Route path="reset" element={<LoginPassReset />} />
         </Routes>
        </div>
-      
     </section>
   );
 }

@@ -1,6 +1,6 @@
 .login {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: end;
   background-image: url(../../assets/img/login.jpg);
   background-attachment: fixed;
@@ -8,9 +8,9 @@
   background-size:cover;
   background-position: 50% 50%;
   min-width: 40rem;
-  gap: 2rem;
+  gap: 1rem;
   width: 100vw;
-  height: 100%;
+  height:100%;
 }
 @media (max-width: 40rem){
   .login{
@@ -25,12 +25,23 @@
 }
 
 .cadastro {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../assets/img/criar.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: 50% 50%;
+  min-width: 40rem;
+  gap:1rem;
+  width: 100vw;
+  height: 100%;
 }
-
-.cadastro::after {
+.cadastro .Login_forms__5MXFL{
+  padding:0;
+}
+cadastro::after {
   content: '';
   display: block;
   font-weight: bold;
@@ -47,11 +58,6 @@
 
 }
 
-
-.cadastro .Login_forms__5MXFL {
-max-width: 40rem;
-}
-
 @media (max-width: 40rem) {
 
   .login,
@@ -60,28 +66,8 @@ max-width: 40rem;
     min-width: 10rem;
   }
 
- 
-  .cadastro::after {
-   display: none;
-  }
-  .cadastro::before, .login::before{
-    display: block;
-  content: '';
-  align-items: center;
-  justify-content: center;
-  padding-top: 3rem;
-  max-width: 100vw;
-  height: 10rem;
-    background: url('../../assets/img/pdilogoCinza.png') no-repeat center center;
-    background-size:cover;
-    background-position: center center;
-    outline: none;
-    box-shadow: 0 0 0 0;
-    border: none;
-    border-radius: 0;
-
-  }
-  .forms {
-    
+  .cadastro{
+    gap: initial;
+    display: initial;
   }
 }

@@ -50,8 +50,7 @@ function Header() {
           </NavLink>{" "}
         </header>
       )}
-
-      <header className={`${ mobile ? '':styles.header}`} >
+<section className={styles.bg_w}> <header className={`${ mobile ? '':styles.header}`} >
         <nav
           className={`${
             mobile ? styles.navMobile : `${styles.nav} container`
@@ -102,15 +101,15 @@ function Header() {
               </NavLink>
             </div>
           ) : (
-            <NavLink to={"user"} className={styles.profile}>
+            <NavLink to={`user/username=${data && data.userName}`} className={styles.profile}>
              <picture>
              {data &&  <img src={`${filesUrl}${data.profile.photo_url}`} alt={data.userName}/>}
-           
              </picture>
             </NavLink>
           )}
         </nav>
-      </header>
+      </header></section>
+     
     </>
   );
 }

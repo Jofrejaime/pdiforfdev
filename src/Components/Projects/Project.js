@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import styles from "./Projects.module.css";
 import Avatar from "../../assets/img/image.jpg";
-import Pdi from "../../assets/img/pdi.jpg";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faStar } from "@fortawesome/free-solid-svg-icons";
-function Project() {
+import { filesUrl } from "../services/api";
+function Project({project, setModalProject}) {
   const [option, setOption] = useState(false);
+  function handleClick(){
+    setModalProject(project)
+  }
   return (
-    <div className={styles.projectContainer}>
+    <div className={styles.projectContainer} onClick={handleClick}>
       <div className={styles.project}>
         <div className={styles.projectCover}>
           <div className={styles.coverWrapper}>
             <div className={styles.coverContent}>
               <div className={styles.colorDomain}></div>
               <picture>
-                <img src={Pdi} />
+                <img src={filesUrl + project.icon} />
               </picture>
               <div className={styles.coverOverlay}>
                 <div className={styles.projectCoverNeue}></div>
@@ -36,7 +39,7 @@ function Project() {
                 <div className={styles.projectDetails}>
                   <div className={styles.projectInfoName}>
                     <NavLink to={"#"} style={{}}>
-                      Projecto
+                   {project.label}
                     </NavLink>
                   </div>
                 </div>
@@ -52,7 +55,7 @@ function Project() {
                       <span className={styles.Avatar}>
                         <img src={Avatar} />
                       </span>
-                      <NavLink to={"user"}>Jofre Jaime</NavLink>
+                      <NavLink to={"user"}>{project.label}</NavLink>
                     </span>
                   </div>
                 </div>
@@ -61,9 +64,9 @@ function Project() {
             <div className={styles.statsOfProject}>
               <div className={styles.stats}>
                 <FontAwesomeIcon icon={faStar} />
-                <span>3,5mil</span>
+                <span>{1}</span>
                 <FontAwesomeIcon icon={faComment} />
-                <span>5mil</span>
+                <span>{2}</span>
               </div>
             </div>
           </div>

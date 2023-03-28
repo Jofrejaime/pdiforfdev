@@ -14,7 +14,7 @@ function ProjectComments({ id, commentsList }) {
   return (
     <div className='container'>
       <div className={styles.comments } >
-        <ul className={styles.commentsList}>
+        <ul className={styles.commentsList} ref={commentsSection}>
           {comments.map((comment) => (
             <li key={comment.id} className={styles.comment}>
               <div className={styles.headerComment}>

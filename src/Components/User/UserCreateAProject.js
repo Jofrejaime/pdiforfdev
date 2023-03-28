@@ -3,74 +3,90 @@ import styles from "./UserCreateAProject.module.css";
 import reactStringReplace from "react-string-replace";
 import Input from "../Form/Input";
 import TextArea from "../Form/TextArea";
-import Select from "../Form/Select";
 import useMedia from "../../Hooks/useMedia";
 import useForm from "../../Hooks/useForm";
 import Upload from "./Upload/Upload";
 import Button from "../Form/Button";
+import Select from "react-select";
 import FileList from "./FileList/FileList";
-import Multiselect from "../Form/Multiselect";
 import { SomeArea } from "../Discover/DiscoverStyles";
 import GIT from "../../assets/img/areasImages/github.webp";
-import MultiselectLinguagens from "../Form/MultiSelectLinguagens";
-const areas = [
-  {
-    value: 1,
-    label: "Mobile",
-  },
-  { value: 2, label: "Web" },
-  { value: 3, label: "Cloud Computing" },
-];
-const techs = [
-  { value: 1, label: "Java", url: "./react.png" },
-  { value: 2, label: "Javascript", url: "./react.png" },
-];
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
+import {
+  CREATE_PROJECT,
+  filesUrl,
+  GET_AREAS,
+  GET_LANGUAGES,
+  GET_PROJECTS,
+  GET_TOOLS,
+} from "../services/api";
+import useFetch from "../../Hooks/useFetch";
+import { useEffect } from "react";
 
-const ferramentas = [
-  { ordem: 1, nome: "notebook" },
-  { ordem: 2, nome: "vscode" },
-];
 function UserCreateAProject() {
-  const [area, setArea] = React.useState([]);
-  const [tech, setTechs] = React.useState([]);
-  const [ferramenta, setFerramenta] = React.useState([]);
+  const [areas, setAreas] = React.useState([]);
+  const [languages, setLanguages] = React.useState([]);
+  const [tools, setTools] = React.useState([]);
+  const [selectedAreas, setSelectedAreas] = useState([]);
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
+  const [selectedTools, setSelectedTools] = useState([]);
   const mobile = useMedia("(max-width: 670px)");
   const [prev, setPrev] = useState(false);
   const titulo = useForm();
   const desc = useForm();
-  const github = useForm();
+  const repository = useForm();
   const [file, setFiles] = useState(null);
-
-
+  const { data } = useContext(UserContext);
+  const { loading, request } = useFetch();
   const callFiles = (files) => {
     setFiles(files);
-    console.log(files.File)
   };
-
+  useEffect(() => {
+    async function callAreas() {
+      const { url, options } = GET_AREAS();
+      const { response, json } = await request(url, options);
+      if (response.ok) {
+        setAreas(json);
+      }
+    }
+    async function callLanguages() {
+      const { url, options } = GET_LANGUAGES();
+      const { response, json } = await request(url, options);
+      if (response.ok) {
+        setLanguages(json);
+      }
+    }
+    async function callTools() {
+      const { url, options } = GET_TOOLS();
+      const { response, json } = await request(url, options);
+      if (response.ok) {
+        setTools(json);
+      }
+    }
+    callAreas();
+    callLanguages();
+    callTools();
+  }, [request]);
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-  fetch('http://localhost:3001', 
-  {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }, 
-       body: JSON.stringify({
-        email: titulo.value,
-        userName: desc.value,
-        
-      })
-    })
-      .then((response) =>{
-        console.log(response)
-        return response.json()
-      })
-      .then((json)=>{
-        console.log(json)
-        return json
-      })
-   
+    const areas = selectedAreas.map((area) => area.label);
+    const languages = selectedLanguages.map((language) => language.label);
+    const tools = selectedTools.map((tool) => tool.label);
+
+    console.log(data.id, titulo.value, desc.value, repository.value);
+    const { url, options } = CREATE_PROJECT({
+      userId: data.id,
+      title: titulo.value,
+      description: desc.value,
+      repository: repository.value,
+      userName: data.userName,
+      tools: tools,
+      areas: areas,
+      languages: languages,
+    });
+
+    const { response, json } = request(url, options);
   };
   return (
     <>
@@ -107,35 +123,36 @@ function UserCreateAProject() {
             placeholder="Descreva o teu projeto"
             {...desc}
           />
-
           <Upload
             label={"Adiciona Aquivos [imagem obrigatorio]"}
             callFiles={callFiles}
+            userName={data.userName}
+            projectTitle={titulo.value}
           />
           <Input
             label={"GitHub [opcional]"}
             placeholder="ex: htttps://www.github.com/username/repository"
-            name={"gitHub"}
-            {...github}
+            name={"repository"}
+            {...repository}
           />
 
-          <MultiselectLinguagens
-            buscarLinguagens={()=>{}}
-            label={"Linguagens usadas"}
-            options={techs}
+          <Select
+            options={languages}
+            isMulti
             placeholder={"Linguagens"}
-          />
-          <Multiselect
-            buscarAreas={()=>{}}
-            options={areas}
-            placeholder={"Áreas"}
-            label="Areas de desenvolvimento"
+            onChange={(item) => setSelectedLanguages(item)}
           />
           <Select
-            label={"Ferramenta usadas [opcional]"}
-            options={ferramentas}
-            setValue={setFerramenta}
-            name={"Ferramentas"}
+            options={areas}
+            isMulti
+            placeholder={"Áreas"}
+            onChange={(item) => setSelectedAreas(item)}
+          />
+          <Select
+            placeholder={"Ferramentas"}
+            options={tools}
+            isMulti
+            onChange={(item) => setSelectedTools(item)}
           />
           <Button>Criar</Button>
         </form>
@@ -155,22 +172,43 @@ function UserCreateAProject() {
             )}
             <div className={styles.git}>
               <SomeArea src={GIT}>
-                {github.value && (
-                  <a target={"_blank"} href={`http://www.${github.value}`}>
+                {repository.value && (
+                  <a
+                    target={"_blank"}
+                    href={`http://www.${repository.value}`}
+                    rel="noreferrer"
+                  >
                     <div>
                       <p className={"gitHubLink"}>
-                        {github.value ? github.value : ""}
+                        {repository.value ? repository.value : ""}
                       </p>
                     </div>{" "}
                   </a>
                 )}
               </SomeArea>
+            </div> <div className="areas">
+                {" "}
+                {selectedAreas.map((area) => (
+                  <SomeArea
+                    key={area.value}
+                    src={`${filesUrl}/${area.image_url}`}
+                    className={"titleProject"}
+                  >
+                    <div className={styles.area}>{area.label}</div>
+                  </SomeArea>
+                ))}
+              </div>
+            <div className={"habilities"}>
+
+            <div className="languages">
+              <h4>Linguagens do Projeto</h4>
+              <div className="images">
+              {selectedLanguages.map(language => <img src={filesUrl+language.icon_url } alt={language.label}/>)}</div></div>
+              <div className="tools">
+                <h4>Ferramentas do Projecto</h4>                
+                <div className="images">{selectedTools.map(tool => <img src={filesUrl+tool.icon_url} alt={tool.label} />)}</div></div>
             </div>
-            <p className="areas">{tech}</p>
-            <p className={"areas"}>{area}</p>
-            <p className={"areas"}>
-              <p>{ferramenta}</p>
-            </p>
+           
           </div>
         )}
       </section>

@@ -6,8 +6,6 @@ import Input from "../Form/Input";
 import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
 import Error from "../Helper/Error";
-import stylesBtn from "../../Components/Form/Button.module.css";
-import { TOKEN_POST, USER_GET } from "../services/api";
 function LoginForm() {
   const username = useForm();
   const password = useForm();
@@ -22,7 +20,6 @@ function LoginForm() {
   }
 
   return (
-     
     <section className={styles.container + " animeLeft"}>
       <h1 className="title">Login</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -45,13 +42,15 @@ function LoginForm() {
       </Link>
       <div className={styles.cadastro}>
         <h2 className={styles.subtitle}>Cadastre-se</h2>
-        <p>Ainda não possui conta? cadastra-se na plataforma</p>{" "}
-        <Link className={stylesBtn.button} to={"/login/createAccount"}>
-          Cadastro
-        </Link>
+        <p>
+          Ainda não possui conta?{" "}
+          <Link className={styles.cadastre_se} to={"/login/createAccount"}>
+            cadastra-se
+          </Link>{" "}
+          na plataforma
+        </p>{" "}
       </div>
     </section>
-   
   );
 }
 

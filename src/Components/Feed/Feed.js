@@ -9,7 +9,7 @@ function Feed() {
   const [modalProject, setModalProject] = useState(null)
   return (
     <section className={styles.containerFeed}>
-     { modalProject &&  <ProjectModal project={modalProject}/>}
+     { modalProject &&  <ProjectModal project={modalProject} setModalProject={setModalProject}/>}
       <Projects  setModalProject={setModalProject}/>
       </section>
   );

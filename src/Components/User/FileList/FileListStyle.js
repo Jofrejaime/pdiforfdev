@@ -69,7 +69,15 @@ export const Preview = styled.div`
   background-size: cover;
   background-position: 50% 50%;
   margin-right: 10px;
-`;
+`; 
+export const  Img = styled.img`
+  width: 100%;
+  height: 500px;
+  border-radius:2px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;`
+  ;
 export const Image = styled.div`
   width: 100%;
   height: 500px;

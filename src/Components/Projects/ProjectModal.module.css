@@ -1,0 +1,16 @@
+.projectModal {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  background-color: #424242;
+  z-index: 1000;
+  /*padding: 2rem calc(4rem + 15px) 2rem 4rem;*/
+  overflow-y: auto;
+  color: #fff;
+}
+.without{
+  overflow: hidden;
+}

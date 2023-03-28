@@ -14,7 +14,6 @@ function User() {
         <Route path="/:username" element={<Feed />} />
         <Route path="createaproject" element={<UserCreateAProject />} />
         <Route path="definition" element={<UserDefinition />} />
-        <Route path="createaproject" element={<UserCreateAProject />} />
         <Route path="stats" element={<UserStats />} />
       </Routes>
     </section>

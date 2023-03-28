@@ -61,6 +61,47 @@ select {
   color: #333;
 }
 
+.habilities {
+  display: flex;
+  align-items:normal;
+  justify-content: center;
+  gap: 20px;
+overflow: auto;
+font-size:  clamp(1rem, 1.1rem + 1vw, 1.1rem);
+font-family: var(--type-code3);
+flex-wrap: wrap;
+}
+.description{
+  font-family: var(--type-code2);
+font-weight: 400;
+}
+.habilities div {
+  max-width: 300px;
+  background-color: #fff;
+  padding: 10px;
+  flex-wrap: wrap;
+  text-align: center;
+  gap: 10px;
+  color: #333;
+  border-radius: 4px;
+}
+.languages{
+flex-wrap: wrap;
+}
+ .images{
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+}
+.images img{
+  width: 34px;
+}
+.areas{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 label {
   font-family: var(--type-code1);
 }

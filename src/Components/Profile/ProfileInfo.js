@@ -11,6 +11,7 @@ import Button from "../Form/Button";
 import { useContext } from "react";
 import { UserContext } from "../../UserContext";
 import { filesUrl } from "../services/api";
+import formatDate from "../Helper/formatDate";
 
 function ProfileInfo() {
   const { data } = useContext(UserContext);
@@ -28,7 +29,7 @@ function ProfileInfo() {
         <p className={styles.profile_name}>
           {data && data.profile.firstName + " " + data.profile.lastName}
         </p>
-        <p className={styles.username}>{data && `</${data.userName}>`}</p>
+        <p className={styles.username}>{data && data.userName}</p>
         <div className={styles.profile_area}>
           {data &&
             data.profile.AreaofProfile.map((area) => <p>{area.areaLabel}</p>)}
@@ -102,7 +103,7 @@ function ProfileInfo() {
           </ul>
         </div>
         <footer className={styles.footerProfile}>
-          {data && "Membro Desde " + data.profile.created_at.split("T")[0]}
+          {data && "Membro Desde " + formatDate(data.profile.created_at)}
         </footer>
       </div>
     </div>

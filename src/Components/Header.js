@@ -101,7 +101,7 @@ function Header() {
               </NavLink>
             </div>
           ) : (
-            <NavLink to={`user/username=${data && data.userName}`} className={styles.profile}>
+            <NavLink to={`user/${data && data.userName}`} className={styles.profile}>
              <picture>
              {data &&  <img src={`${filesUrl}${data.profile.photo_url}`} alt={data.userName}/>}
              </picture>

@@ -5,16 +5,34 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
+import { Link } from "react-router-dom";
+import { filesUrl } from "../../services/api";
 import {
   Container,
   FileInfo,
   Preview,
   State,
   Image,
-  Video,
+  Img,
 } from "./FileListStyle";
 
-function FileList({ files, page }) {
+function FileList({ files, page, findedProject }) {
+  if (page === "project")
+    return (
+      <Container>
+        {files.map((file) => (
+       
+          <Link
+            style={{ justifyContent: "center" }}
+            key={file}
+            target={"_blank"}
+            to={filesUrl + findedProject.files + "/" + file}
+          >
+            <Img src={filesUrl + findedProject.files + "/" + file} />
+          </Link>
+        ))} 
+      </Container>
+    );
   if (page === "create")
     return (
       <Container>

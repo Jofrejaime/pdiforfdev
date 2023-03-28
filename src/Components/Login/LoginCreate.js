@@ -6,7 +6,7 @@ import Select from "react-select";
 import { Radio } from "pretty-checkbox-react";
 import styles from "./LoginCreate.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faPerson } from "@fortawesome/free-solid-svg-icons";
+import { faPerson } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import validator from "validator";
 import api, {
@@ -28,6 +28,7 @@ function LoginCreate() {
   const [areas, setAreas] = useState();
   const [languages, setLanguages] = useState();
   const [tools, setTools] = useState();
+  const [selectedCountry, setSelectedCountry] = useState()
   const navigate = useNavigate();
   const { error, loading, request } = useFetch();
   // eslint-disable-next-line no-unused-expressions
@@ -70,8 +71,9 @@ function LoginCreate() {
   async function onSubmit(data) {
     const areas = selectedAreas.map((area) => area.label);
     const languages = selectedLanguages.map((language) => language.label);
+   
     const tools = selectedTools.map((tool) => tool.label);
-
+    
     const datas = new FormData();
     datas.append("file", data.profile[0]);
     datas.append("lastName", data.lastName);
@@ -82,7 +84,7 @@ function LoginCreate() {
     datas.append("userName", data.devName);
     datas.append( "languages", languages);
     datas.append("tools", tools);
-    datas.append(  "paisLabel", pais);
+    datas.append(  "paisLabel", selectedCountry);
     datas.append("genderName", data.gender);
     datas.append("bio", data.bio)
     api.post('user', datas).then((response)=>{
@@ -230,11 +232,9 @@ function LoginCreate() {
               <div className={styles.inputBox}>
                 <label>Selecione Seu Pais</label>
                 <Select
-                  className={styles.select}
                   placeholder="Selecione seu pais"
-                  {...register("country")}
                   options={pais}
-                  onChange={(item) => setIPais(item.label)}
+                  onChange={(item) => setSelectedCountry(item.label)}
                 />
               </div>
             </div>

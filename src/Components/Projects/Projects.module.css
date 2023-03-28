@@ -41,6 +41,7 @@
   flex-grow: 42;
   width: calc(var(--initialWidth) * 42 / 100);
   padding: 10px;
+  max-width: 404px;
 }
 
 .projectContainer:hover .coverOverlay {
@@ -56,6 +57,7 @@
 .project {
   position: relative;
   min-width: 145px;
+
 }
 
 .projectCover {
@@ -291,18 +293,19 @@
   align-items: center;
 }
 
-a {
+.profileUser span a {
   color: #333333;
+  font-size: 1rem;
 }
 
 .Avatar {
   cursor: pointer;
   display: inline-block;
-  height: 20px;
-  margin-right: 5px;
+  height: 30px;
+  margin-right: 10px;
   transition: filter .1s linear;
   vertical-align: top;
-  width: 20px;
+  width: 30px;
 }
 
 .Avatar img {
@@ -324,7 +327,7 @@ a {
   align-items: center;
   align-self: flex-end;
   display: flex;
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: bold;
   margin-left: -5px;
   white-space: nowrap;
@@ -333,6 +336,7 @@ a {
 .stats svg {
   fill: dimgray;
   margin-right: 5px;
+  cursor: pointer;
 }
 
 .stats span+svg {

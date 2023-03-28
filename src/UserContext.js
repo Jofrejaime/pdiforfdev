@@ -8,6 +8,7 @@ export const UserStorage = ({ children }) => {
   const [loading, setLoading] = React.useState(null);
   const [error, setError] = React.useState(null);
   const {file, setFile} = React.useState([])
+  const [message, setMessage] = React.useState('')
   const [loginType, setLogintype] = React.useState('login');
   const navigate = useNavigate();
 
@@ -37,12 +38,14 @@ const userLogout = React.useCallback(
       const { url, options } = TOKEN_POST({userName: username, password: password});
       const response = await fetch(url, options);
       const json = await response.json()
-      if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+      if (!response.ok) {setMessage(json);
+        throw new Error(`Error: ${response.statusText}`);
+    }
       window.localStorage.setItem("token", json.token);
       await getUser(json.token);
       navigate('/')
     } catch (err) {
-      setError(err.message);
+      setError(message.message);
       setLogin(false);
     } finally {
       setLoading(false)

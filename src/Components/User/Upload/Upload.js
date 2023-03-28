@@ -12,7 +12,7 @@ export default class Upload extends Component {
   state = {
     uploadedFileList: [],
   };
-
+  
   handleUpload = (files) => {
     const uploadedFiles = files.map((file) => ({
       file,
@@ -41,10 +41,11 @@ export default class Upload extends Component {
   };
   processUpload = (file) => {
     const data = new FormData();
+    console.log(this.props.projectTitle, ' uo')
     data.append("file", file.file);
-    data.append('userId', file.id);
-    data.append('email',file.id );
-    api.post("user", data, 
+    data.append('userName', this.props.userName);
+    data.append('title', this.props.projectTitle)
+    api.post("project", data, 
     {
       onUploadProgress: (e) => {
         const progress = parseInt(Math.round((e.loaded * 10) / e.total));

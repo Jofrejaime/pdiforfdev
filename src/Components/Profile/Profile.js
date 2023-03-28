@@ -17,8 +17,6 @@ function Profile() {
       <aside className={styles.profile_info}>
         <ProfileInfo />
       </aside>
-      
-
       <section>
     
         <ul className={styles.profile_links}>

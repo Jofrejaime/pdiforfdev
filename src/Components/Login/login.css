@@ -10,7 +10,7 @@
   min-width: 40rem;
   gap: 1rem;
   width: 100vw;
-  height:100%;
+  height:100vh;
 }
 @media (max-width: 40rem){
   .login{
@@ -36,7 +36,7 @@
   min-width: 40rem;
   gap:1rem;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 }
 .cadastro .Login_forms__5MXFL{
   padding:0;

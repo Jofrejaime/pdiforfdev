@@ -104,7 +104,7 @@ function Descover() {
       </picture></NavLink>
     </div>
     <div className={styles.info}><div className={styles.userInfo}>
-      <div className={styles.username}>{`</${user.userName}>`}</div>
+      <div className={styles.username}>{user.userName}</div>
       <div className={styles.stars}><FontAwesomeIcon icon={faStar}/> {user.Star.length}</div>
       <div className={styles.projects}>
         <FontAwesomeIcon icon={faFileCircleCheck}/> {user.projects.length}</div>

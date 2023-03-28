@@ -1,30 +1,21 @@
 {
   "files": {
-    "main.css": "/pdiforfdev/static/css/main.46108de8.css",
-    "main.js": "/pdiforfdev/static/js/main.b0934871.js",
+    "main.css": "/pdiforfdev/static/css/main.fb1c6dcf.css",
+    "main.js": "/pdiforfdev/static/js/main.00a0969a.js",
     "static/js/787.49fc5e08.chunk.js": "/pdiforfdev/static/js/787.49fc5e08.chunk.js",
-    "static/media/criar.jpg": "/pdiforfdev/static/media/criar.aca5b353670d7fa4b950.jpg",
-    "static/media/login.jpg": "/pdiforfdev/static/media/login.8fef0f2dec3ad6f15931.jpg",
-    "static/media/cloud.png": "/pdiforfdev/static/media/cloud.31df48ec440583f03584.png",
+    "static/media/login.jpg": "/pdiforfdev/static/media/login.fe8c2cb4b7665d40b603.jpg",
+    "static/media/criar.jpg": "/pdiforfdev/static/media/criar.c1ee05cc66713922f405.jpg",
     "static/media/image.jpg": "/pdiforfdev/static/media/image.91214e375216d4567a80.jpg",
-    "static/media/devops.jpg": "/pdiforfdev/static/media/devops.007c36154250d3d4b101.jpg",
-    "static/media/pdi.jpg": "/pdiforfdev/static/media/pdi.d7b8a2454b5d4f4e4f6d.jpg",
-    "static/media/mobile.png": "/pdiforfdev/static/media/mobile.009a9d7dcc3ec47a3bda.png",
-    "static/media/web.jpg": "/pdiforfdev/static/media/web.4087a59fa6d47246987e.jpg",
-    "static/media/profile.svg": "/pdiforfdev/static/media/profile.92f93495119057333e331961739f5261.svg",
     "static/media/avatar.jpg": "/pdiforfdev/static/media/avatar.d812a47e9546465fa83c.jpg",
-    "static/media/desktop.jpg": "/pdiforfdev/static/media/desktop.0e7bd47667565a2ce48e.jpg",
-    "static/media/jogos.jpeg": "/pdiforfdev/static/media/jogos.32d5bbb7bf3cdb2f6676.jpeg",
     "static/media/github.webp": "/pdiforfdev/static/media/github.02c48fc9c6820fbc70a0.webp",
     "static/media/logo.svg": "/pdiforfdev/static/media/logo.021e0947ae0247c2d2edd3d1a6424441.svg",
-    "static/media/pdilogoCinza.png": "/pdiforfdev/static/media/pdilogoCinza.812720a98799f6723696.png",
     "index.html": "/pdiforfdev/index.html",
-    "main.46108de8.css.map": "/pdiforfdev/static/css/main.46108de8.css.map",
-    "main.b0934871.js.map": "/pdiforfdev/static/js/main.b0934871.js.map",
+    "main.fb1c6dcf.css.map": "/pdiforfdev/static/css/main.fb1c6dcf.css.map",
+    "main.00a0969a.js.map": "/pdiforfdev/static/js/main.00a0969a.js.map",
     "787.49fc5e08.chunk.js.map": "/pdiforfdev/static/js/787.49fc5e08.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.46108de8.css",
-    "static/js/main.b0934871.js"
+    "static/css/main.fb1c6dcf.css",
+    "static/js/main.00a0969a.js"
   ]
 }

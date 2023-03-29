@@ -13,6 +13,7 @@ import Projects from "../Projects/Projects";
 import { filesUrl, GET_AREAS, GET_LANGUAGES, GET_USERS } from "../services/api";
 import styles from "./Discover.module.css";
 import { SomeArea } from "./DiscoverStyles";
+import Feed from "../Feed/Feed";
 function Descover() {
   const search = useForm("");
   const linguagens = useForm("");
@@ -21,6 +22,7 @@ function Descover() {
   const {error, loading, request} = useFetch()
   const [getUsers, setUsers] = useState([])
   const {data} = useContext(UserContext)
+  const [onClickArea, setOnClickArea] = useState('')
    useEffect(()=>{
   async  function callAreas(){
       const {url, options} = GET_AREAS();
@@ -51,12 +53,11 @@ function Descover() {
     function handleSubmit(event) {
     event.preventDefault();
   }
-
   return (
     <section className="container">
       <div className={styles.preChose}>
         {
-        areas && areas.map(area => <  SomeArea key={area.value} src={`${filesUrl}/${area.image_url}`} className={" titleProject"}>
+        areas && areas.map(area => <  SomeArea key={area.value} src={`${filesUrl}/${area.image_url}`} className={" titleProject"}onClick={({target})=>setOnClickArea(target.innerText)}>
         <div className={styles.area}>{area.label}</div>
       </SomeArea>)
         }
@@ -119,7 +120,7 @@ function Descover() {
       </div>
       </div> 
       <div className={styles.projects}>
-        <Projects />
+        <Feed area={onClickArea && onClickArea}/>
       </div>
     </section>
   );

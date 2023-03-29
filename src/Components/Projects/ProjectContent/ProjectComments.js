@@ -4,6 +4,7 @@ import ProjectCommentsForm from "./ProjectCommentsForm";
 import styles from "./ProjectContent.module.css";
 import { filesUrl } from "../../services/api";
 import formatDate from "../../Helper/formatDate";
+import { NavLink } from "react-router-dom";
 function ProjectComments({ id, commentsList }) {
   const [comments, setComments] = React.useState(() => commentsList);
   const { login, data } = useContext(UserContext);
@@ -18,12 +19,13 @@ function ProjectComments({ id, commentsList }) {
           {comments.map((comment) => (
             <li key={comment.id} className={styles.comment}>
               <div className={styles.headerComment}>
+                <NavLink to={comment.User.userName}>
                 <div className={styles.commenter}>
                   <img
                     src={filesUrl + "/" + comment.User.profile.photo_url}
                     alt={comment.User.userName}
                   />
-                </div>
+                </div></NavLink>
                 <div className={styles.contentHeaderComment}>
                   <div className={styles.userName}>{comment.User.userName}</div>
                   <div className={styles.commentDate}>{formatDate(comment.created_at)}</div>

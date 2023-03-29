@@ -13,7 +13,7 @@ import { UserContext } from "../../UserContext";
 import useMedia from "../../Hooks/useMedia";
 
 function UserHeaderNav() {
-  const { userLogout } = React.useContext(UserContext);
+  const { userLogout, data } = React.useContext(UserContext);
   const [mobileMenu, setMobilemenu] = React.useState(false);
   const mobile = useMedia("(max-width: 40rem)");
   const { pathname } = useLocation();
@@ -41,7 +41,7 @@ function UserHeaderNav() {
         <div className={`${mobile ? styles.link : ''}`}>
           {" "}
           <NavLink
-            to={"/user"}
+            to={`/${data.userName}`}
             className={styles.button}
             end
           >

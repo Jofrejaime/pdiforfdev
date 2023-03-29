@@ -164,16 +164,19 @@ export function COMMENT_ON_PROJECT(id, {comment}, userId) {
     },
   };
 }
-export function GET_PROJECTS({ language, area, user, tool, limit }) {
+export function GET_PROJECTS(body) {
+ 
   return {
-    url: API_URL + "/project",
+    url: API_URL + "/project/get",
     options: {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      body:JSON.stringify(body)
     },
   };
+
 }
 export function CREATE_PROJECT({
   userId,

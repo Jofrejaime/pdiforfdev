@@ -55,7 +55,7 @@ function Project({project, setModalProject, setView}) {
                       <span className={styles.Avatar}>
                         <img src={filesUrl + project.project.user.profile.photo_url}  alt={project.project.title}/>
                       </span>
-                      <NavLink to={`user/userName=${project.project.user.userName}`}>{project.project.user.userName}</NavLink>
+                      <NavLink to={`${project.project.user.userName}`}>{project.project.user.userName}</NavLink>
                     </span>
                   </div>
                 </div>

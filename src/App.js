@@ -21,7 +21,7 @@ function App() {
             <Route path="login/*" element={<Login />} />
             <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
             <Route path={"pdiforfdev"} element={<ProtectedRoute><Home /></ProtectedRoute>} />
-            <Route path="user/*" element={<ProtectedRoute><User /> </ProtectedRoute>} />
+            <Route path=':username/*' element={<ProtectedRoute><User /> </ProtectedRoute>} />
             <Route path="message/*" element={<ProtectedRoute><MessageIndex /></ProtectedRoute>} />
             <Route path="notification/*" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
             <Route path="discover" element={<Discover />} />

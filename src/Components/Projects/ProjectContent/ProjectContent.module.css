@@ -64,8 +64,8 @@
 
 }
 
-.stars {
-  box-shadow: 0 0 1px 1.2px #ccc;
+.stars,
+.starred {
   padding: .5rem 1rem;
   border-radius: 5px;
   display: flex;
@@ -74,9 +74,16 @@
   cursor: pointer;
 }
 
-.stars:hover {
-  background-color: #f2f2f2;
+.starred {
+  box-shadow: 0 0 1px 1.2px #ccc;
 }
+.stars{box-shadow: 0 0 1px 1.2px #f2f2f2;}
+.stars:hover {
+  background-color: #ccc;
+}
+.starred:hover{
+  background-color: #f2f2f2;}
+
 
 .del {
   box-shadow: 0 0 1px 1.2px #ccc;
@@ -135,6 +142,23 @@
   overflow: auto;
 }
 
+.comments::-webkit-scrollbar {
+  width: 10px;
+}
+
+.comments::-webkit-scrollbar-track {
+  background-color: #424242;
+}
+
+.comments::-webkit-scrollbar-thumb {
+  background-color: #ffff;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: none;
+  /* creates padding around scroll thumb */
+}
+
 .headerComment {
   display: flex;
   align-items: center;
@@ -189,20 +213,27 @@
   background-color: #eee;
   transition: .3s;
 }
-.textarea:focus, .textarea:hover{
+
+.textarea:focus,
+.textarea:hover {
   outline: none;
   border-color: #0044cc;
   background: white;
   box-shadow: 0 0 0 3px #0452ee;
 }
-.button{
-border: none;
-background-color: transparent;
-font-size: 1rem;
-padding: 0 1rem;
-cursor: pointer;
-overflow: hidden;
-color: #fff;
-transition: .3s;
+
+.button {
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  color: #fff;
+  transition: .3s;
 }
-.button:focus, .button:hover{color: #9B1476;}
+
+.button:focus,
+.button:hover {
+  color: #9B1476;
+}

@@ -7,24 +7,32 @@ import { GET_PROJECTS, POST_VIEWS } from "../services/api";
 import Project from "./Project";
 import styles from "./Projects.module.css";
 import { UserContext } from "../../UserContext";
-export default function Projects({setModalProject}) {
+import { useLocation } from "react-router-dom";
+import { all } from "axios";
+export default function Projects({setModalProject, area}) {
   const { loading, error, request } = useFetch();
   const [data, setData] = React.useState([])
+  
   const {data: logedUser} = React.useContext(UserContext)
+  const location = useLocation()
   useEffect(() => {
+  console.log(area.area)
+  let user = location.pathname.split('/')[1];
+  if(user==='discover' || user==='pdiforfdev') user=''
     async function fetchProjects() {
       const { url, options } = GET_PROJECTS({
-        language: 'PHP',
-        area: 'WEB',
-        user: 'devpleno',
-        tool: 'vscode',
-        limit: 0,
+        language: '', 
+        area: area.area,
+        userName: user,
+        label:'',
+        limit: '',
       });
-      const{json} = await request(url, options);
+      const{json, response} = await request(url, options);
       setData(json)
+      console.log(json, response, options)
     }
     fetchProjects();
-  }, [request]);
+  }, [area.area, location.pathname]);
  
   async function setView(target){
     const {url, options} = POST_VIEWS({idProject: target.project.id, user: logedUser.userName})

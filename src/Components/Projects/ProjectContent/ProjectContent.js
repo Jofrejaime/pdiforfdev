@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { SomeArea } from "../../Discover/DiscoverStyles";
@@ -12,26 +13,37 @@ import useFetch from "../../../Hooks/useFetch";
 import DeleteProject from "./DeleteProject";
 export default function ProjectContent({ data, setModalProject }) {
   const { allFiles, findedProject } = data;
-  const {request} = useFetch()
-  const {data: logedUser } = useContext(UserContext);
-  function handleClick(event) {
-   
-    if (event.target === event.currentTarget) setModalProject(null);
-  }
-  function starProject(){
-   
-    const userId = logedUser.id;
-    const id = findedProject.id
-    const {url, options} = STAR_ON_PROJECT({userId, id});
-    console.log(url, options)
-    const {response, json} =  request(url, options);
-  console.log(response)
+  const [star, setStar] = React.useState(() => findedProject.Stars);
+  const [starred, setStared] = React.useState(false);
 
+  const { request } = useFetch();
+  const { data: logedUser } = useContext(UserContext);
+  function handleClick(event) {
+    //  if (event.target === event.currentTarget) setModalProject(null);
   }
+  async function starProject() {
+    const userId = logedUser.id;
+    const id = findedProject.id;
+    const { url, options } = STAR_ON_PROJECT({ userId, id });
+    const { response, json } = await request(url, options);
+    if (response.ok) {
+      setStar(json);
+    }
+    console.log(response,json)
+  }
+
+  React.useEffect(() => {
+    setStared('Stars')
+    function starId() {
+      for (let x = 0; x < star.length; x++) {
+        if (star[x].userId === logedUser.id) setStared('Starred');
+      }
+    }
+    starId();
+  }, [star]);
   return (
     <div className={styles.projectContent} onClick={handleClick}>
       <header className={styles.header}>
-        
         <div className={styles.headerContent}>
           <div className={styles.about}>
             <h2 className={"titleProject " + styles.m0}>
@@ -40,7 +52,7 @@ export default function ProjectContent({ data, setModalProject }) {
             <div className={styles.author}>
               <Link
                 className={stylesH.profile}
-                to={`user/${findedProject.user.userName}`}
+                to={`${findedProject.user.userName}`}
               >
                 <picture>
                   <img
@@ -53,10 +65,14 @@ export default function ProjectContent({ data, setModalProject }) {
             </div>
           </div>
           <div className={styles.status}>
-          {findedProject.userId === logedUser.id && <DeleteProject id={findedProject.id}/>} 
-           {logedUser && <div className={styles.stars} onClick={starProject}>
-              Stars {findedProject._count.Stars}{" "}
-            </div>}
+            {findedProject.userId === logedUser.id && (
+              <DeleteProject id={findedProject.id} />
+            )}
+            {logedUser && (
+              <div className={starred==='Stars'? styles.stars:styles.starred} onClick={starProject}>
+                {starred + ' '} {star.length} 
+              </div>
+            )}
             <div className={styles.views}>
               Views {findedProject._count.Views}
             </div>
@@ -74,18 +90,19 @@ export default function ProjectContent({ data, setModalProject }) {
         </div>
         <div className={styles.more}>
           <div className={styles.git}>
-         { findedProject.repository && 
-         <SomeArea src={GIT}>
-              <a
-                target={"_blank"}
-                href={`http://${findedProject.repository}`}
-                rel="noreferrer"
-              >
-                <div>
-                  <p className={"gitHubLink"}>{findedProject.repository}</p>
-                </div>{" "}
-              </a>
-            </SomeArea> }
+            {findedProject.repository && (
+              <SomeArea src={GIT}>
+                <a
+                  target={"_blank"}
+                  href={`http://${findedProject.repository}`}
+                  rel="noreferrer"
+                >
+                  <div>
+                    <p className={"gitHubLink"}>{findedProject.repository}</p>
+                  </div>{" "}
+                </a>
+              </SomeArea>
+            )}
           </div>{" "}
           <div className="areas">
             {" "}

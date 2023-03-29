@@ -19,6 +19,13 @@ body {
   -webkit-font-smoothing: antialiased;
 
 }
+body::-webkit-scrollbar{
+  width: 10px;
+}
+body::-webkit-scrollbar-thumb{
+background-color: #ccc;
+border-radius: 20px;
+}
 
 img {
   object-fit: cover;

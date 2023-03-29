@@ -8,7 +8,6 @@ import Project from "./Project";
 import styles from "./Projects.module.css";
 import { UserContext } from "../../UserContext";
 import { useLocation } from "react-router-dom";
-import { all } from "axios";
 export default function Projects({setModalProject, area}) {
   const { loading, error, request } = useFetch();
   const [data, setData] = React.useState([])

@@ -29,7 +29,7 @@ export default function Projects({setModalProject, area, language, label}) {
       setData(json)
       console.log(json, response, options)
     }
-    fetchProjects();
+    fetchProjects(); 
   }, [area, location.pathname, request]);
  
   async function setView(target){

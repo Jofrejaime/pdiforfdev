@@ -23,7 +23,6 @@ function Descover() {
   const [getUsers, setUsers] = useState([])
   const {data} = useContext(UserContext)
   const [onClickArea, setOnClickArea] = useState('')
-  const [onLanguages, setOnLanguages] = useState('')
    useEffect(()=>{
   async  function callAreas(){
       const {url, options} = GET_AREAS();
@@ -91,7 +90,6 @@ function Descover() {
             options={languages}
             {...linguagens}
             placeholder="Linguagens"
-            onChange={(item)=>setOnLanguages(item)}
           />
         </div>
       </div>
@@ -122,7 +120,7 @@ function Descover() {
       </div>
       </div> 
       <div className={styles.projects}>
-        <Feed area={onClickArea && onClickArea} language={onLanguages && onLanguages} label={search.value && search.value}/>
+        <Feed area={onClickArea && onClickArea} language={linguagens.value && linguagens.value} label={search.value && search.value}/>
       </div>
     </section>
   );

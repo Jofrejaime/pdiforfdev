@@ -27,7 +27,6 @@ export default function Projects({setModalProject, area, language, label}) {
       });
       const{json, response} = await request(url, options);
       setData(json)
-      console.log(json, response, options)
     }
     fetchProjects(); 
   }, [area, location.pathname, request]);

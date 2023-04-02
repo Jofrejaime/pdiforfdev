@@ -16,6 +16,7 @@
 }
 .bg_w{
   background-color: #fff;
+  margin-bottom: 5rem;
 }
 @media (max-width: 45rem) {
   .header {

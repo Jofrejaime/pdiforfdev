@@ -2,7 +2,7 @@ import { faFileCircleCheck, faSearch, faStar } from "@fortawesome/free-solid-svg
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
@@ -57,7 +57,8 @@ function Descover() {
     <section className="container">
       <div className={styles.preChose}>
         {
-        areas && areas.map(area => <  SomeArea key={area.value} src={`${filesUrl}/${area.image_url}`} className={" titleProject"}onClick={({target})=>setOnClickArea(target.innerText)}>
+        areas && areas.map(area => 
+        <SomeArea key={area.value} src={`${filesUrl}/${area.image_url}`} className={" titleProject"} onClick={({target})=>setOnClickArea(target.innerText)}>
         <div className={styles.area}>{area.label}</div>
       </SomeArea>)
         }
@@ -99,7 +100,7 @@ function Descover() {
     <div style={data && data.id === user.id? {display: 'none'}: {display: 'flex'}} key={user.id} className={styles.user}>
       <div className={styles.userContent}>
     <div className={styles.photo}>
-     <NavLink to={`user/username=${user.userName7}`}>
+     <NavLink to={`${user.userName7}`}>
       <picture>
         <img src={`${filesUrl}${user.profile.photo_url}`} alt={user.userName}/>
       </picture></NavLink>

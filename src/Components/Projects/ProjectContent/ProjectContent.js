@@ -7,7 +7,7 @@ import GIT from "../../../assets/img/areasImages/github.webp";
 import styles from "./ProjectContent.module.css";
 import ProjectComments from "./ProjectComments";
 import FileList from "../../User/FileList/FileList";
-import stylesH from "../../Header.module.css";
+import stylesH from "../../../Components//NavigationBar/Header.module.css";
 import { UserContext } from "../../../UserContext";
 import useFetch from "../../../Hooks/useFetch";
 import DeleteProject from "./DeleteProject";
@@ -34,12 +34,11 @@ export default function ProjectContent({ data, setModalProject }) {
 
   React.useEffect(() => {
     setStared('Stars')
-    function starId() {
-      for (let x = 0; x < star.length; x++) {
-        if (star[x].userId === logedUser.id) setStared('Starred');
-      }
-    }
-    starId();
+    const  starred =  star.find(star => star.userId === logedUser.id )
+    if(starred) setStared('Starred');
+      
+  
+   
   }, [star]);
   return (
     <div className={styles.projectContent} onClick={handleClick}>
@@ -143,10 +142,10 @@ export default function ProjectContent({ data, setModalProject }) {
             </div>
           </div>
         </div>
-        <ProjectComments
+     {findedProject.Comment &&    <ProjectComments
           id={findedProject.id}
           commentsList={findedProject.Comment}
-        />
+        />}
       </section>
     </div>
   );

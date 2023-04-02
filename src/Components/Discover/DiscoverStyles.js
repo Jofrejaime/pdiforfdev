@@ -7,6 +7,10 @@ export const SomeArea = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+  :focus::after, :hover::after, :active:after{
+    background: #4b0082;
+    
+  }
   div  {
   background-color: rgba(3, 3, 3, .31);
   color: #fff;

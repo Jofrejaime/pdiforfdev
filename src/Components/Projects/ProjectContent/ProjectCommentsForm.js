@@ -22,6 +22,7 @@ function ProjectCommentsForm({ id, userId, setComments }) {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
     <textarea 
+    onKeyPress={handleSubmit}
     placeholder="Comente..."
     className={styles.textarea} name={'comment'} {...comment}/>
       <button className={styles.button}>

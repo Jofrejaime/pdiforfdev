@@ -178,6 +178,18 @@ export function GET_PROJECTS(body) {
   };
 
 }
+export function TOP_10(){
+  return {
+    url: API_URL + '/project/top/10',
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    },
+    }
+  }
+
 export function CREATE_PROJECT({
   userId,
   title,

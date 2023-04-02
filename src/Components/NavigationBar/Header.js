@@ -17,6 +17,7 @@ import { UserContext } from "../../UserContext";
 import './styles.css'
 import { filesUrl } from "../services/api";
 import './main'
+import rocket from 'boxicons'
 // Jofre
 function Header() {
   const { data, login } = useContext(UserContext);

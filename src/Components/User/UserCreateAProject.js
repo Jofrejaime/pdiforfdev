@@ -23,7 +23,7 @@ import {
 } from "../services/api";
 import useFetch from "../../Hooks/useFetch";
 import { useEffect } from "react";
-
+import  'boxicons'
 function UserCreateAProject() {
   const [areas, setAreas] = React.useState([]);
   const [languages, setLanguages] = React.useState([]);
@@ -88,6 +88,7 @@ function UserCreateAProject() {
 
     const { response, json } = request(url, options);
   };
+  const fb = 'facebook'
   return (
     <>
       {mobile ? (
@@ -116,7 +117,6 @@ function UserCreateAProject() {
             name={"titulo"}
             {...titulo}
           />
-
           <TextArea
             label={"Descrição do projecto"}
             name={"desc"}

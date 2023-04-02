@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+
+    <!--=============== REMIX ICONS ===============-->
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+
+    <title>Mini portfolio website - Bedimcode</title>
+  </head>
+  <body>
+    <!--=============== HEADER PROFILE ===============-->
+    <header class="profile container">
+      <div class="profile_container grid">
+        <div class="profile_data">
+          <div class="profile_border">
+            <div class="profile_perfil">
+              <img src="assets/img/perfil.png" />
+            </div>
+          </div>
+          <h2 class="profile_name">Jofre JAIEM</h2>
+          <h3 class="profile_profession">Web dev</h3>
+
+          <ul class="profile_social">
+            <a href="" class="profile_social_link"> <li>f</li> </a
+            ><a href="" class="profile_social_link"> <li>g</li> </a
+            ><a href="" class="profile_social_link">
+              <li>i</li>
+            </a>
+          </ul>
+        </div>
+        <div class="profile_info grid">
+          <div class="profile_info_group">
+            <h3 class="profile_info_number">+244</h3>
+            <p class="profile_info_description">
+              Years <br />
+              Work
+            </p>
+          </div>
+          <div class="profile_info_group">
+            <h3 class="profile_info_number">45</h3>
+            <p class="profile_info_description">projects</p>
+          </div>
+          <div class="profile_info_group">
+            <h3 class="profile_info_number">65</h3>
+            <p class="profile_info_description">
+              Wors <br />
+              Work
+            </p>
+          </div>
+        </div>
+        <div class="profile_buttons">
+          <a download="" href="assets/pdf/Gianell-Cv.pdf" class="button">
+            download cv</a
+          >
+
+          <div class="profile_buttons_small">
+            <a href="" class="button button_small button_gray">email</a
+            ><a href="" class="button button_small button_gray">whatsapp</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!--=============== MAIN ===============-->
+    <main class="main">
+      <section class="filters container">
+        <!--=============== FILTERS TABS ===============-->
+        <ul class="filters_content">
+          <button class="filters_button filter_tab_active" data-target="#projects">
+            Projects
+          </button>
+          <button data-target="#skills" class="filters_button">Skills</button>
+        </ul>
+        <div class="filters__sections">
+          <!--=============== PROJECTS ===============-->
+          <div class="filters_active projects_content grid" data-content id="projects">
+            <article class="projects_card">
+              <img
+                src="./assets/img/project1.jpg"
+                alt=""
+                class="projects_img"
+              />
+              <div class="projects_modal">
+                <div>
+                  <span class="projects_subtitle">Melhor</span>
+                  <h3 class="projects_title">Jofre Jaime</h3>
+                  <a class="projects_button button button_small"> link </a>
+                </div>
+              </div>
+            </article>
+          </div>
+          <!--=============== SKILLS ===============-->
+          <div class="skills_content grid" data-content id="skills">
+            <div class="skills_area">
+              <h3 class="skills_title">Font End</h3>
+              <div class="skills_box">
+                <div class="skills_group">
+                  <div class="skills_data">
+                    v
+                    <div>
+                      <h3 class="skills_name">GIT</h3>
+                      <span class="skills_level">Itermaedite</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="skills_area">
+              <h3 class="skills_title">Back End</h3>
+              <div class="skills_box">
+                <div class="skills_group">
+                  <div class="skills_data">
+                    v
+                    <div>
+                      <h3 class="skills_name">PHP</h3>
+                      <span class="skills_level">Itermaedite</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--=============== FOOTER ===============-->
+    <footer class="footer container">
+        <span class="footer_copy">
+            &#169; PDI for dev. All rights reserved
+        </span>
+    </footer>
+
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="assets/js/scrollreveal.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>

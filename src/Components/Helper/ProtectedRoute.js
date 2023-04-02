@@ -1,11 +1,11 @@
 import { useContext } from "react"
 import { UserContext } from "../../UserContext"
-import Descover from "../Discover/Discover";
+import Discover from "../Discover/Discover";
  const ProtectedRoute = ({children})=>{
   const {login} = useContext(UserContext);
 
  if(login)
  return children
- else return<Descover/>
+ else return<Discover/>
 }
 export default ProtectedRoute;

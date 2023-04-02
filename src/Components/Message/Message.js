@@ -26,7 +26,7 @@ import {
 } from "./MessageStyles";
 function Message() {
   return (
-    <section>
+    <section id="message">
       <h1 className="title"></h1>
       <Container>
         <InboxList>

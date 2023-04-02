@@ -14,8 +14,9 @@ import useMedia from "../../Hooks/useMedia";
 import Notification from "../../Components/Notifications/Notifications";
 import { useContext } from "react";
 import { UserContext } from "../../UserContext";
-import './assets/css/styles.css'
+import './styles.css'
 import { filesUrl } from "../services/api";
+import './main'
 // Jofre
 function Header() {
   const { data, login } = useContext(UserContext);
@@ -26,37 +27,37 @@ function Header() {
   const { pathname } = useLocation();
 
   React.useEffect(() => {
-    if (pathname === "/login" || pathname === "/login/createAccount")
+    if (pathname.startsWith('/login'))
       setDisplay("none");
     else setDisplay(" ");
     setMobilemenu(false);
   }, [pathname]);
   return (
     <>
-      <section className={styles.bg_w}>
+      <section className={styles.bg_w} style={{display: display}}>
         {" "}
         <header className={'header'} id="header">
           <nav className={`nav container`}>
-            <NavLink to={login ? "/" : "login"} className={styles.logo + ' nav_logo'}>
+            <NavLink hrefLang="#home" to={login ? "/" : "login"} className={styles.logo + ' nav_logo'}>
                   <Logo />
                 </NavLink> 
                 <div className="nav_menu" id="nav_menu">
                 <ul className="nav_list">
               <li className={styles.link + ' nav_item'}>
-                <NavLink to={login ? "/" : "login"} className={styles.link_a + ' nav_link'}>
+                <NavLink hrefLang="#home" to={login ? "/" : "login"} className={styles.link_a + ' nav_link'}>
                   <FontAwesomeIcon icon={faHome} className="nav_icon" />
                   <p className="nav_name">home</p>
                 </NavLink>
               </li>
               <li className={styles.link + ' nav_item'}>
-                <NavLink to={"discover"} className={styles.link_a + ' nav_link'}>
+                <NavLink hrefLang="#discover" to={"discover"} className={styles.link_a + ' nav_link'}>
                   <FontAwesomeIcon className="nav_icon" icon={faBoxOpen} />
                   <p className="nav_name">discover</p>
                 </NavLink>
               </li>
 
               <li className={styles.link + " nav_item " + styles.notification}>
-                <NavLink
+                <NavLink hrefLang="#notification"
                   to={mobile ? (login ? "notification" : "login") : "#"}
                   className={styles.link_a + ' nav_link'}
                 >
@@ -67,11 +68,11 @@ function Header() {
                   className={mobile ? "" : styles.notification_show}
                   style={{ display: `${mobile ? "none" : "flex"}` }}
                 >
-                  <Notification />
+                  <Notification  id={'notification'} />
                 </li>
               </li>
               <li className={styles.link+ ' nav_item'} >
-                <NavLink
+                <NavLink hrefLang="#message"
                   to={login ? "message" : "login"}
                   className={styles.link_a + ' nav_link'}
                 >
@@ -81,8 +82,7 @@ function Header() {
               </li>
             </ul>
             </div>
-            {console.log(data)}
-          {data && <Link to={data.userName}> <img src={filesUrl+data.profile.photo_url} alt="" className="nav_img"/></Link>}  
+          {data && <Link hrefLang="#profile" to={data.userName}> <img src={filesUrl+data.profile.photo_url} alt="" className="nav_img"/></Link>}  
             
           </nav>
           

@@ -16,7 +16,7 @@ function Top10() {
     top10();
   }, [topDev, request]);
   return (
-    <section className={styles.top_10}>
+    <section id="home" className={styles.top_10}>
       <div className="container">
         <h1 className={styles.title}>topDev 10</h1>
         <p className={styles.texto}>Melhores Talentos do Mês</p>

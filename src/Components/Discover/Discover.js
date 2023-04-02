@@ -54,7 +54,7 @@ function Descover() {
     event.preventDefault();
   }
   return (
-    <section className="container">
+    <section id="discover" className="container">
       <div className={styles.preChose}>
         {
         areas && areas.map(area => 

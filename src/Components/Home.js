@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import Top10 from "./Top10Dev/Top10";
-
-import Projects from "./Projects/Projects";
 import Feed from "./Feed/Feed";
+import { UserContext } from "../UserContext";
+import { FIND_PROJECT_FOR_FEED } from "./services/api";
+import useFetch from "../Hooks/useFetch";
 function Home() {
-
+  const { data: logedUser } = useContext(UserContext);
+  const {request} = useFetch()
+  const [projects, setPojects] = useState()
+  useEffect(() => {
+   async function projects (){
+      const {url, options} =  FIND_PROJECT_FOR_FEED({follower: logedUser.id})
+      const {json, response} = await request(url, options); 
+      setPojects(json)
+    }
+    projects()
+    
+  }, [logedUser.Following, logedUser.id, request]);
   return (
     <div>
-    
       <Top10 />
       <section className={"container"}>
         <div className={styles.today}>
@@ -16,9 +27,8 @@ function Home() {
         </div>
       </section>
       <section className="container">
-      <Feed/>
-      </section>
-    
+       {projects && <Feed projects={projects} />
+}      </section>
     </div>
   );
 }

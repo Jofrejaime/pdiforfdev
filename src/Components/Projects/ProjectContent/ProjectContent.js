@@ -11,35 +11,24 @@ import stylesH from "../../../Components//NavigationBar/Header.module.css";
 import { UserContext } from "../../../UserContext";
 import useFetch from "../../../Hooks/useFetch";
 import DeleteProject from "./DeleteProject";
+import starProject from "./StarOnProject";
+
 export default function ProjectContent({ data, setModalProject }) {
+  const { data: logedUser } = useContext(UserContext);
   const { allFiles, findedProject } = data;
   const [star, setStar] = React.useState(() => findedProject.Stars);
-  const [starred, setStared] = React.useState(false);
-
+  const [starred, setStared] = React.useState('Stars');
   const { request } = useFetch();
-  const { data: logedUser } = useContext(UserContext);
+
   function handleClick(event) {
     //  if (event.target === event.currentTarget) setModalProject(null);
   }
-  async function starProject() {
-    const userId = logedUser.id;
-    const id = findedProject.id;
-    const { url, options } = STAR_ON_PROJECT({ userId, id });
-    const { response, json } = await request(url, options);
-    if (response.ok) {
-      setStar(json);
-    }
-    console.log(response,json)
-  }
 
   React.useEffect(() => {
-    setStared('Stars')
-    const  starred =  star.find(star => star.userId === logedUser.id )
-    if(starred) setStared('Starred');
-      
-  
-   
-  }, [star]);
+    setStared("Stars");
+    const starred = star.find((star) => star.userId === logedUser.id);
+    if (starred) setStared("Starred");
+  }, [logedUser.id, star]);
   return (
     <div className={styles.projectContent} onClick={handleClick}>
       <header className={styles.header}>
@@ -68,8 +57,13 @@ export default function ProjectContent({ data, setModalProject }) {
               <DeleteProject id={findedProject.id} />
             )}
             {logedUser && (
-              <div className={starred==='Stars'? styles.stars:styles.starred} onClick={starProject}>
-                {starred + ' '} {star.length} 
+              <div
+                className={starred === "Stars" ? styles.stars : styles.starred}
+                onClick={() =>
+                  starProject({ setStar, request, logedUser, findedProject, starred })
+                }
+              >
+                {starred + " "} {star.length}
               </div>
             )}
             <div className={styles.views}>
@@ -142,10 +136,13 @@ export default function ProjectContent({ data, setModalProject }) {
             </div>
           </div>
         </div>
-     {findedProject.Comment &&    <ProjectComments
-          id={findedProject.id}
-          commentsList={findedProject.Comment}
-        />}
+        {findedProject.Comment && (
+          <ProjectComments
+            id={findedProject.id}
+            project={findedProject}
+            commentsList={findedProject.Comment}
+          />
+        )}
       </section>
     </div>
   );

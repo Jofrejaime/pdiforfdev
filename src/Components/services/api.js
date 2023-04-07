@@ -1,4 +1,5 @@
 import axios from "axios";
+import { method } from "lodash";
 const api = axios.create({
   baseURL: "http://localhost:3001",
 });
@@ -11,9 +12,8 @@ export function TOKEN_POST(body) {
     options: {
       method: "POST",
       headers: {
-        
         "Content-Type": "application/json",
-        cache: 'no-store',
+        cache: "no-store",
       },
       body: JSON.stringify(body),
     },
@@ -35,10 +35,22 @@ export function GET_USERS() {
     url: API_URL + "/user",
     options: {
       method: "GET",
-      cache: 'no-store',
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },
+    },
+  };
+}
+export function FIND_PROJECT_FOR_FEED({ follower }) {
+  return {
+    url: API_URL + "/project/find/where/" + follower,
+    options: {
+      method: "GET",
+      cache: "no-store",
+      headers:{
+        authorization: 'Bearer '+window.localStorage.getItem('token')
+      }
     },
   };
 }
@@ -47,20 +59,73 @@ export function USER_GET(token) {
     url: API_URL + "/userT",
     options: {
       method: "GET",
-      cache: 'no-store',
+      cache: "no-store",
       headers: {
         authorization: "Bearer " + token,
       },
     },
   };
 }
-
+export function FIND_NOTIFICATIONS({receiverId}){
+  return{
+    url: API_URL+'/notification/'+receiverId,
+    options:{
+      method: 'GET',
+      cache: 'no-store',
+      headers:{
+        authorization: 'Bearer '+window.localStorage.getItem('token'),
+        
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}
+export function LIST_NOTIFICATIONS(){
+  return{
+    url: API_URL + '/notification',
+    options:{
+      method: 'GET',
+      cache: 'no-store',
+      headers:{
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}
+export function CREATE_NOTIFICATION({issuerId, receiverId, content}){
+  
+  return{
+    url: API_URL + '/notification',
+    options:{
+      method: 'POST',
+      headers:{
+        authorization: 'Bearer '+ window.localStorage.getItem('token'),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({issuerId, receiverId, content})
+    
+    }
+   }
+}
+export function FOLLOW_USER(follower, following) {
+  return {
+    url: API_URL + "/user/follow",
+    options: {
+      method: "POST",
+      headers: {
+        authorization: "Bearer " + window.localStorage.getItem("token"),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(follower, following),
+    },
+  };
+}
 export function GET_AREAS() {
   return {
     url: API_URL + "/area",
     options: {
       method: "GET",
-      cache: 'no-store',
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },
@@ -72,7 +137,7 @@ export function GET_LANGUAGES() {
     url: API_URL + "/language",
     options: {
       method: "GET",
-      cache: 'no-store',
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },
@@ -84,8 +149,8 @@ export function GET_COUNTRIES() {
     url: API_URL + "/country",
     options: {
       method: "GET",
-      cache: 'no-store',
-      
+      cache: "no-store",
+
       headers: {
         "Content-Type": "application/json",
       },
@@ -97,7 +162,7 @@ export function GET_TOOLS() {
     url: API_URL + "/tool",
     options: {
       method: "GET",
-      cache: 'no-store',
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },
@@ -132,7 +197,7 @@ export function GET_PROJECT(id) {
     url: API_URL + "/project/" + id,
     options: {
       method: "GET",
-      cache: 'no-store',
+      cache: "no-store",
       headers: {
         "Content-Type": "application/json",
       },
@@ -146,15 +211,14 @@ export function STAR_ON_PROJECT(body) {
       method: "PATCH",
       headers: {
         authorization: "Bearer " + window.localStorage.getItem("token"),
-        
       },
       body: body,
     },
   };
 }
-export function COMMENT_ON_PROJECT(id, {comment}, userId) {
+export function COMMENT_ON_PROJECT(id, { comment }, userId) {
   return {
-    url: API_URL + "/project/comment/" + id + "&" + userId+'&'+comment,
+    url: API_URL + "/project/comment/" + id + "&" + userId + "&" + comment,
     options: {
       method: "POST",
       headers: {
@@ -165,7 +229,6 @@ export function COMMENT_ON_PROJECT(id, {comment}, userId) {
   };
 }
 export function GET_PROJECTS(body) {
- 
   return {
     url: API_URL + "/project/get",
     options: {
@@ -173,22 +236,32 @@ export function GET_PROJECTS(body) {
       headers: {
         "Content-Type": "application/json",
       },
-      body:JSON.stringify(body)
+      body: JSON.stringify(body),
     },
   };
-
 }
-export function TOP_10(){
+export function FIND_USER({ name }) {
   return {
-    url: API_URL + '/project/top/10',
+    url: API_URL + "/user/" + name,
     options: {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-      }
+      },
     },
-    }
-  }
+  };
+}
+export function TOP_10() {
+  return {
+    url: API_URL + "/project/top/10",
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    },
+  };
+}
 
 export function CREATE_PROJECT({
   userId,
@@ -220,16 +293,16 @@ export function CREATE_PROJECT({
     },
   };
 }
-export function POST_VIEWS(body){
-  return{
-    url: API_URL + '/project/view/'+body.user+'&'+body.idProject,
-    options:{
-      method: 'POST',
-      headers:{
+export function POST_VIEWS(body) {
+  return {
+    url: API_URL + "/project/view/" + body.user + "&" + body.idProject,
+    options: {
+      method: "POST",
+      headers: {
         "Content-Type": "application/json",
-        authorization: "Bearer " + window.localStorage.getItem("token")
-      }
-    }
-  }
+        authorization: "Bearer " + window.localStorage.getItem("token"),
+      },
+    },
+  };
 }
 export default api;

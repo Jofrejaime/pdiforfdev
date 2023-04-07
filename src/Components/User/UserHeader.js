@@ -11,7 +11,7 @@ function UserHeader() {
   React.useEffect(() => {
     if(!location.pathname.startsWith('/'+data.userName)){
       setLogedUser(false)
-    }else if(location.pathname === `/${data.userName}`) setTitle(`${data.profile.firstName +' '+data.profile.lastName}`);
+    }else if(location.pathname === `/${data.userName}`) setTitle('');
     else if (location.pathname === `/${data.userName}/stats`) setTitle("Estatísticas");
     else if (location.pathname === `/${data.userName}/definition`) setTitle("Difinições");
     else if (location.pathname === `/${data.userName}/createaproject`)

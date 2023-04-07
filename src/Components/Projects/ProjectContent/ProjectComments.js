@@ -5,7 +5,7 @@ import styles from "./ProjectContent.module.css";
 import { filesUrl } from "../../services/api";
 import formatDate from "../../Helper/formatDate";
 import { NavLink } from "react-router-dom";
-function ProjectComments({ id, commentsList }) {
+function ProjectComments({ id, commentsList, project }) {
   const [comments, setComments] = React.useState(() => commentsList);
   const { login, data } = useContext(UserContext);
   const commentsSection = React.useRef(null)
@@ -36,7 +36,7 @@ function ProjectComments({ id, commentsList }) {
           ))}
         </ul>
       </div>
-      {login && <ProjectCommentsForm id={id} userId={data.id} setComments={setComments} />}
+      {login && <ProjectCommentsForm project={project} id={id} userId={data.id} setComments={setComments} />}
     </div>
   );
 }

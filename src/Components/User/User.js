@@ -5,14 +5,16 @@ import UserCreateAProject from "./UserCreateAProject";
 import UserDefinition from "./UserDefinition";
 import UserStats from "./UserStats";
 import Feed from "../Feed/Feed";
+import Profile from "./Profile/Profile";
+
 
 function User() {
   return (
     <section className={"container"}>
       <UserHeader />
       <Routes>
-        <Route path="/" element={<Feed />} />
-        <Route path="createaproject" element={<UserCreateAProject />}/>
+        <Route path="/" element={<Profile />} />
+        <Route path="createaproject" element={<UserCreateAProject />} />
         <Route path="definition" element={<UserDefinition />} />
         <Route path="stats" element={<UserStats />} />
       </Routes>

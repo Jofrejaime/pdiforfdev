@@ -47,7 +47,6 @@
 .projectContainer:hover .coverOverlay {
   opacity: 1;
 }
-
 @media (min-width: 1750px) {
   .projectContainer {
     --initialWidth: 800px;
@@ -207,9 +206,18 @@
 }
 
 .projectInfoName {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   min-width: 0;
   padding-right: 15px;
   text-align: left;
+}
+.projectInfoName span{
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .projectInfoName a {

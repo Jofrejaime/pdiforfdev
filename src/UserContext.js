@@ -12,7 +12,6 @@ export const UserStorage = ({ children }) => {
   const [loginType, setLogintype] = React.useState('login');
   const navigate = useNavigate();
 
-// eslint-disable-next-line react-hooks/exhaustive-deps
 async function getUser(token) {
   const { url, options } = USER_GET(token);
   const response= await fetch(url, options);

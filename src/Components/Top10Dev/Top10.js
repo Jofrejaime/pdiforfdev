@@ -11,10 +11,9 @@ function Top10() {
       const { url, options } = TOP_10();
       const { json, response } = await request(url, options);
       if (response.ok) setTopDev(json);
-      console.log(json);
     }
     top10();
-  }, [topDev, request]);
+  }, [request]);
   return (
     <section id="home" className={styles.top_10}>
       <div className="container">
@@ -23,7 +22,7 @@ function Top10() {
         <div className={styles.devs_Top10}>
           {topDev &&
             topDev.map((top10) => (
-              <div key={top10.id} className={styles.dev_Box}>
+              <div key={top10.project.id} className={styles.dev_Box}>
                 <ProjectUserCard info={top10} />
               </div>
             ))}

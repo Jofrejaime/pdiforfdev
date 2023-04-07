@@ -6,8 +6,7 @@ import ProjectModal from "../Projects/ProjectModal";
 import Projects from "../Projects/Projects";
 import styles from "./Feed.module.css";
 import { useLocation } from "react-router-dom";
-function Feed(area, language, label) {
-
+function Feed({area, language, label, projects}) {
   const [modalProject, setModalProject] = useState(null);
   const location = useLocation();
   const [user, setUser] = useState()
@@ -21,7 +20,7 @@ function Feed(area, language, label) {
           setModalProject={setModalProject}
         />
       )}
-      <Projects setModalProject={setModalProject} area={area} label={label} language={language} />
+      <Projects setModalProject={setModalProject} area={area} label={label} language={language}  projects={projects}/>
     </section>
   );
 }

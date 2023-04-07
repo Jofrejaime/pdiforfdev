@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Projects.module.css";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComment, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faComment, faEye, faEyeSlash, faStar, faStarHalf } from "@fortawesome/free-solid-svg-icons";
 import { filesUrl } from "../services/api";
+import starProject from "./ProjectContent/StarOnProject";
+import { UserContext } from "../../UserContext";
+import useFetch from "../../Hooks/useFetch";
 function Project({project, setModalProject, setView}) {
+  const {data: logedUser}  = useContext(UserContext)
+  const {request} =  useFetch()
+  const [star, setStar] = React.useState(() => project.project.Stars);
+  const [starred,  setStared] = useState
+  (faStar)
+  useEffect(()=>{
+    if(logedUser){
+    const  starredByUser =  star.find(star => star.userId === logedUser.id)
+    if(starredByUser)
+    setStared(faStar) 
+    else setStared(faStarHalf)
+  }
+  }, [logedUser, star])
   const [option, setOption] = useState(false);
   function handleClick(){
     setView(project)
@@ -41,6 +57,8 @@ function Project({project, setModalProject, setView}) {
                     <NavLink to={"#"} style={{}}>
                    {project.project.title}
                     </NavLink>
+                    <span>
+                    <FontAwesomeIcon icon={faEye}/> {project.project._count.Views}</span>
                   </div>
                 </div>
               </div>
@@ -62,9 +80,9 @@ function Project({project, setModalProject, setView}) {
               </div>
             </span>
             <div className={styles.statsOfProject}>
-              <div className={styles.stats}>
-                <FontAwesomeIcon icon={faStar} />
-                <span>{project.project.Stars.length}</span>
+              <div className={styles.stats} onClick={()=> starProject({findedProject: project.project, setStar, logedUser, request, starred })}>
+                <FontAwesomeIcon icon={starred} />
+                <span>{star.length}</span>
                 <FontAwesomeIcon icon={faComment} />
                 <span>{project.project.Comment.length}</span>
               </div>

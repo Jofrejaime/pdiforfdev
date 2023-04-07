@@ -9,8 +9,10 @@ function Footer() {
     else setDisplay(' ')
   }, [params]);
   return (
-  <footer className={'container'} style={{display: display}}>
-    FOOTER
+    <footer className={styles.footer + ' container'} style={{display: display}}>
+    <span className={styles.footer_copy}>
+      &#169; PDI for dev. All rights reserved
+    </span>
   </footer>
   )
 }

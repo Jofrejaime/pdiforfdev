@@ -6,13 +6,14 @@ import "boxicons";
 import Feed from "../../Feed/Feed";
 import useMedia from "../../../Hooks/useMedia";
 import Skills from "./Skills";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import Loading from "../../Helper/Loading";
 import Error from "../../Helper/Error";
 import FollowUser from "./FollowUser";
 function Profile() {
   const {data: logedUser} = useContext(UserContext)
+  const navigate =  useNavigate()
   const { data, request, loading, error } = useFetch();
   const [projects, setProjects] = React.useState(true);
   const [followers, setFollowers] =  useState([])
@@ -132,7 +133,7 @@ function Profile() {
                   </a>
                 </div>
               </div>
-              <Link to={'message/'}  className={styles.message+ ' '+styles.button}>message</Link>
+              <Link to={`../../message/${data.userName}`}  className={styles.message+ ' '+styles.button}>message</Link>
               {media && <Skills areas={data.profile.AreaofProfile} languages={data.profile.LanguageOfProfile} tools={data.profile.ToolofProfile}  />}
             </div>
           </header>

@@ -1,7 +1,7 @@
-import React from "react";
-import { NavLink} from "react-router-dom";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import TextArea from "../Form/TextArea";
-import Button from '../Form/Button'
+import Button from "../Form/Button";
 import Avatar from "../../assets/img/image.jpg";
 import {
   AsideheaderInbox,
@@ -24,61 +24,105 @@ import {
   ThreadList,
   UserAvatarContent,
 } from "./MessageStyles";
+import { FIND_CONVERSATION_ROOM, FIND_USER, GET_USERS, LIST_CONVERSATION, filesUrl } from "../services/api";
+import useFetch from "../../Hooks/useFetch";
+import { createConversation } from "./createConversation";
+import { UserContext } from "../../UserContext";
+import formatDate from "../Helper/formatDate";
 function Message() {
+  const {data: logedUser} = useContext(UserContext)
+  const { pathname } = useLocation();
+  const { data,request } = useFetch();
+  const [specificConversation, setSpecificConversation] =  useState(false)
+const getConversations = useCallback(async ()=>{
+ 
+    const {url, options} =  LIST_CONVERSATION({member: logedUser.id});
+    const {json, response} = await request(url, options)
+    if(response.ok && json){
+      setListConversation(json)
+    }
+    
+ 
+},[logedUser.id, request])
+  const [listConversation, setListConversation] = useState([])
+  useEffect(() => {
+    async function getUser() {
+      const name =  pathname.split("/")[2]
+      if(name){
+      const { url, options } = FIND_USER({ name });
+       await request(url, options);}
+    }
+     getUser();
+    getConversations()
+  }, [request, pathname, getConversations]);
+  
+  async function getConverse(id){
+    const {url, options} = FIND_CONVERSATION_ROOM({id})
+    const {json, response} = await request(url, options)
+  if(response.ok) setSpecificConversation(...json)
+  }
+  console.log(specificConversation)
   return (
     <section id="message">
-      <h1 className="title"></h1>
       <Container>
         <InboxList>
           <AsideheaderInbox>
             <HeaderOfMessageList>Lista de Mensagens</HeaderOfMessageList>
           </AsideheaderInbox>
           <InboxListContainer>
-            <ThreadList>
-              <ListOfMessage>
-                <div>
-                  <ItemBoxMessage>
-                    <ContentItemMessage>
-                      <MessageAvatar>
-                        <UserAvatarContent>
-                          <NavLink to={""}>
-                            <img src={Avatar} alt="Jofre Jaime" />
-                          </NavLink>
-                        </UserAvatarContent>
-                      </MessageAvatar>
-                      <MessageItemContent>
-                        <div>
-                          <span>
-                            <span>Jofre Jaime</span>
-                          </span>
-                          <div>
-                            <span></span>
-                            <p>4 de set. de 2023</p>
-                          </div>
-                        </div>
-                        <p>Bom dia, quero participar deste teu projecto</p>
-                      </MessageItemContent>
-                    </ContentItemMessage>
-                  </ItemBoxMessage>
-                </div>
-              </ListOfMessage>
-            </ThreadList>
+          {  listConversation.length > 0 && listConversation.map(conversation =>
+          <ThreadList key={conversation.id} onClick={()=>getConverse(conversation.id)}>
+          <ListOfMessage>
+            <div>
+              <ItemBoxMessage>
+                <ContentItemMessage>
+                  <MessageAvatar>
+                    <UserAvatarContent>
+               {conversation.MemberToConversation.map(member=> member.memberId !== logedUser.id && <NavLink to={""}>
+                        <img src={filesUrl+member.member.profile.photo_url} alt={member.member.userName} />
+                      </NavLink> )
+                      }
+  
+                    </UserAvatarContent>
+                  </MessageAvatar>
+                  <MessageItemContent>
+                    <div>
+                    {conversation.MemberToConversation.map(member=> member.memberId !== logedUser.id && <span>
+                      <span>{member.member.userName}</span>
+                    </span> )
+                      }
+                      <div>
+                        <span></span>
+                       <p>{conversation.Messages.length >0 && `${formatDate(conversation.created_at)}`}</p>
+                      </div>
+                    </div>
+                    <p>{conversation.Messages.length > 0 && `${conversation.Messages[conversation.Messages.length - 1].context}`}</p>
+                  </MessageItemContent>
+                </ContentItemMessage>
+              </ItemBoxMessage>
+            </div>
+          </ListOfMessage>
+        </ThreadList>
+            )
+            
+            }
           </InboxListContainer>
         </InboxList>
         <PanelMessage>
           <PanelMessageHeader>
-            <div>
+          {specificConversation?  specificConversation.MemberToConversation.map(member => member.memberId !== logedUser.id && <div>
               <div>
                 <span>
                   <div>
                     <a>
-                      <img src={Avatar} alt="Jofre Jaime" />
+                      <img src={filesUrl + member.member.profile.photo_url} alt={member.member.userName} />
                     </a>
                   </div>
                   <span>Jofre Jaime</span>
                 </span>
               </div>
-            </div>
+            </div>)
+          : <div>Selecione uma conversa</div>}
           </PanelMessageHeader>
           <ConversationContent>
             <ConversationContentWapper>
@@ -100,14 +144,18 @@ function Message() {
                   </div>
                 </li>
               </ConversationList>
-              
-            </ConversationContentWapper><InputSectionContainer>
+            </ConversationContentWapper>
+            <InputSectionContainer>
               <TextAreaSection>
-                <TextArea rows='' placeholder={'Escreva sua mensagem'}></TextArea>   
-                <div><Button >Enviar</Button></div> 
+                <TextArea
+                  rows=""
+                  placeholder={"Escreva sua mensagem"}
+                ></TextArea>
+                <div>
+                  <Button>Enviar</Button>
+                </div>
               </TextAreaSection>
-        
-              </InputSectionContainer>
+            </InputSectionContainer>
           </ConversationContent>
         </PanelMessage>
       </Container>

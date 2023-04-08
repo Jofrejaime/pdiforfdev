@@ -7,8 +7,8 @@ function MessageIndex() {
   return (
     <div className="container">
       <Routes>
-        <Route path='/'  element={<Message />}/>
-        <Route path='user' element={<UserMessage />}/>
+        <Route path='/:username'  element={<Message />}/>
+        <Route path='/' element={<Message />}/>
       </Routes>
     </div>
   )

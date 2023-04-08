@@ -22,13 +22,12 @@ function Notifications() {
   useEffect(() => {
     findNotifications();
   }, [findNotifications]);
-  console.log(notifications)
 
   return (
     <section className={mobile ? "container" : styles.notifications}>
       <h4 className={styles.tittleNotification}>Suas Notificações</h4>
       <ul className={styles.notificationList}>
-       { notifications.length >0? notifications.map(notification=><Notification notification={notification}/> ): <p>Nenhuma Notificação</p>}
+       { notifications.length >0? notifications.map(notification=><Notification key={notification.id} notification={notification}/> ): <p>Nenhuma Notificação</p>}
       </ul>
     </section>
   );

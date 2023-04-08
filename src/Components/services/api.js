@@ -5,7 +5,7 @@ const api = axios.create({
 });
 export const API_URL = "http://localhost:3001";
 export const filesUrl = API_URL + "/files/";
-
+export const getToken = window.localStorage.getItem('token')
 export function TOKEN_POST(body) {
   return {
     url: API_URL + "/session",
@@ -49,7 +49,7 @@ export function FIND_PROJECT_FOR_FEED({ follower }) {
       method: "GET",
       cache: "no-store",
       headers:{
-        authorization: 'Bearer '+window.localStorage.getItem('token')
+        authorization: 'Bearer '+getToken,
       }
     },
   };
@@ -66,9 +66,6 @@ export function USER_GET(token) {
     },
   };
 }
-export function CREATE_CONVERSATION(){
-  
-}
 export function FIND_NOTIFICATIONS({receiverId}){
   return{
     url: API_URL+'/notification/'+receiverId,
@@ -76,7 +73,7 @@ export function FIND_NOTIFICATIONS({receiverId}){
       method: 'GET',
       cache: 'no-store',
       headers:{
-        authorization: 'Bearer '+window.localStorage.getItem('token'), 
+        authorization: 'Bearer '+ getToken,
         "Content-Type": "application/json"
       }
     }
@@ -101,21 +98,21 @@ export function CREATE_NOTIFICATION({issuerId, receiverId, content}){
     options:{
       method: 'POST',
       headers:{
-        authorization: 'Bearer '+ window.localStorage.getItem('token'),
+        authorization: 'Bearer '+ getToken,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({issuerId, receiverId, content})
-    
     }
+    
    }
 }
 export function FOLLOW_USER(follower, following) {
   return {
-    url: API_URL + "/user/follow",
     options: {
+    url: API_URL + "/user/follow",
       method: "POST",
       headers: {
-        authorization: "Bearer " + window.localStorage.getItem("token"),
+        authorization: "Bearer " + getToken,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(follower, following),
@@ -189,7 +186,7 @@ export function DELETE_PROJECT(id) {
     options: {
       method: "DELETE",
       headers: {
-        authorization: "Bearer " + window.localStorage.getItem("token"),
+        authorization: "Bearer " + getToken
       },
     },
   };
@@ -212,7 +209,7 @@ export function STAR_ON_PROJECT(body) {
     options: {
       method: "PATCH",
       headers: {
-        authorization: "Bearer " + window.localStorage.getItem("token"),
+        authorization: "Bearer " + getToken,
       },
       body: body,
     },
@@ -224,7 +221,7 @@ export function COMMENT_ON_PROJECT(id, { comment }, userId) {
     options: {
       method: "POST",
       headers: {
-        authorization: "Bearer " + window.localStorage.getItem("token"),
+        authorization: "Bearer " + getToken,
       },
       body: comment,
     },
@@ -301,10 +298,60 @@ export function POST_VIEWS(body) {
     options: {
       method: "POST",
       headers: {
+        authorization: "Bearer " + getToken,
         "Content-Type": "application/json",
-        authorization: "Bearer " + window.localStorage.getItem("token"),
+        
       },
     },
   };
+}
+export function CREATE_CONVERSATION(members){
+  
+  return{
+    url: API_URL + '/conversation/create',
+    options:{
+      method: 'POST',
+      headers:{
+        authorization: 'Bearer ' + getToken,
+        "Content-Type": "application/json",
+      }, 
+      body:JSON.stringify(members)
+    }
+  }
+}
+export function FIND_CONVERSATION({id}){
+  return{
+    url: API_URL + 'conversation' + id,
+    options:{
+      method: 'GET',
+      headers:{
+        authorization: "Bearer " + getToken,
+        "Content-Type": "application/json",
+      }
+    }
+  }
+}
+export function FIND_CONVERSATION_ROOM({id}){
+  return{
+    url: API_URL + '/conversation/room/'+id,
+    options:{
+      method: 'GET',
+      headers:{
+        authorization: 'Berear '+getToken,
+        "Content-Type": "application/json"
+      } 
+    }
+  }
+} 
+export function LIST_CONVERSATION({member}){
+  return{
+    url: API_URL+'/conversation/'+member,
+    options:{
+      method: 'GET',
+      headers:{
+        "Content-Type": "application/json"
+      }
+    }
+  }
 }
 export default api;

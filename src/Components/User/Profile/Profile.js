@@ -6,7 +6,7 @@ import "boxicons";
 import Feed from "../../Feed/Feed";
 import useMedia from "../../../Hooks/useMedia";
 import Skills from "./Skills";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import Loading from "../../Helper/Loading";
 import Error from "../../Helper/Error";
@@ -132,6 +132,7 @@ function Profile() {
                   </a>
                 </div>
               </div>
+              <Link to={'message/'}  className={styles.message+ ' '+styles.button}>message</Link>
               {media && <Skills areas={data.profile.AreaofProfile} languages={data.profile.LanguageOfProfile} tools={data.profile.ToolofProfile}  />}
             </div>
           </header>

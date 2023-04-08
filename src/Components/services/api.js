@@ -66,6 +66,9 @@ export function USER_GET(token) {
     },
   };
 }
+export function CREATE_CONVERSATION(){
+  
+}
 export function FIND_NOTIFICATIONS({receiverId}){
   return{
     url: API_URL+'/notification/'+receiverId,
@@ -73,8 +76,7 @@ export function FIND_NOTIFICATIONS({receiverId}){
       method: 'GET',
       cache: 'no-store',
       headers:{
-        authorization: 'Bearer '+window.localStorage.getItem('token'),
-        
+        authorization: 'Bearer '+window.localStorage.getItem('token'), 
         "Content-Type": "application/json"
       }
     }

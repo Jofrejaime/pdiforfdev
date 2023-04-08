@@ -3,8 +3,6 @@ import { UserContext } from "../../../UserContext";
 import { CREATE_NOTIFICATION, FOLLOW_USER } from "../../services/api";
 import useFetch from "../../../Hooks/useFetch";
 import styles from "./Profile.module.css";
-import { faL } from "@fortawesome/free-solid-svg-icons";
-import { da } from "date-fns/locale";
 function FollowUser({ data, setFollowers }) {
   const { data: logedUser } = useContext(UserContext);
   const [classe, setClasse] = useState('');
@@ -25,8 +23,7 @@ function FollowUser({ data, setFollowers }) {
     }, [])
   useEffect(() => {
      follow()
-  }, [
-  ]);
+  }, []);
   async function createNotification() {
     const { url, options } = CREATE_NOTIFICATION({
     
@@ -54,7 +51,6 @@ function FollowUser({ data, setFollowers }) {
       }
     }
   }
-console.log(data)
   return (
     <div>
       { data && data.profile.id === logedUser.profile.id ? (

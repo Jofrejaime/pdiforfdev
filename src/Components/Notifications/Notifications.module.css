@@ -1,6 +1,10 @@
+.notifications{
+  width: 100%;
+  max-width: 25rem;
+}
 .tittleNotification {
   text-align: center;
-  font-size: clamp(1rem, 1rem + 1vw, 1.2rem);
+  font-size: clamp(.75rem, .9rem + 1vw, 1rem);
   font-family: var(--type-code1);
   width: 100%;
   border-bottom: 1px solid #999;
@@ -9,7 +13,7 @@
   padding: .5rem 1rem;
   position: relative;
 }
-
+.information_text{word-break:normal;}
 .notificationList {
   padding: .5rem 1rem;
   padding-top: 1rem;

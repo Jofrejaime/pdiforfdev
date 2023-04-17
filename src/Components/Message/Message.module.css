@@ -1,3 +1,6 @@
+.message{
+  margin-top: 4rem;
+}
 .listMassage a{
   display: flex;
   align-items: center;
@@ -37,4 +40,81 @@ color: #333;
   font-family: var(--type-code2);
   font-weight: 400;
 
+}
+.form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: stretch;
+}
+
+.textarea {
+  width: 100%;
+  display: block;
+  font-size: 1rem;
+  font-family: var(--type-code3);
+  resize: none;
+  border: 1px solid #eee;
+  border-radius: .2rem;
+  padding: .5rem;
+  background-color: #eee;
+  transition: .3s;
+}
+
+.textarea:focus,
+.textarea:hover {
+  outline: none;
+  border-color: #0044cc;
+  background: white;
+  box-shadow: 0 0 0 3px #0452ee;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  color: #0044cc;
+  transition: .3s;
+}
+
+.button:focus,
+.button:hover {
+  color: #9B1476;
+}
+.markthread:hover{
+  background-color: #f2f2f2;
+}
+.activeUser{
+  color: #0044cc;
+}
+
+.profile_perfil {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(180deg, hsla(var(--hue), var(--sat), var(--lig), 1) 0%, hsla(var(--hue), var(--sat), var(--lig), .2) 100%);
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.profile_perfil img {
+  width: 100%;
+}
+
+.profile_border {
+  border: 3.5px solid transparent;
+  justify-self: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: .75rem;
+}
+.profile_border:has(.activeUser){
+  border: 3.5px solid var(--first-color); 
 }

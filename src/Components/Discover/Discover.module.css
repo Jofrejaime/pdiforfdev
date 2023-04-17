@@ -110,14 +110,14 @@
   --initialWidth: 700px;
   display: flex;
   flex-wrap: wrap;
-  overflow: hidden;
   position: relative;
   z-index: 1;
 }
 @media (min-width: 1750px) {
-  .projectContainer {
+  .projectContainer, .userContainer {
     --initialWidth: 800px;
   }
+  
 }
 
 .user {

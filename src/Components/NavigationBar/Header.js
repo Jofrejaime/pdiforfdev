@@ -24,7 +24,7 @@ function Header() {
 
   const [display, setDisplay] = React.useState("");
   const [mobileMenu, setMobilemenu] = React.useState(false);
-  const mobile = useMedia("(max-width: 67px)");
+  const mobile = useMedia("(max-width: 767px)");
   const { pathname } = useLocation();
 
   React.useEffect(() => {

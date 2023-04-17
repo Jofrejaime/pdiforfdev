@@ -5,10 +5,12 @@ import Feed from "./Feed/Feed";
 import { UserContext } from "../UserContext";
 import { FIND_PROJECT_FOR_FEED } from "./services/api";
 import useFetch from "../Hooks/useFetch";
+import Toast from "./Helper/Toast";
 function Home() {
   const { data: logedUser } = useContext(UserContext);
   const {request} = useFetch()
   const [projects, setPojects] = useState()
+
   useEffect(() => {
    async function projects (){
       const {url, options} =  FIND_PROJECT_FOR_FEED({follower: logedUser.id})
@@ -18,6 +20,7 @@ function Home() {
     projects()
     
   }, [logedUser.Following, logedUser.id, request]);
+
   return (
     <div>
       <Top10 />

@@ -4,7 +4,7 @@ import useMedia from "../../Hooks/useMedia";
 import Avatar from "../../assets/img/avatar.jpg";
 import formatDate from "../Helper/formatDate";
 import Notification from "./Notification";
-import { FIND_NOTIFICATIONS } from "../services/api";
+import { FIND_NOTIFICATIONS, socketIO } from "../services/api";
 import useFetch from "../../Hooks/useFetch";
 import { UserContext } from "../../UserContext";
 
@@ -14,20 +14,34 @@ function Notifications() {
   const { request } = useFetch();
   const [notifications, setNotifications] = useState([]);
   const findNotifications = useCallback(async () => {
-    if(logedUser){
-    const { url, options } = FIND_NOTIFICATIONS({ receiverId: logedUser.id });
-    const { json, response } = await request(url, options);
-    if(response.ok) setNotifications(json)}
+    if (logedUser) {
+      const { url, options } = FIND_NOTIFICATIONS({ receiverId: logedUser.id });
+      const { json, response } = await request(url, options);
+      if (response.ok) setNotifications(json);
+    }
   }, [logedUser, request]);
   useEffect(() => {
     findNotifications();
-  }, [findNotifications]);
-
+  }, [findNotifications, notifications]);
+  useEffect(() => {
+    if(logedUser)
+    socketIO.on("notification", (data) => {
+      console.log(data.receiverId, logedUser.id)
+      if (data.receiverId === logedUser.id)
+        setNotifications((notifications) => [...notifications, data]);
+    });
+  }, [logedUser]);
   return (
     <section className={mobile ? "container" : styles.notifications}>
       <h4 className={styles.tittleNotification}>Suas Notificações</h4>
       <ul className={styles.notificationList}>
-       { notifications.length >0? notifications.map(notification=><Notification key={notification.id} notification={notification}/> ): <p>Nenhuma Notificação</p>}
+        {notifications.length > 0 ? (
+          notifications.map((notification) => (
+            <Notification key={notification.id} notification={notification} />
+          ))
+        ) : (
+          <p>Nenhuma Notificação</p>
+        )}
       </ul>
     </section>
   );

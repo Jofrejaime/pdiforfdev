@@ -1,6 +1,12 @@
 .notifications{
   width: 100%;
   max-width: 25rem;
+  overflow: auto;
+}
+@media screen and (min-width:776px){
+  .notifications{
+    max-height: 30rem;
+  }
 }
 .tittleNotification {
   text-align: center;

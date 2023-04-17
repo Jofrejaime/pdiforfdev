@@ -40,7 +40,7 @@ export default function ProjectContent({ data, setModalProject }) {
             <div className={styles.author}>
               <Link
                 className={stylesH.profile}
-                to={`${findedProject.user.userName}`}
+                to={`../../${findedProject.user.userName}`}
               >
                 <picture>
                   <img

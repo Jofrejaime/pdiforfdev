@@ -247,7 +247,8 @@ a {
   padding: .75rem;
   box-shadow: none;
 }
-
+.message{padding: .5rem;
+border-radius: 2rem; display: flex; align-items: center; justify-content: center;}
 .button_gray {
   background-color: var(--text-color-lighten);
   color: var(--title-color);
@@ -361,17 +362,7 @@ a {
 }
 
 /*=============== SCROLL BAR ===============*/
-::-webkit-scrollbar {
-  width: 6rem;
-  border-radius: .5rem;
-  background-color: hsl(var(--hue), 8%, 66%);
-}
 
-::-webkit-scrollbar-thumb {
-  width: .6rem;
-  border-radius: .5rem;
-  background-color: hsl(var(--hue), 6%, 54%);
-}
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: hsl(var(--hue), 6%, 44%);

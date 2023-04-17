@@ -20,7 +20,7 @@ function ProjectUserCard({ info }) {
       <div className={stylesPU.card_inner}>
         <Front src={(filesUrl+project.files+'/'+files[0]).replace(/ /gi, '%20')}  className={stylesPU.front}>
           <div className={stylesPU.b}>
-          <h2>{project.title}</h2>
+          <span>{project.title}</span>
           <p>{project.AreaOfProject.map(area=><span key={area.areaLabel}>{area.areaLabel+ ' '}</span>)}</p>
           <div className={stylesPU.status}>
           <button>By: {project.user.userName}</button>

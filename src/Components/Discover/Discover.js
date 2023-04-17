@@ -14,6 +14,7 @@ import { filesUrl, GET_AREAS, GET_LANGUAGES, GET_USERS } from "../services/api";
 import styles from "./Discover.module.css";
 import { SomeArea } from "./DiscoverStyles";
 import Feed from "../Feed/Feed";
+import CardUser from "./CardUser";
 function Descover() {
   const search = useForm("");
   const linguagens = useForm("");
@@ -98,24 +99,7 @@ function Descover() {
       <div className={styles.userContainer}>
          {getUsers && getUsers.map((user) => 
     <div style={data && data.id === user.id? {display: 'none'}: {display: 'flex'}} key={user.id} className={styles.user}>
-      <div className={styles.userContent}>
-    <div className={styles.photo}>
-     <NavLink to={`${user.userName7}`}>
-      <picture>
-        <img src={`${filesUrl}${user.profile.photo_url}`} alt={user.userName}/>
-      </picture></NavLink>
-    </div>
-    <div className={styles.info}><div className={styles.userInfo}>
-      <div className={styles.username}>{user.userName}</div>
-      <div className={styles.stars}><FontAwesomeIcon icon={faStar}/> {user.Star.length}</div>
-      <div className={styles.projects}>
-        <FontAwesomeIcon icon={faFileCircleCheck}/> {user.projects.length}</div>
-    </div></div>
-    
-    <div className={styles.seguir}>
-      <span>seguir</span>
-    </div>
-    </div>
+    <CardUser className={styles.user} user={user}/>
   </div>
       )}
       </div>

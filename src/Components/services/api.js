@@ -1,8 +1,11 @@
 import axios from "axios";
 import { method } from "lodash";
+import { io } from "socket.io-client";
 const api = axios.create({
   baseURL: "http://localhost:3001",
 });
+export const  SOCKET_SERVER = "http://localhost:3003";
+export const socketIO = io(SOCKET_SERVER) 
 export const API_URL = "http://localhost:3001";
 export const filesUrl = API_URL + "/files/";
 export const getToken = window.localStorage.getItem('token')
@@ -108,8 +111,9 @@ export function CREATE_NOTIFICATION({issuerId, receiverId, content}){
 }
 export function FOLLOW_USER(follower, following) {
   return {
-    options: {
+   
     url: API_URL + "/user/follow",
+     options: { 
       method: "POST",
       headers: {
         authorization: "Bearer " + getToken,
@@ -319,9 +323,20 @@ export function CREATE_CONVERSATION(members){
     }
   }
 }
+export function LIST_MESSAGES_BY_CONVERSATION({id}){
+  return{
+    url: API_URL+'/conversation/messages/'+id,
+    options:{
+      method: 'GET',
+      headers:{
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}
 export function FIND_CONVERSATION({id}){
   return{
-    url: API_URL + 'conversation' + id,
+    url: API_URL + '/conversation/' + id,
     options:{
       method: 'GET',
       headers:{
@@ -352,6 +367,22 @@ export function LIST_CONVERSATION({member}){
         "Content-Type": "application/json"
       }
     }
+  }
+}
+export function SEND_MESSAGE({conversation, userId, content}){
+ 
+  return{
+    url: API_URL + '/conversation/send/'+conversation,
+    options:{
+      method:  'POST',
+    headers:{
+      authorization: 'Bearer ' + getToken,
+      "Content-Type": "application/json"
+    },
+    body:JSON.stringify({
+      conversation, userId, content})
+    }
+    
   }
 }
 export default api;

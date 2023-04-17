@@ -11,6 +11,7 @@ import useFetch from "../../../Hooks/useFetch";
 import Loading from "../../Helper/Loading";
 import Error from "../../Helper/Error";
 import FollowUser from "./FollowUser";
+import { createConversation } from "../../Message/createConversation";
 function Profile() {
   const {data: logedUser} = useContext(UserContext)
   const navigate =  useNavigate()
@@ -133,7 +134,7 @@ function Profile() {
                   </a>
                 </div>
               </div>
-              <Link to={`../../message/${data.userName}`}  className={styles.message+ ' '+styles.button}>message</Link>
+             {logedUser.id !== data.id && <Link onClick={()=>createConversation({members:[logedUser.id, data.id], request})} to={`../../message/${data.userName}`}  className={styles.message+ ' '+styles.button}>message</Link>}
               {media && <Skills areas={data.profile.AreaofProfile} languages={data.profile.LanguageOfProfile} tools={data.profile.ToolofProfile}  />}
             </div>
           </header>

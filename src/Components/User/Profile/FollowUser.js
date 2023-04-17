@@ -3,13 +3,13 @@ import { UserContext } from "../../../UserContext";
 import { CREATE_NOTIFICATION, FOLLOW_USER } from "../../services/api";
 import useFetch from "../../../Hooks/useFetch";
 import styles from "./Profile.module.css";
+import createNotifications from "../../Notifications/createNotifications";
 function FollowUser({ data, setFollowers }) {
   const { data: logedUser } = useContext(UserContext);
-  const [classe, setClasse] = useState('');
+  const [classe, setClasse] = useState("");
   const [frase, setFrase] = useState("");
   const { request } = useFetch();
-  const follow =  useCallback( async ()=>{  
-
+  const follow = useCallback(async () => {
     const FollowingProfile = await logedUser.Following.some(
       (following) => following.followingId === data.profile.id
     );
@@ -20,40 +20,38 @@ function FollowUser({ data, setFollowers }) {
       setFrase("follow");
       setClasse(styles.button);
     }
-    }, [])
+  }, [data.profile.id, logedUser.Following]);
   useEffect(() => {
-     follow()
-  }, []);
-  async function createNotification() {
-    const { url, options } = CREATE_NOTIFICATION({
-    
-      issuerId: logedUser.id,
-      receiverId: data.id,
-      content:"seguiu você"
-    });
-    const { json, response } = await request(url, options);
-  }
+    follow();
+  }, [follow]);
+
   async function Follow() {
     const follower = logedUser.id;
     const following = data.profile.id;
     const { url, options } = FOLLOW_USER({ follower, following });
     const { json, response } = await request(url, options);
+    console.log(json, response);
     if (response.ok) {
       if (frase === "follow") {
         setClasse(styles.following);
         setFrase("following");
-        setFollowers(json)
-        createNotification()
+        setFollowers(json);
+        createNotifications({
+          issuerId: logedUser.id,
+          receiverId: data.id,
+          content: "seguiu você",
+          request: request,
+        });
       } else {
         setFrase("follow");
         setClasse(styles.button);
-        setFollowers(json)
+        setFollowers(json);
       }
     }
   }
   return (
     <div>
-      { data && data.profile.id === logedUser.profile.id ? (
+      {data && data.profile.id === logedUser.profile.id ? (
         <button className={styles.button}>Editar</button>
       ) : (
         <button onClick={Follow} className={classe}>

@@ -44,7 +44,7 @@ export default function Projects({setModalProject, area, language, label, projec
     return (
       <div className={styles.projects + " animeLeft"}>
         <div className={styles.projectsContent}>
-          {data.map((project) => (
+          {data.length>0 && data.map((project) => (
             <Project
            setView={setView}
               key={project.project.id}

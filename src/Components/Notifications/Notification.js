@@ -9,12 +9,12 @@ function Notification({notification}) {
     <li>
       <div className={styles.avatar}>
       <picture>
-        <img src={filesUrl+notification.issuer.profile.photo_url} alt={notification.issuer.userName} />
+        {notification.issuer && <img src={filesUrl+notification.issuer.profile.photo_url} alt={notification.issuer.userName} />}
       </picture>
     </div>
     <div className={styles.information}>
       <p className={styles.information_text}>
-        <span className={styles.author}>{notification.issuer.userName}</span>{" "}
+        <span className={styles.author}>{notification.issuer && notification.issuer.userName}</span>{" "}
         <span className={styles.action}>{notification.content}</span>{" "}
       </p>
       <span className={styles.information_data}>{formatDate(notification.created_at)}</span>

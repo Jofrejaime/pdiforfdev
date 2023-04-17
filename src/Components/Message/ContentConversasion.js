@@ -48,7 +48,7 @@ function ContentConversasion({messages,specificConversation, setMessages }) {
   },[messages, setMessages, socket, specificConversation.id])
 
   return (
-    <ConversationContent>
+    <ConversationContent >
     <ConversationContentWapper>
       <ConversationList>
         {messages.length > 0 ? (

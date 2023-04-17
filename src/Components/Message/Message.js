@@ -7,16 +7,9 @@ import React, {
 } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  AsideheaderInbox,
   Container,
-  HeaderOfMessageList,
-  InboxList,
-  InboxListContainer,
-  ItemBoxMessage,
-  ListOfMessage,
   PanelMessage,
   PanelMessageHeader,
-  ThreadList,
 } from "./MessageStyles";
 import {
   FIND_CONVERSATION_ROOM,
@@ -33,7 +26,6 @@ import formatDate from "../Helper/formatDate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import useForm from "../../Hooks/useForm";
-import ContentItemMessageBox from "./ContentItemMessageBox";
 import ContentConversasion from "./ContentConversasion";
 import PanelHeader from "./PanelHeader";
 import ItemList from "./ItemList";
@@ -116,7 +108,7 @@ function Message() {
   return (
     <section id="message" className={styles.message}>
       <Container>
-       <ItemList onLineUsers={onLineUsers} specificConversation={specificConversation}  setSpecificConversation={setSpecificConversation} listConversation={listConversation}/>
+       <ItemList onLineUsers={onLineUsers}   setSpecificConversation={setSpecificConversation} listConversation={listConversation}/>
         <PanelMessage>
           <PanelMessageHeader>
             {specificConversation ? (

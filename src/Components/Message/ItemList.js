@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import ContentItemMessageBox from './ContentItemMessageBox'
 import { AsideheaderInbox, HeaderOfMessageList, InboxList, InboxListContainer, ItemBoxMessage, ListOfMessage, ThreadList } from './MessageStyles'
 import styles from './Message.module.css'
 import { FIND_CONVERSATION_ROOM } from '../services/api'
@@ -53,8 +52,7 @@ function ItemList({listConversation, specificConversation, onLineUsers, setSpeci
                     ).member.userName
                   }
                 >
-                  <ContentItemMessageBox conversation={conversation} onLineUsers={onLineUsers}/>
-             
+                 
                 </Link>
               </ItemBoxMessage>
             ))}

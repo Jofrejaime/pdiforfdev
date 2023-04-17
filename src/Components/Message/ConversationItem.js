@@ -1,24 +1,72 @@
-import React from 'react'
-import styles from './MessageStyle.module.css'
-function ConversationItem() {
+import React, { useContext, useEffect, useState } from "react";
+import styles from "./MessageStyle.module.css";
+import { UserContext } from "../../UserContext";
+import { filesUrl } from "../services/api";
+import formatDate from "../Helper/formatDate";
+import { Link } from "react-router-dom";
+function ConversationItem({
+  conversation,
+  setOtherMember,
+  setSpecificConversation,
+  specificConversation,
+  onLineUsers,
+}) {
+  const { data: logedUser } = useContext(UserContext);
+  const [member, setMember] = useState(false);
+  useEffect(() => {
+    if (conversation)
+      setMember(
+        ...conversation.MemberToConversation.filter(
+          (member) => member.memberId !== logedUser.id
+        )
+      );
+  }, [conversation, logedUser.id]);
+  let online = false;
+  if (onLineUsers && member)
+    online = onLineUsers.some(
+      (user) => user.username === member.member.userName
+    );
+  const same = specificConversation === conversation;
   return (
-    <div className={styles.discussion +' '+styles.message_active}>
-    <div
-      className={styles.photo}
-      style={{
-        backgroundImage:
-          "url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)",
-      }}
+    <Link
+      to={member &&
+        "../../message/" +
+        member.member.userName
+      }
+      className={
+        same
+          ? styles.discussion + " " + styles.message_active
+          : styles.discussion
+      }
+      onClick={() => setSpecificConversation(conversation)}
     >
-      <div className={styles.online}></div>
-    </div>
-    <div className={styles.desc_contact}>
-      <p className={styles.name}>Megan Leib</p>
-      <p className={styles.message}>9 pm at the bar if possible 😳</p>
-    </div>
-    <div className={styles.timer}>12 sec</div>
-  </div>
-  )
+      <div
+        className={styles.photo}
+        style={member?{
+          backgroundImage: `url(${filesUrl + member.member.profile.photo_url})`
+        }: {}}
+      >
+        {online && <div className={styles.online}></div>}
+      </div>
+      <div className={styles.desc_contact}>
+        <p className={styles.name}>{member && member.member.userName}</p>
+        <p className={styles.message}>
+          {" "}
+          {conversation.Messages.length > 0 &&
+            `${
+              conversation.Messages[conversation.Messages.length - 1].content
+            }`}
+        </p>
+      </div>
+      <div className={styles.timer}>
+        {conversation.Messages.lengh > 0
+          ? formatDate(
+              conversation.Messages[conversation.Messages.length - 1].created_at
+            )
+          : formatDate(conversation.created_at)}
+      </div>
+    </Link>
+  );
 }
 
-export default ConversationItem
+export default ConversationItem;

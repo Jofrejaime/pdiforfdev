@@ -126,7 +126,7 @@
 }
 
 .moreOptions {
-  position: relative;
+  position: absolute;
   align-items: center;
   display: flex;
   height: 23px;

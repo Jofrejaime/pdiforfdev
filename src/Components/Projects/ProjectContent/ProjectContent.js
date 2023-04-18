@@ -26,12 +26,14 @@ export default function ProjectContent({ data, setModalProject }) {
 
   React.useEffect(() => {
     setStared("Stars");
+    if(logedUser){
     const starred = star.find((star) => star.userId === logedUser.id);
-    if (starred) setStared("Starred");
-  }, [logedUser.id, star]);
+    if (starred) setStared("Starred");}
+  }, [logedUser, star]);
   return (
     <div className={styles.projectContent} onClick={handleClick}>
-      <header className={styles.header}>
+      { data && allFiles && findedProject &&  <div>
+         <header className={styles.header}>
         <div className={styles.headerContent}>
           <div className={styles.about}>
             <h2 className={"titleProject " + styles.m0}>
@@ -53,10 +55,10 @@ export default function ProjectContent({ data, setModalProject }) {
             </div>
           </div>
           <div className={styles.status}>
-            {findedProject.userId === logedUser.id && (
+            {logedUser && findedProject.userId === logedUser.id && (
               <DeleteProject id={findedProject.id} />
             )}
-            {logedUser && (
+            { (
               <div
                 className={starred === "Stars" ? styles.stars : styles.starred}
                 onClick={() =>
@@ -144,6 +146,10 @@ export default function ProjectContent({ data, setModalProject }) {
           />
         )}
       </section>
+      </div>}
+     
+     
+   
     </div>
   );
 }

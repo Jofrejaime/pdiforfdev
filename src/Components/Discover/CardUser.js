@@ -57,6 +57,7 @@ function CardUser({ user }) {
                   })
                 }
                 to={"../../message/" + user.userName}
+              
               >
                 Message
               </Link>

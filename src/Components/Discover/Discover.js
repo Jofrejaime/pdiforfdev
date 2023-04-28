@@ -47,13 +47,19 @@ function Descover() {
         setUsers(json)
       }
     }
-    callUsers()
+    if(search.value === ''){
+    callUsers()}
+
     callLanguages()
     callAreas()
-  },[request]) 
+  },[request, search]) 
     function handleSubmit(event) {
     event.preventDefault();
   }
+  useEffect(()=>{
+    if(setUsers.length>0 && search.value !== '')
+    setUsers(getUsers.filter(user=>user.userName.startsWith(search.value)))
+  },[getUsers, search])
   return (
     <section id="discover" className="container">
       <div className={styles.preChose}>

@@ -26,6 +26,7 @@ function Project({project, setModalProject, setView}) {
     setView(project)
   setModalProject(project)
   }
+  const img = ['.png', '.jpeg', '.jpg', '.JPEG', '.JPG', '.PNG']
   return (
     <div className={styles.projectContainer} >
       <div className={styles.project}>
@@ -34,7 +35,7 @@ function Project({project, setModalProject, setView}) {
             <div className={styles.coverContent}>
               <div className={styles.colorDomain}></div>
               <picture>
-                <img src={filesUrl + project.project.files +'/'+ project.files[0]} alt={project.project.title} />
+                <img src={filesUrl + project.project.files +'/'+ project.files.find(file =>  img.some(ext=>file.endsWith(ext)))} alt={project.project.title} />
               </picture>
               <div className={styles.coverOverlay}>
                 <div className={styles.projectCoverNeue}></div>

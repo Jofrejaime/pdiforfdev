@@ -24,14 +24,15 @@ export default function Projects({setModalProject, area, language, label, projec
         area: area,
         userName: user,
         label: label,
-        limit: '',
+      
       });
       const{json, response} = await request(url, options);
+      if(response.ok)
       setData(json)
     }
     fetchProjects(); }
     else setData(projects)
-  }, [area, label, language, location.pathname, projects, request]);
+  }, [area, label, language, location, projects, request]);
  
   async function setView(target){
     const {url, options} = POST_VIEWS({idProject: target.project.id, user: logedUser.userName})

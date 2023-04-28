@@ -54,9 +54,11 @@ function Profile() {
                       />
                     )}
                   </div>
+
                 </div>
                 <h2 className={styles.profile_name}>
                   {data.profile.firstName + " " + data.profile.lastName}
+                  <p className={styles.profile_profession}>{data.userName}</p>
                 </h2>
                 <h3 className={styles.profile_profession}>
                   {data.profile.AreaofProfile.map((area) => (

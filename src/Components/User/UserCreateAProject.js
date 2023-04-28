@@ -23,7 +23,7 @@ import {
 } from "../services/api";
 import useFetch from "../../Hooks/useFetch";
 import { useEffect } from "react";
-import  'boxicons'
+import "boxicons";
 function UserCreateAProject() {
   const [areas, setAreas] = React.useState([]);
   const [languages, setLanguages] = React.useState([]);
@@ -68,13 +68,12 @@ function UserCreateAProject() {
     callLanguages();
     callTools();
   }, [request]);
-  const handleSubmit = (event) => {
+ async function handleSubmit (event) {
     event.preventDefault();
     const areas = selectedAreas.map((area) => area.label);
     const languages = selectedLanguages.map((language) => language.label);
     const tools = selectedTools.map((tool) => tool.label);
 
-    console.log(data.id, titulo.value, desc.value, repository.value);
     const { url, options } = CREATE_PROJECT({
       userId: data.id,
       title: titulo.value,
@@ -86,9 +85,12 @@ function UserCreateAProject() {
       languages: languages,
     });
 
-    const { response, json } = request(url, options);
+    const { response, json } = await request(url, options);
+    
+    if(response.ok) {window.location.reload() 
+    window.alert('projeto criado com sucesso')}
   };
-  const fb = 'facebook'
+  const fb = "facebook";
   return (
     <>
       {mobile ? (
@@ -137,18 +139,21 @@ function UserCreateAProject() {
           />
 
           <Select
+            className={styles.select}
             options={languages}
             isMulti
             placeholder={"Linguagens"}
             onChange={(item) => setSelectedLanguages(item)}
           />
           <Select
+            className={styles.select}
             options={areas}
             isMulti
             placeholder={"Áreas"}
             onChange={(item) => setSelectedAreas(item)}
           />
           <Select
+            className={styles.select}
             placeholder={"Ferramentas"}
             options={tools}
             isMulti
@@ -186,29 +191,40 @@ function UserCreateAProject() {
                   </a>
                 )}
               </SomeArea>
-            </div> <div className="areas">
-                {" "}
-                {selectedAreas.map((area) => (
-                  <SomeArea
-                    key={area.value}
-                    src={`${filesUrl}/${area.image_url}`}
-                    className={"titleProject"}
-                  >
-                    <div className={styles.area}>{area.label}</div>
-                  </SomeArea>
-                ))}
-              </div>
-            <div className={"habilities"}>
-
-            <div className="languages">
-              <h4>Linguagens do Projeto</h4>
-              <div className="images">
-              {selectedLanguages.map(language => <img src={filesUrl+language.icon_url } alt={language.label}/>)}</div></div>
-              <div className="tools">
-                <h4>Ferramentas do Projecto</h4>                
-                <div className="images">{selectedTools.map(tool => <img src={filesUrl+tool.icon_url} alt={tool.label} />)}</div></div>
+            </div>{" "}
+            <div className="areas">
+              {" "}
+              {selectedAreas.map((area) => (
+                <SomeArea
+                  key={area.value}
+                  src={`${filesUrl}/${area.image_url}`}
+                  className={"titleProject"}
+                >
+                  <div className={styles.area}>{area.label}</div>
+                </SomeArea>
+              ))}
             </div>
-           
+            <div className={"habilities"}>
+              <div className="languages">
+                <h4>Linguagens do Projeto</h4>
+                <div className="images">
+                  {selectedLanguages.map((language) => (
+                    <img
+                      src={filesUrl + language.icon_url}
+                      alt={language.label}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="tools">
+                <h4>Ferramentas do Projecto</h4>
+                <div className="images">
+                  {selectedTools.map((tool) => (
+                    <img src={filesUrl + tool.icon_url} alt={tool.label} />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </section>

@@ -11,7 +11,7 @@ export const UserContext = React.createContext();
 export const UserStorage = ({ children }) => {
   const [data, setData] = React.useState(null);
   const [username,  setUsername] = React.useState(false)
-  const [login, setLogin] = React.useState(null);
+  const [login, setLogin] = React.useState(false);
   const [loading, setLoading] = React.useState(null);
   const [error, setError] = React.useState(null);
   const { file, setFile } = React.useState([]);
@@ -21,9 +21,11 @@ export const UserStorage = ({ children }) => {
   const socket = io(SOCKET_SERVER);
 
   async function getUser(token) {
+  
     const { url, options } = USER_GET(token);
     const response = await fetch(url, options);
     const json = await response.json();
+
     setData(json);
     setLogin(true);
   }

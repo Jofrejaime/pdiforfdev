@@ -96,6 +96,7 @@ img{
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  background: linear-gradient(180deg, hsla(var(--hue), var(--sat), var(--lig), 1) 0%, hsla(var(--hue), var(--sat), var(--lig), .2) 100%);
 }
 .nav_logo{
   color: var(--title-color);

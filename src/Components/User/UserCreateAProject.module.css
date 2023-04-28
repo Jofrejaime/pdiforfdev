@@ -6,7 +6,6 @@
   font-family:var(--type-code2);
   color: #333;
 }
-
 .createMobile {
   display: grid;
   grid-template-columns: 1fr;
@@ -95,4 +94,10 @@
   align-items: center;
   justify-content: center;
 
+}
+.select{
+  margin-top: .75rem;
+}
+.select + .select{
+  margin-bottom: .75rem;
 }

@@ -99,7 +99,8 @@ align-items: center;
   font-size: 14px;
 }
 
-.inputBox input {
+.inputBox input, textarea {
+  resize: none;
   border: 1px solid #eee;
   display: block;
   width: 100%;

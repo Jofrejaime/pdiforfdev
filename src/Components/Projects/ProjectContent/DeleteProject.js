@@ -8,8 +8,8 @@ function DeleteProject({id}) {
     const confirm = window.confirm('Tem certeza que dezeja deletar?')  
     if(confirm){
     const {url, options} = DELETE_PROJECT(id);
-    const {response, json} =await request(url, options);
-    console.log(response, json)
+    const {response} = await request(url, options);
+   
     if(response.ok) window.location.reload();}
   }
   return (<div>

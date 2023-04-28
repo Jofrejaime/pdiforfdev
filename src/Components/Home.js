@@ -5,7 +5,6 @@ import Feed from "./Feed/Feed";
 import { UserContext } from "../UserContext";
 import { FIND_PROJECT_FOR_FEED } from "./services/api";
 import useFetch from "../Hooks/useFetch";
-import Toast from "./Helper/Toast";
 function Home() {
   const { data: logedUser } = useContext(UserContext);
   const {request} = useFetch()
@@ -14,12 +13,13 @@ function Home() {
   useEffect(() => {
    async function projects (){
       const {url, options} =  FIND_PROJECT_FOR_FEED({follower: logedUser.id})
-      const {json, response} = await request(url, options); 
+      const {json, response} = await request(url, options);
+      if(response.ok) 
       setPojects(json)
     }
     projects()
     
-  }, [logedUser.Following, logedUser.id, request]);
+  }, [ logedUser, request]);
 
   return (
     <div>

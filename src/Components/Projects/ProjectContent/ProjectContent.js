@@ -19,7 +19,6 @@ export default function ProjectContent({ data, setModalProject }) {
   const [star, setStar] = React.useState(() => findedProject.Stars);
   const [starred, setStared] = React.useState('Stars');
   const { request } = useFetch();
-
   function handleClick(event) {
     //  if (event.target === event.currentTarget) setModalProject(null);
   }

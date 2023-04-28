@@ -29,7 +29,7 @@ function LoginForm() {
         <Input
           label={"Password"}
           type={"password"}
-          name="password"
+          
           {...password}
         />
         {loading ? (
@@ -43,7 +43,6 @@ function LoginForm() {
         Perdeu a senha?
       </Link>
       <div className={styles.cadastro}>
-        <h2 className={styles.subtitle}>Cadastre-se</h2>
         <p>
           Ainda não possui conta?{" "}
           <Link className={styles.cadastre_se} to={"/login/createAccount"}>

@@ -17,6 +17,9 @@ import {
 } from "./FileListStyle";
 
 function FileList({ files, page, findedProject }) {
+  const audios  =['.mp3', '.wav']
+  const videos = ['.mp4', '.MKV', '.mkv']
+
   if (page === "project")
     return (
       <Container>
@@ -27,8 +30,8 @@ function FileList({ files, page, findedProject }) {
             key={file}
             target={"_blank"}
             to={filesUrl + findedProject.files + "/" + file}
-          >
-            <Img src={filesUrl + findedProject.files + "/" + file} />
+          >{videos.some(ext => file.endsWith(ext))? <video  width='100%' controls src={filesUrl + findedProject.files + "/" + file}/>: audios.some(ext => file.endsWith(ext))? <audio width='100%' controls src={filesUrl + findedProject.files + "/" + file}/>: 
+          <Img src={filesUrl + findedProject.files + "/" + file} />}
           </Link>
         ))} 
       </Container>

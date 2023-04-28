@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import ProfileInfo from "../Profile/ProfileInfo";
-import Trabalhos from "../Profile/Trabalhos";
 import ProjectModal from "../Projects/ProjectModal";
 import Projects from "../Projects/Projects";
 import styles from "./Feed.module.css";
@@ -11,7 +9,7 @@ function Feed({area, language, label, projects}) {
   const location = useLocation();
   const [user, setUser] = useState()
   useEffect(()=>{setUser(location.pathname.split("/")[1])
-},[location.pathname])
+},[location])
   return (
     <section className={styles.containerFeed}>
       {modalProject && (

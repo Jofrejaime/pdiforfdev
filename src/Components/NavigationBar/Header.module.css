@@ -80,6 +80,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .profile {
   background-color: #333;
   display: inline-block;
@@ -92,6 +93,7 @@
 .profile picture{
   min-width: 28px;
   height: 28px;
+  
 }
 .profile picture img{
   border-radius: 50%;

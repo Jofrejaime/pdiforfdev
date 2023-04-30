@@ -1,0 +1,24 @@
+.lost{
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+}
+.container{
+  max-width: 40rem;
+  margin: 2rem;
+background-color: #fff;
+padding: 1rem;
+border-radius: 1rem;
+}
+
+@media (max-width: 40rem){
+  .lost{
+    display: flex;
+    flex-direction: column;
+  }
+  .back img{
+    padding: 2rem 2rem 0 2rem;
+  }
+}

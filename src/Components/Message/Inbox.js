@@ -15,20 +15,37 @@ import {
   FIND_USER,
   LIST_CONVERSATION,
   LIST_MESSAGES_BY_CONVERSATION,
+  USER_GET,
 } from "../services/api";
 import useFetch from "../../Hooks/useFetch";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { UserContext } from "../../UserContext";
 import useForm from "../../Hooks/useForm";
+import { createConversation } from "./createConversation";
 function Inbox() {
   const [onLineUsers, setOnlineUsers] = useState(false);
   const { data: logedUser, socket } = useContext(UserContext);
-  const { pathname } = useLocation();
+  
   const { data, request } = useFetch();
   const scroll = useRef();
   const [otherMember, setOtherMember] = useState(false);
   const [messages, setMessages] = useState(false);
   const [specificConversation, setSpecificConversation] = useState(false);
+  const location = useParams()
+  useEffect(()=>{
+    async function createConvese (){
+      const {url, options} =  FIND_USER({name: location.username})
+      const {json, response} = await request(url, options)
+        if(response.ok)
+        createConversation({
+          members: [logedUser.id, json.id],
+          request,
+        })
+        }
+        if(location.username)
+ createConvese()
+  
+  },[location.username, logedUser.id, request])
   useEffect(() => {
     socket.on("getUsers", (data) => {
       setOnlineUsers(data);
@@ -59,7 +76,7 @@ function Inbox() {
   }, [getConversations]);
   useEffect(() => {
     async function getUser() {
-      const name = pathname.split("/")[2];
+      const name = location.username;
       if (name) {
         const { url, options } = FIND_USER({ name });
         const { json, response } = await request(url, options);
@@ -84,7 +101,7 @@ function Inbox() {
       }
     }
     getUser();
-  }, [request, pathname, listConversation, logedUser]);
+  }, [request, listConversation, logedUser, location.username]);
 
   useEffect(() => {
     getMessages();
@@ -99,7 +116,7 @@ function Inbox() {
     });
   }, [socket, specificConversation]);
   return (
-    <div className={styles.container}>
+    <div className={'container '+styles.container}>
       <div className={styles.row}>
         <section className={styles.discussions}>
           <SearchMessage

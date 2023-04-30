@@ -6,6 +6,7 @@ import UserDefinition from "./UserDefinition";
 import UserStats from "./UserStats";
 import Feed from "../Feed/Feed";
 import Profile from "./Profile/Profile";
+import PageNotFound from "../PageNotFound";
 
 
 function User() {
@@ -17,6 +18,8 @@ function User() {
         <Route path="createaproject" element={<UserCreateAProject />} />
         <Route path="definition" element={<UserDefinition />} />
         <Route path="stats" element={<UserStats />} />
+        
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </section>
   );

@@ -6,10 +6,12 @@ import Select from "react-select";
 import styles from "../Login/LoginCreate.module.css";
 import { useNavigate } from "react-router-dom";
 import validator from "validator";
-import api, { CREATE_USER, GET_AREAS, GET_COUNTRIES, GET_LANGUAGES, GET_LINKS, GET_TOOLS, UPDATE_USER } from "../services/api";
+import api, { API_URL, CREATE_USER, GET_AREAS, GET_COUNTRIES, GET_LANGUAGES, GET_LINKS, GET_TOOLS, UPDATE_USER, filesUrl } from "../services/api";
 import useFetch from "../../Hooks/useFetch";
 import Error from "../Helper/Error";
 import Input from "../Form/Input";
+import { filesize } from "filesize";
+import axios from "axios";
 
 function UserDifinition() {
 
@@ -77,6 +79,7 @@ function UserDifinition() {
        setLastname(data.profile.lastName)
        setBio(data.profile.bio)
        setFirstname(data.profile.firstName)
+       setImage(data.profile.photo_url && {url: filesUrl+data.profile.photo_url})
     }
   },[data])
   useEffect(() => {
@@ -92,7 +95,12 @@ function UserDifinition() {
  
     const{url, options} = UPDATE_USER(date, email, usernames, userName, firstName, lastName, bio, selectedAreas, selectedLanguages, selectedPais, selectedTools, data.id)
     const {json, response} = await request(url, options)
-    if(response.ok) window.location.reload()
+    
+    if(image) {
+      const img = new FormData();
+      img.append('file', image)
+      api.patch('user/update/img/'+data.id,  img).then(res => console.log(res))}
+    if(response.ok)window.location.reload()
   }
   
   const {
@@ -115,9 +123,12 @@ function Setima({target}){
      
       <div className={styles.form}>
       <div>
-        <input type="file" name="image" onChange={Setima} accept="image/*"/>
+        <input style={{display: 'none'}} type="file" name="image" id="file" onChange={Setima} accept="image/*"/>
         <br/>
-        {image && <img style={{borderRadius: '50%', width: '100px', height: '100px'}} src={URL.createObjectURL(image)} alt="image"/>}
+        <label htmlFor="file" className={styles.editImage}>
+          {image && <img style={{borderRadius: '50%', width: '100px', height: '100px'}} src={ image.url? image.url:URL.createObjectURL(image)} alt="image"/>}
+        </label>
+        
       </div>
         <div className={styles.inputGroup}>
           <div className={styles.names}>

@@ -12,6 +12,7 @@ import LoginForm from "./LoginForm";
 import { UserContext } from "../../UserContext";
 import styles from "./Login.module.css";
 import "./login.css";
+import PageNotFound from "../PageNotFound";
 function Login() {
   const { login } = React.useContext(UserContext);
   const [loginType, setLogintype] = React.useState("login");
@@ -30,6 +31,7 @@ function Login() {
           <Route path="createAccount" element={<LoginCreate />} />
           <Route path="lostPass" element={<LoginPassLost />} />
           <Route path="reset" element={<LoginPassReset />} />
+          <Route path="*" element={<PageNotFound />}/>
         </Routes>
        </div>
     </section>

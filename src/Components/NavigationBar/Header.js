@@ -99,8 +99,7 @@ function Header() {
               </ul>
             </div>
             {data && (
-              <Link hrefLang="#profile" to={data.userName} 
-              className="nav_img">
+              <Link hrefLang="#profile" to={data.userName} className="nav_img">
                 {" "}
                 {data.profile.photo_url && (
                   <img

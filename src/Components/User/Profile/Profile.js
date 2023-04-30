@@ -13,28 +13,26 @@ import Error from "../../Helper/Error";
 import FollowUser from "./FollowUser";
 import { createConversation } from "../../Message/createConversation";
 function Profile() {
-  const {data: logedUser} = useContext(UserContext)
-  const navigate =  useNavigate()
+  const { data: logedUser } = useContext(UserContext);
+  const navigate = useNavigate();
   const { data, request, loading, error } = useFetch();
   const [projects, setProjects] = React.useState(true);
-  const [followers, setFollowers] =  useState([])
-  const [languages, setLanguages] = useState()
-  const [areas, setAreas] = useState()
-  const [tool, setTool] = useState()
+  const [followers, setFollowers] = useState([]);
+  const [languages, setLanguages] = useState();
+  const [areas, setAreas] = useState();
+  const [tool, setTool] = useState();
   const location = useLocation();
-
 
   const media = useMedia("(min-width: 992px)");
   const name = location.pathname.replace("/", "");
   useEffect(() => {
     async function findUser() {
       const { url, options } = FIND_USER({ name });
-     const {json, response} = await request(url, options);
-     if(response.ok)
-     setFollowers(json.profile.Follow)
+      const { json, response } = await request(url, options);
+      if (response.ok) setFollowers(json.profile.Follow);
     }
     findUser();
-  }, [ name, request]);
+  }, [name, request]);
 
   return (
     <div>
@@ -54,43 +52,46 @@ function Profile() {
                       />
                     )}
                   </div>
-
                 </div>
                 <h2 className={styles.profile_name}>
                   {data.profile.firstName + " " + data.profile.lastName}
                   <p className={styles.profile_profession}>{data.userName}</p>
                 </h2>
+               
                 <h3 className={styles.profile_profession}>
                   {data.profile.AreaofProfile.map((area) => (
                     <span
                       key={area.areaLabel}
                       className={styles.profile_profession}
                     >
-                      {area.areaLabel+' '}
+                      {area.areaLabel + " "}
                     </span>
                   ))}
                 </h3>
-
+                <p className={styles.profile_profession}>{data.profile.bio}</p>
                 <ul className={styles.profile_social}>
-                  <a href="" className={styles.profile_social_link}>
-                    {" "}
-                    <li>f</li>{" "}
-                  </a>
-                  <a href="" className={styles.profile_social_link}>
-                    {" "}
-                    <li>g</li>{" "}
-                  </a>
-                  <a href="" className={styles.profile_social_link}>
-                    <li>i</li>
-                  </a>
+                  {data.profile.LinksToProfile.map((link) => (
+                    <a
+                      target="_blank"
+                      href={link.Link.url + link.label}
+                      className={styles.profile_social_link}
+                    >
+                      <li>
+                        <img
+                          src={filesUrl + link.Link.icon}
+                          alt={data.userName}
+                        />
+                      </li>
+                    </a>
+                  ))}
                 </ul>
               </div>
               <div className={styles.profile_info + " " + styles.grid}>
                 <div className={styles.profile_info_group}>
-                  <h3 className={styles.profile_info_number}>{followers.length}</h3>
-                  <p className={styles.profile_info_description}>
-                    followers
-                  </p>
+                  <h3 className={styles.profile_info_number}>
+                    {followers.length}
+                  </h3>
+                  <p className={styles.profile_info_description}>followers</p>
                 </div>
                 <div className={styles.profile_info_group}>
                   <h3 className={styles.profile_info_number}>
@@ -99,14 +100,18 @@ function Profile() {
                   <p className={styles.profile_info_description}>projects</p>
                 </div>
                 <div className={styles.profile_info_group}>
-                  <h3 className={styles.profile_info_number}>{data._count.Following}</h3>
-                  <p className={styles.profile_info_description}>
-                    following
-                  </p>
+                  <h3 className={styles.profile_info_number}>
+                    {data._count.Following}
+                  </h3>
+                  <p className={styles.profile_info_description}>following</p>
                 </div>
               </div>
               <div className={styles.profile_buttons}>
-             <FollowUser data={data} followers={followers} setFollowers={setFollowers} />
+                <FollowUser
+                  data={data}
+                  followers={followers}
+                  setFollowers={setFollowers}
+                />
 
                 <div className={styles.profile_buttons_small}>
                   <i className=""></i>
@@ -136,8 +141,21 @@ function Profile() {
                   </a>
                 </div>
               </div>
-             {logedUser.id !== data.id && <Link onClick={()=>createConversation({members:[logedUser.id, data.id], request})} to={`../../message/${data.userName}`}  className={styles.message+ ' '+styles.button}>message</Link>}
-              {media && <Skills areas={data.profile.AreaofProfile} languages={data.profile.LanguageOfProfile} tools={data.profile.ToolofProfile}  />}
+              {logedUser.id !== data.id && (
+                <Link
+                  to={`../../message/${data.userName}`}
+                  className={styles.message + " " + styles.button}
+                >
+                  message
+                </Link>
+              )}
+              {media && (
+                <Skills
+                  areas={data.profile.AreaofProfile}
+                  languages={data.profile.LanguageOfProfile}
+                  tools={data.profile.ToolofProfile}
+                />
+              )}
             </div>
           </header>
           <div>
@@ -173,10 +191,14 @@ function Profile() {
                   {projects && <Feed />}
                   {!projects && (
                     <div>
-                      {media && 
-                        <h3 className={styles.filters_title}>Skills</h3> 
-                      }
-                      <Skills areas={data.profile.AreaofProfile} languages={data.profile.LanguageOfProfile} tools={data.profile.ToolofProfile} />
+                      {media && (
+                        <h3 className={styles.filters_title}>Skills</h3>
+                      )}
+                      <Skills
+                        areas={data.profile.AreaofProfile}
+                        languages={data.profile.LanguageOfProfile}
+                        tools={data.profile.ToolofProfile}
+                      />
                     </div>
                   )}
                 </div>

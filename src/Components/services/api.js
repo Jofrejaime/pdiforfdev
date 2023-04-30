@@ -2,7 +2,7 @@ import axios from "axios";
 import { method } from "lodash";
 import { io } from "socket.io-client";
 const api = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "http://localhost:3001/",
 });
 export const SOCKET_SERVER = "http://localhost:3003";
 export const socketIO = io(SOCKET_SERVER);

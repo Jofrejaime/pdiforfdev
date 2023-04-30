@@ -50,12 +50,7 @@ function CardUser({ user }) {
                 setFollowers={setFollowers}
               />
               <Link
-                onClick={() =>
-                  createConversation({
-                    members: [logedUser.id, user.id],
-                    request,
-                  })
-                }
+                
                 to={"../../message/" + user.userName}
               
               >

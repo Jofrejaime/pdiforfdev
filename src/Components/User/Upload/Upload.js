@@ -41,7 +41,6 @@ export default class Upload extends Component {
   };
   processUpload = (file) => {
     const data = new FormData();
-    console.log(this.props.projectTitle, ' uo')
     data.append("file", file.file);
     data.append('userName', this.props.userName);
     data.append('title', this.props.projectTitle)

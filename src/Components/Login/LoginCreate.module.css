@@ -1,4 +1,11 @@
-
+.editImage{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+   background: linear-gradient(180deg, hsla(var(--hue), var(--sat), var(--lig), 1) 0%, hsla(var(--hue), var(--sat), var(--lig), .2) 100%);
+   margin-bottom: 1rem;
+   display: block;
+}
 .criarConta {
   margin: 4rem 0;
   border-radius: 1rem;

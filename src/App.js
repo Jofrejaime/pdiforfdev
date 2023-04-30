@@ -12,6 +12,7 @@ import User from "./Components/User/User";
 import MessageIndex from "./Components/Message/MessageIndex";
 import ProtectedRoute from "./Components/Helper/ProtectedRoute";
 import Toast from "./Components/Helper/Toast";
+import PageNotFound from "./Components/PageNotFound";
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
               }
             />
             <Route
-              path=":username/*"
+              path=":username"
               element={
                 <ProtectedRoute>
                   <User />{" "}
@@ -62,6 +63,7 @@ function App() {
               }
             />
             <Route path="discover" element={<Discover />} />
+            <Route path="*" element={<PageNotFound />}/>
           </Routes>
           <Footer />
         </UserStorage>

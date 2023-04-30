@@ -1,8 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Message from "./Message";
-import UserMessage from "./UserMessage";
 import Inbox from "./Inbox";
+import PageNotFound from "../PageNotFound";
 
 function MessageIndex() {
   return (
@@ -10,6 +9,7 @@ function MessageIndex() {
       <Routes>
         <Route path="/:username" element={<Inbox />} />
         <Route path="/" element={<Inbox />} />
+        <Route path="*" element={<PageNotFound />}/>
       </Routes>
     </div>
   );

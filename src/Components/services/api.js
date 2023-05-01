@@ -2,11 +2,11 @@ import axios from "axios";
 import { method } from "lodash";
 import { io } from "socket.io-client";
 const api = axios.create({
-  baseURL: "http://localhost:3001/",
+  baseURL: "https://pdiback.onrender.com",
 });
 export const SOCKET_SERVER = "http://localhost:3003";
 export const socketIO = io(SOCKET_SERVER);
-export const API_URL = "http://localhost:3001";
+export const API_URL = "https://pdiback.onrender.com";
 export const filesUrl = API_URL + "/files/";
 export const getToken = window.localStorage.getItem("token");
 export function CREATE_USER(body) {

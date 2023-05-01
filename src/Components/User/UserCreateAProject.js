@@ -89,8 +89,8 @@ function UserCreateAProject() {
     const { response, json } = await request(url, options);
     
     if(response.ok) {
-    toast.success('Projecto criado com sucesso')
-    window.location.reload() }
+   await toast.success('Projecto criado com sucesso')
+   window.location.reload() }
   };
   return (
     <>

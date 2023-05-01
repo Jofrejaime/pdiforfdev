@@ -24,6 +24,7 @@ import {
 import useFetch from "../../Hooks/useFetch";
 import { useEffect } from "react";
 import "boxicons";
+import { toast } from "react-toastify";
 function UserCreateAProject() {
   const [areas, setAreas] = React.useState([]);
   const [languages, setLanguages] = React.useState([]);
@@ -87,10 +88,10 @@ function UserCreateAProject() {
 
     const { response, json } = await request(url, options);
     
-    if(response.ok) {window.location.reload() 
-    window.alert('projeto criado com sucesso')}
+    if(response.ok) {
+    toast.success('Projecto criado com sucesso')
+    window.location.reload() }
   };
-  const fb = "facebook";
   return (
     <>
       {mobile ? (

@@ -10,7 +10,6 @@ import {
 import stylesPU from "./ProjectUserCard.module.css";
 import styles from './FlipCard.module.css'
 import { filesUrl } from "../services/api";
-import AM from '../../assets/img/avatar.jpg'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faGrinStars, faStar, faStarAndCrescent, faStarHalfAlt } from "@fortawesome/free-solid-svg-icons";
 function ProjectUserCard({ info }) {

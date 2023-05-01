@@ -1,12 +1,11 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import styles from "./Notifications.module.css";
 import useMedia from "../../Hooks/useMedia";
-import Avatar from "../../assets/img/avatar.jpg";
-import formatDate from "../Helper/formatDate";
 import Notification from "./Notification";
 import { FIND_NOTIFICATIONS, socketIO } from "../services/api";
 import useFetch from "../../Hooks/useFetch";
 import { UserContext } from "../../UserContext";
+import { toast } from "react-toastify";
 
 function Notifications() {
   const mobile = useMedia("(max-width: 45rem)");
@@ -26,9 +25,10 @@ function Notifications() {
   useEffect(() => {
     if(logedUser)
     socketIO.on("notification", (data) => {
-      console.log(data.receiverId, logedUser.id)
-      if (data.receiverId === logedUser.id)
+      if (data.receiverId === logedUser.id){
         setNotifications((notifications) => [...notifications, data]);
+        toast.info(data.content)
+      }
     });
   }, [logedUser]);
   return (

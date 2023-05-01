@@ -5,6 +5,7 @@ import Feed from "./Feed/Feed";
 import { UserContext } from "../UserContext";
 import { FIND_PROJECT_FOR_FEED } from "./services/api";
 import useFetch from "../Hooks/useFetch";
+import { ToastContainer } from "react-toastify";
 function Home() {
   const { data: logedUser } = useContext(UserContext);
   const {request} = useFetch()
@@ -32,6 +33,7 @@ function Home() {
       <section className="container">
        {projects && <Feed projects={projects} />
 }      </section>
+
     </div>
   );
 }

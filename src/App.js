@@ -13,7 +13,8 @@ import MessageIndex from "./Components/Message/MessageIndex";
 import ProtectedRoute from "./Components/Helper/ProtectedRoute";
 import Toast from "./Components/Helper/Toast";
 import PageNotFound from "./Components/PageNotFound";
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.min.css'
 function App() {
   return (
     <div>
@@ -39,7 +40,7 @@ function App() {
               }
             />
             <Route
-              path=":username"
+              path=":username/*"
               element={
                 <ProtectedRoute>
                   <User />{" "}
@@ -65,6 +66,7 @@ function App() {
             <Route path="discover" element={<Discover />} />
             <Route path="*" element={<PageNotFound />}/>
           </Routes>
+          <ToastContainer/>
           <Footer />
         </UserStorage>
       </BrowserRouter>

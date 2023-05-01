@@ -7,6 +7,7 @@ import {
   USER_GET,
 } from "./Components/services/api";
 import { io } from "socket.io-client";
+import { toast } from "react-toastify";
 export const UserContext = React.createContext();
 export const UserStorage = ({ children }) => {
   const [data, setData] = React.useState(null);
@@ -66,11 +67,12 @@ export const UserStorage = ({ children }) => {
       const json = await response.json();
       if (!response.ok) {
         setMessage(json);
+        toast.warn(error)
         throw new Error(`Error: ${response.statusText}`);
       }
       window.localStorage.setItem("token", json.token);
       await getUser(json.token);
-
+        toast.success('Bem vindo de volta '+username)
       navigate("/");
     } catch (err) {
       setError(message.message);

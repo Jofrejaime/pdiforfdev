@@ -9,6 +9,7 @@ import validator from "validator";
 import api, { CREATE_USER, GET_COUNTRIES } from "../services/api";
 import useFetch from "../../Hooks/useFetch";
 import Error from "../Helper/Error";
+import { toast } from "react-toastify";
 
 function LoginCreate() {
   const { userLogin } = React.useContext(UserContext);
@@ -29,9 +30,12 @@ function LoginCreate() {
   async function onSubmit(data) {
     const { url, options } = CREATE_USER(data);
     const { json, response } = await request(url, options);
-    if (response.ok || json.message === 'User Already Exists!'){ 
-     
-      userLogin(data.devName, data.password);}
+    if(json.message === 'User Already Exists!')
+    toast.info('Este usuario já existe')
+    if (response.ok){ 
+      userLogin(data.devName, data.password);
+      toast.success('Bem Vindo ao pdifordev')
+    }
   }
 
   const {

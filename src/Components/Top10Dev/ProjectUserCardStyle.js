@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import AM from '../../assets/img/avatar.jpg'
 export const Container = styled.div`
   width: 100%;
   min-height: 10vh;

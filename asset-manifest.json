@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/pdiforfdev/static/css/main.fa25da4d.css",
-    "main.js": "/pdiforfdev/static/js/main.0340ccaf.js",
+    "main.css": "/pdiforfdev/static/css/main.3e2c5c68.css",
+    "main.js": "/pdiforfdev/static/js/main.f7263eff.js",
     "static/js/787.49fc5e08.chunk.js": "/pdiforfdev/static/js/787.49fc5e08.chunk.js",
     "static/media/login.jpg": "/pdiforfdev/static/media/login.fe8c2cb4b7665d40b603.jpg",
     "static/media/criar.jpg": "/pdiforfdev/static/media/criar.c1ee05cc66713922f405.jpg",
-    "static/media/avatar.jpg": "/pdiforfdev/static/media/avatar.d812a47e9546465fa83c.jpg",
     "static/media/github.webp": "/pdiforfdev/static/media/github.02c48fc9c6820fbc70a0.webp",
+    "static/media/Logo.png": "/pdiforfdev/static/media/Logo.31a9a8162424484eb9ae.png",
     "static/media/logo.svg": "/pdiforfdev/static/media/logo.021e0947ae0247c2d2edd3d1a6424441.svg",
     "index.html": "/pdiforfdev/index.html",
-    "main.fa25da4d.css.map": "/pdiforfdev/static/css/main.fa25da4d.css.map",
-    "main.0340ccaf.js.map": "/pdiforfdev/static/js/main.0340ccaf.js.map",
+    "main.3e2c5c68.css.map": "/pdiforfdev/static/css/main.3e2c5c68.css.map",
+    "main.f7263eff.js.map": "/pdiforfdev/static/js/main.f7263eff.js.map",
     "787.49fc5e08.chunk.js.map": "/pdiforfdev/static/js/787.49fc5e08.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa25da4d.css",
-    "static/js/main.0340ccaf.js"
+    "static/css/main.3e2c5c68.css",
+    "static/js/main.f7263eff.js"
   ]
 }

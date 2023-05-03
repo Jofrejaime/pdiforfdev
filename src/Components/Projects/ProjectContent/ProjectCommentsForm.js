@@ -22,6 +22,7 @@ function ProjectCommentsForm({ id, userId, setComments, project}) {
     if(response.ok){
       comment.value =null;
       socket.emit('comment', json)
+        if(project.userId !== userId)
       createNotifications({
         issuerId: userId,
         receiverId: project.userId,

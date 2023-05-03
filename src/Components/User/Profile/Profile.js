@@ -74,7 +74,7 @@ function Profile() {
                     <a
                       target="_blank"
                       href={link.Link.url + link.label}
-                      className={styles.profile_social_link}
+                      className={styles.profile_social_link} rel="noreferrer"
                     >
                       <li>
                         <img
@@ -111,6 +111,7 @@ function Profile() {
                   data={data}
                   followers={followers}
                   setFollowers={setFollowers}
+                  
                 />
 
                 <div className={styles.profile_buttons_small}>
@@ -145,6 +146,10 @@ function Profile() {
                 <Link
                   to={`../../message/${data.userName}`}
                   className={styles.message + " " + styles.button}
+                  onClick={async ()=> await createConversation({
+                    members: [{memberId:logedUser.id}, {memberId: data.id}],
+                    request
+                  })}
                 >
                   message
                 </Link>

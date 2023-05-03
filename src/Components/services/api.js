@@ -2,11 +2,11 @@ import axios from "axios";
 import { method } from "lodash";
 import { io } from "socket.io-client";
 const api = axios.create({
-  baseURL: "https://pdiback.onrender.com",
+  baseURL: "http://localhost:3001",
 });
 export const SOCKET_SERVER = "http://localhost:3003";
 export const socketIO = io(SOCKET_SERVER);
-export const API_URL = "https://pdiback.onrender.com";
+export const API_URL = "http://localhost:3001";
 export const filesUrl = API_URL + "/files/";
 export const getToken = window.localStorage.getItem("token");
 export function CREATE_USER(body) {
@@ -405,18 +405,56 @@ export function SEND_MESSAGE({ conversation, userId, content }) {
     },
   };
 }
-export function UPDATE_USER(date, email, usernames, userName, firstName, lastName, bio, selectedAreas, selectedLanguages, selectedPais, selectedTools, user) {
-  console.log(date, email, usernames, userName, firstName, lastName, bio, selectedAreas, selectedLanguages, selectedPais, selectedTools, user)
-  return{
-  url: API_URL + "/user/update/" + user,
+export function UPDATE_USER(
+  date,
+  email,
+  usernames,
+  userName,
+  firstName,
+  lastName,
+  bio,
+  selectedAreas,
+  selectedLanguages,
+  selectedPais,
+  selectedTools,
+  user
+) {
+  console.log(
+    date,
+    email,
+    usernames,
+    userName,
+    firstName,
+    lastName,
+    bio,
+    selectedAreas,
+    selectedLanguages,
+    selectedPais,
+    selectedTools,
+    user
+  );
+  return {
+    url: API_URL + "/user/update/" + user,
     options: {
       method: "POST",
       headers: {
         authorization: "Bearer " + getToken,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({date, email: email, usernames:usernames, userName:userName, firstName:firstName, lastName:lastName, bio:bio, selectedAreas:selectedAreas, selectedLanguages:selectedLanguages, selectedPais:selectedPais, selectedTools:selectedTools})
-    }
-  }
+      body: JSON.stringify({
+        date,
+        email: email,
+        usernames: usernames,
+        userName: userName,
+        firstName: firstName,
+        lastName: lastName,
+        bio: bio,
+        selectedAreas: selectedAreas,
+        selectedLanguages: selectedLanguages,
+        selectedPais: selectedPais,
+        selectedTools: selectedTools,
+      }),
+    },
+  };
 }
 export default api;

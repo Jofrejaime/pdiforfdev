@@ -31,21 +31,9 @@ function Inbox() {
   const [otherMember, setOtherMember] = useState(false);
   const [messages, setMessages] = useState(false);
   const [specificConversation, setSpecificConversation] = useState(false);
+  const [listConversation, setListConversation] = useState([]);
   const location = useParams()
-  useEffect(()=>{
-    async function createConvese (){
-      const {url, options} =  FIND_USER({name: location.username})
-      const {json, response} = await request(url, options)
-        if(response.ok)
-        createConversation({
-          members: [logedUser.id, json.id],
-          request,
-        })
-        }
-        if(location.username)
- createConvese()
   
-  },[location.username, logedUser.id, request])
   useEffect(() => {
     socket.on("getUsers", (data) => {
       setOnlineUsers(data);
@@ -70,7 +58,6 @@ function Inbox() {
       setListConversation(json);
     }
   }, [logedUser.id, request]);
-  const [listConversation, setListConversation] = useState([]);
   useEffect(() => {
     getConversations();
   }, [getConversations]);
@@ -124,7 +111,7 @@ function Inbox() {
             listConversation={listConversation}
             getConversations={getConversations}
           />
-          {listConversation.length > 0 &&
+          {listConversation &&
             listConversation.map((conversation) => (
               <ConversationItem
                 specificConversation={specificConversation}

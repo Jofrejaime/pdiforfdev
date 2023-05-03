@@ -4,8 +4,8 @@ import { filesUrl } from "../services/api";
 import { Link } from "react-router-dom";
 import FollowUser from "../User/Profile/FollowUser";
 import { UserContext } from "../../UserContext";
-import { createConversation } from "../Message/createConversation";
 import useFetch from "../../Hooks/useFetch";
+import { createConversation } from "../Message/createConversation";
 function CardUser({ user }) {
   const { data: logedUser } = useContext(UserContext);
   const { request } = useFetch();
@@ -50,9 +50,11 @@ function CardUser({ user }) {
                 setFollowers={setFollowers}
               />
               <Link
-                
-                to={"../../message/" + user.userName}
-              
+              onClick={async ()=> await createConversation({
+                members: [{memberId:logedUser.id}, {memberId: user.id}],
+                request
+              })}
+                to={"../../message/" + user.userName}     
               >
                 Message
               </Link>

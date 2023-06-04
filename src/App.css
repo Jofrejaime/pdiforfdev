@@ -14,11 +14,12 @@ body {
   --type-code1: 'JetBrains Mono', 'Cascadia Code', 'Anonymous Pro', Menlo, Monaco, 'Courier New', monospace;
   --type-code2: 'Fira Sans', 'Fira Code', 'Source Code Pro', Consolas, source-code-pro, Menlo, Monaco, 'Courier New',
     monospace;
-  --type-code3: 'Poppins','Source Code Pro', monospace;
+  --type-code3: 'Poppins', 'Source Code Pro', monospace;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 
 }
+
 body::-webkit-scrollbar {
   width: 1rem;
   border-radius: .5rem;
@@ -74,18 +75,20 @@ select {
 
 .habilities {
   display: flex;
-  align-items:normal;
+  align-items: normal;
   justify-content: center;
   gap: 20px;
-overflow: auto;
-font-size:  clamp(1rem, 1.1rem + 1vw, 1.1rem);
-font-family: var(--type-code3);
-flex-wrap: wrap;
+  overflow: auto;
+  font-size: clamp(1rem, 1.1rem + 1vw, 1.1rem);
+  font-family: var(--type-code3);
+  flex-wrap: wrap;
 }
-.description{
+
+.description {
   font-family: var(--type-code2);
-font-weight: 400;
+  font-weight: 400;
 }
+
 .habilities div {
   max-width: 300px;
   background-color: #fff;
@@ -96,23 +99,28 @@ font-weight: 400;
   color: #333;
   border-radius: 4px;
 }
-.languages{
-flex-wrap: wrap;
+
+.languages {
+  flex-wrap: wrap;
 }
- .images{
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 10px;
+
+.images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
-.images img{
+
+.images img {
   width: 34px;
 }
-.areas{
+
+.areas {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 label {
   font-family: var(--type-code1);
 }
@@ -199,8 +207,6 @@ label {
   color: #fff;
   font-weight: 500;
 }
-
-.error {}
 
 @keyframes animeLeft {
   to {

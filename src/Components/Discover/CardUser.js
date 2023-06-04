@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import FollowUser from "../User/Profile/FollowUser";
 import { UserContext } from "../../UserContext";
 import useFetch from "../../Hooks/useFetch";
+
 import { createConversation } from "../Message/createConversation";
 function CardUser({ user }) {
   const { data: logedUser } = useContext(UserContext);
@@ -13,7 +14,11 @@ function CardUser({ user }) {
   return (
     <div className={styles.card}>
       <div className={styles.imgBx}>
-        <img src={filesUrl + user.profile.photo_url} alt={user.userName} />
+        <Link to={"../" + user.userName}>
+          {user.profile.photo_url && (
+            <img src={filesUrl + user.profile.photo_url} alt={user.userName} />
+          )}
+        </Link>
       </div>
       <div className={styles.content}>
         <div className={styles.details}>
@@ -50,11 +55,16 @@ function CardUser({ user }) {
                 setFollowers={setFollowers}
               />
               <Link
-              onClick={async ()=> await createConversation({
-                members: [{memberId:logedUser.id}, {memberId: user.id}],
-                request
-              })}
-                to={"../../message/" + user.userName}     
+                onClick={async () =>
+                  await createConversation({
+                    members: [
+                      { memberId: logedUser.id },
+                      { memberId: user.id },
+                    ],
+                    request,
+                  })
+                }
+                to={"../../message/" + user.userName}
               >
                 Message
               </Link>

@@ -10,8 +10,9 @@ import api, { CREATE_USER, GET_COUNTRIES } from "../services/api";
 import useFetch from "../../Hooks/useFetch";
 import Error from "../Helper/Error";
 import { toast } from "react-toastify";
-
+import axios from 'axios'
 function LoginCreate() {
+ 
   const { userLogin } = React.useContext(UserContext);
   const [slide, setSlide] = useState(1);
   const [pais, setIPais] = useState("");
@@ -37,7 +38,26 @@ function LoginCreate() {
       toast.success('Bem Vindo ao pdifordev')
     }
   }
-
+   async function ifExisteEmail(email){
+    const options = {
+      method: 'GET',
+      url: 'https://email-checker.p.rapidapi.com/verify/v1',
+      params: {
+        email: email
+      },
+      headers: {
+        'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+        'X-RapidAPI-Host': 'email-checker.p.rapidapi.com'
+      }
+    };
+    
+      try {
+        const response = await axios.request(options);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
   const {
     register,
     handleSubmit,

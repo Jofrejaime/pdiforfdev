@@ -54,7 +54,7 @@ function Header() {
                     className={styles.link_a + " nav_link"}
                   >
                     <FontAwesomeIcon icon={faHome} className="nav_icon" />
-                    <p className="nav_name">home</p>
+                    <p className="nav_name">casa</p>
                   </NavLink>
                 </li>
                 <li className={styles.link + " nav_item"}>
@@ -64,7 +64,7 @@ function Header() {
                     className={styles.link_a + " nav_link"}
                   >
                     <FontAwesomeIcon className="nav_icon" icon={faBoxOpen} />
-                    <p className="nav_name">discover</p>
+                    <p className="nav_name">descobrir</p>
                   </NavLink>
                 </li>
 
@@ -77,7 +77,7 @@ function Header() {
                     className={styles.link_a + " nav_link"}
                   >
                     <FontAwesomeIcon icon={faBell} className="nav_icon" />
-                    <p className="nav_name">notification</p>
+                    <p className="nav_name">notificações</p>
                   </NavLink>
                   <li
                     className={mobile ? "" : styles.notification_show}
@@ -93,7 +93,7 @@ function Header() {
                     className={styles.link_a + " nav_link"}
                   >
                     <FontAwesomeIcon icon={faEnvelope} className=" nav_icon" />
-                    <p className="nav_name">message</p>
+                    <p className="nav_name">Mensagens</p>
                   </NavLink>
                 </li>
               </ul>

@@ -13,6 +13,7 @@ import { UserContext } from "../../UserContext";
 import styles from "./Login.module.css";
 import "./login.css";
 import PageNotFound from "../PageNotFound";
+import axios from "axios";
 function Login() {
   const { login } = React.useContext(UserContext);
   const [loginType, setLogintype] = React.useState("login");
@@ -22,7 +23,6 @@ function Login() {
     else setLogintype('login')
   }, [params]);
 
-  if (login === true) return <Navigate to="/pdiforfdev" />;
   return (
     <section className={loginType}>
       <div className={styles.forms}>

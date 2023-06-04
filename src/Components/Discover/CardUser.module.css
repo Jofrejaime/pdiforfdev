@@ -19,7 +19,7 @@
   transform: translateX(-50%);
   width: 150px;
   height: 150px;
-  background: #fff;
+  background: linear-gradient(180deg, hsla(var(--hue), var(--sat), var(--lig), 1) 0%, hsla(var(--hue), var(--sat), var(--lig), .2) 100%);
   border-radius: 20px;
   box-shadow: 0 15 50px rgba(0, 0, 0, .35);
   overflow: hidden;
@@ -27,7 +27,7 @@
 }
 
 .card:hover .imgBx {
-top: -25%;
+  top: -25%;
   width: 250px;
   height: 250px;
 }
@@ -58,12 +58,15 @@ top: -25%;
   transition: .5s;
   transform: translateY(115px);
 }
-.card:has(.actions) .details{
+
+.card:has(.actions) .details {
   transform: translateY(155px);
 }
-.card:hover .details{
-transform: translateY(0px);
+
+.card:hover .details {
+  transform: translateY(0px);
 }
+
 .card .content .details h2 {
   font-size: 1.25em;
   font-weight: 600;

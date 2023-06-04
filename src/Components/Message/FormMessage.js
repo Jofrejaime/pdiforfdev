@@ -18,13 +18,7 @@ function FormMessage({specificConversation }) {
     const { url, options } = SEND_MESSAGE(messageS);
     const { json, response } = await request(url, options);
 
-    socket.emit("message", {
-      conversationId: specificConversation.id,
-      userId: logedUser.id,
-      username: logedUser.userName,
-      content: message.value,
-      created_at: new Date()
-    });
+    socket.emit("message", json);
     message.value = "";
   }
 

@@ -9,7 +9,7 @@ function Denunciar({ project }) {
   const request = useFetch();
   const denuncia = useForm("");
   async function denunciar() {
-    const { url, options } = DENUNCIAR({ project, denuncia });
+    const { url, options } = DENUNCIAR({ project, denuncia: denuncia.value });
     const { response, json } = await request(url, options);
     if (response.ok) window.location.reload();
   }

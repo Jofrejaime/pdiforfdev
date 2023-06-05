@@ -38,7 +38,7 @@ function Project({ project, setModalProject, setView }) {
     <div className={styles.projectContainer}>
       <div className={styles.project}>
         <div className={styles.projectCover}>
-          <div className={styles.coverWrapper} onClick={handleClick}>
+          <div className={styles.coverWrapper} onDoubleClick={handleClick}>
             <div className={styles.coverContent}>
               <div className={styles.colorDomain}></div>
               <picture>
